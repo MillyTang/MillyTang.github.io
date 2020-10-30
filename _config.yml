@@ -4,7 +4,7 @@
 
 # Site
 title: 戴英的mini世界
-subtitle: '倒计时'
+subtitle: '反方向的钟'
 description: ''
 keywords:
 author: 主体-客体联合创作
@@ -98,7 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
