@@ -10,6 +10,7 @@ branches:
 install: 
   - npm install # 更换主题后最好install一下，本地也出现了网页打不开的问题
 script:
+  - hexo clean
   - hexo generate # generate static files
 deploy:
   provider: pages
