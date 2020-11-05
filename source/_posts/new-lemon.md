@@ -86,10 +86,10 @@ cd new-github-repo/
 git init
 # 关键步骤：
 # 清除全局配置
-git config --global unset user.name your-old-github-nam
+git config --global unset user.name your-old-github-name
 git config --global unset user.email your-old-register-email-address
 # 局部设置
-git config --local user.name your-new-github-nam
+git config --local user.name your-new-github-name
 git config --global unset user.email your-new-register-email-address
 # 最后再检查一下
 git config -l
@@ -97,4 +97,11 @@ git config -l
 # git commit --amend --reset-author
 ```
 
-完成✿✿ヽ(°▽°)ノ✿
+## 本地多个项目有不同的node版本管理
+
+* nvm & avn 联合控制
+* 项目中增加一个`.node-version` or `.nvmrc`文件即可,内容为该项目的node版本数字
+
+```.nvmrc
+12
+```
