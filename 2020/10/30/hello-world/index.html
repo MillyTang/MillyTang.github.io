@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="没有修改主题前的自动部署流程十分顺滑123456# git:main 分支$ hexo new &quot;My New Post&quot;$ git add .$ git commit msg$ git push# 剩下的交给travis.bot发布到gh-pages分支  一切变故来源于更换了更好看的主题  同样操作一遍，线上的直接404，在.travis.yml脚本中增加了 npm ins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
+<meta property="og:title" content="Hexo &amp; travis bot坑爹的自动部署">
 <meta property="og:url" content="https://github.com/MillyTang/MillyTang.github.io/2020/10/30/hello-world/index.html">
 <meta property="og:site_name" content="戴英的mini世界">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="没有修改主题前的自动部署流程十分顺滑123456# git:main 分支$ hexo new &quot;My New Post&quot;$ git add .$ git commit msg$ git push# 剩下的交给travis.bot发布到gh-pages分支  一切变故来源于更换了更好看的主题  同样操作一遍，线上的直接404，在.travis.yml脚本中增加了 npm ins">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-30T07:17:29.755Z">
-<meta property="article:modified_time" content="2020-10-30T07:17:29.756Z">
+<meta property="article:modified_time" content="2020-11-05T11:06:41.004Z">
 <meta property="article:author" content="主体-客体联合创作">
 <meta name="twitter:card" content="summary">
 
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Hello World | 戴英的mini世界</title>
+  <title>Hexo & travis bot坑爹的自动部署 | 戴英的mini世界</title>
   
 
 
@@ -164,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          Hexo & travis bot坑爹的自动部署
         </h1>
 
         <div class="post-meta">
@@ -176,6 +176,13 @@
 
               <time title="创建时间：2020-10-30 15:17:29" itemprop="dateCreated datePublished" datetime="2020-10-30T15:17:29+08:00">2020-10-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-05 19:06:41" itemprop="dateModified" datetime="2020-11-05T19:06:41+08:00">2020-11-05</time>
+              </span>
 
           
 
@@ -188,19 +195,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h2 id="没有修改主题前的自动部署流程十分顺滑"><a href="#没有修改主题前的自动部署流程十分顺滑" class="headerlink" title="没有修改主题前的自动部署流程十分顺滑"></a>没有修改主题前的自动部署流程十分顺滑</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git:main 分支</span></span><br><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line">$ git add .</span><br><span class="line">$ git commit msg</span><br><span class="line">$ git push</span><br><span class="line"><span class="comment"># 剩下的交给travis.bot发布到gh-pages分支</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h2 id="一切变故来源于更换了更好看的主题"><a href="#一切变故来源于更换了更好看的主题" class="headerlink" title="一切变故来源于更换了更好看的主题"></a>一切变故来源于更换了更好看的主题</h2><p>  同样操作一遍，线上的直接404，在.travis.yml脚本中增加了 npm install,就此成功了一次，当第三次推送时又不行了，本地server完全OK，查看node版本，换成.travis.yml中的10.22.0,再clean掉，不行，第五次，第六次，尝试了多种办法还是不行，一气之下改成私有部署，本地1个命令，真香。</p>
+<h3 id="推荐私有部署-hexo-deployer-git-再无头秃烦恼"><a href="#推荐私有部署-hexo-deployer-git-再无头秃烦恼" class="headerlink" title="推荐私有部署 hexo-deployer-git 再无头秃烦恼"></a>推荐私有部署 hexo-deployer-git 再无头秃烦恼</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="comment"># your-git-repo-url</span></span><br><span class="line">  <span class="attr">token:</span> <span class="string">$GH_TOKEN</span> <span class="comment"># 你的token, 跟在travis.com上配置是同一个token,这里写token名：$GH_TOKEN</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">gh-pages</span> <span class="comment"># 发布分支</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置完成后接下来命令行：直接一个命令</span></span><br><span class="line">$ npx hexo clean &amp;&amp; npx hexo deploy</span><br><span class="line"><span class="comment"># 接下来就是vscode-auth =&gt; github.com的认证过程，按照提示操作即可</span></span><br><span class="line"><span class="comment"># 如果碰到 关键字中有 LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443错误，更换网络，不要用流量</span></span><br><span class="line"><span class="comment"># 如果碰到 Authentication failed for &#x27;https://github.com/xxx/xxx.github.io/&#x27;，那就是travis上配置的$ $GH_TOKEN与.config.yml中的不一致</span></span><br><span class="line"><span class="comment"># 这两个问题都没碰到，基本成功</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -278,7 +278,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E5%89%8D%E7%9A%84%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B%E5%8D%81%E5%88%86%E9%A1%BA%E6%BB%91"><span class="nav-number">1.</span> <span class="nav-text">没有修改主题前的自动部署流程十分顺滑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%88%87%E5%8F%98%E6%95%85%E6%9D%A5%E6%BA%90%E4%BA%8E%E6%9B%B4%E6%8D%A2%E4%BA%86%E6%9B%B4%E5%A5%BD%E7%9C%8B%E7%9A%84%E4%B8%BB%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">一切变故来源于更换了更好看的主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2-hexo-deployer-git-%E5%86%8D%E6%97%A0%E5%A4%B4%E7%A7%83%E7%83%A6%E6%81%BC"><span class="nav-number">2.1.</span> <span class="nav-text">推荐私有部署 hexo-deployer-git 再无头秃烦恼</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
