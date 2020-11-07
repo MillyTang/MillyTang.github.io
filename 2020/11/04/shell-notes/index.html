@@ -28,7 +28,7 @@
 <meta property="og:description" content="第一章：概览shell: 计算机提供给用户的一种文字接口，核心功能 - 允许用户执行程序，输入并获取某种半结构化的输出；shell是一个编程环境，所以它具备变量、条件、循环和函数。当你在 shell 中执行命令时，实际上是在执行一段 shell 可以解释执行的简短代码。如果要求 shell 执行某个指令，但是该指令并不是 shell 所了解的编程关键字，那么它会去查询环境变量 $PATH，搜索由:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-04T05:11:30.000Z">
-<meta property="article:modified_time" content="2020-11-04T05:56:11.785Z">
+<meta property="article:modified_time" content="2020-11-07T09:06:03.295Z">
 <meta property="article:author" content="主体-客体联合创作">
 <meta property="article:tag" content="shell,bash">
 <meta name="twitter:card" content="summary">
@@ -174,10 +174,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-04 13:11:30 / 修改时间：13:56:11" itemprop="dateCreated datePublished" datetime="2020-11-04T13:11:30+08:00">2020-11-04</time>
+              <time title="创建时间：2020-11-04 13:11:30" itemprop="dateCreated datePublished" datetime="2020-11-04T13:11:30+08:00">2020-11-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-07 17:06:03" itemprop="dateModified" datetime="2020-11-07T17:06:03+08:00">2020-11-07</time>
+              </span>
 
           
 
@@ -194,10 +200,21 @@
 <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="shell的界面（bash-zsh）"><a href="#shell的界面（bash-zsh）" class="headerlink" title="shell的界面（bash@zsh）"></a>shell的界面（bash@zsh）</h3><p><code>#</code> 开头是注释，提示信息，<code>hostname</code>是主机名，<code>~</code>指当前工作目录是<code>home</code>，<code>$</code>表示当前用户不是<code>root</code>用户，<code>Last login...</code>打开一个新的window就会出现该提示</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Last login: Tue Nov  3 17:59:22 on ttys007</span><br><span class="line"><span class="comment"># hostname @ MacBook-Air in ~ [13:34:52]</span></span><br><span class="line">$</span><br></pre></td></tr></table></figure>
 
-<h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><blockquote>
-<p>内置命令&amp;变量: date, echo, which echo, $PATH</p>
+<h3 id="基础命令-使用-man-command-来了解这些命令的详细信息"><a href="#基础命令-使用-man-command-来了解这些命令的详细信息" class="headerlink" title="基础命令: 使用 man [command]来了解这些命令的详细信息"></a>基础命令: 使用 <code>man [command]</code>来了解这些命令的详细信息</h3><blockquote>
+<p>内置命令&amp;变量: date, echo, which echo, $PATH, ls, cd, pwd, /(root path), ./(current path,relative), ../(parent path, relative), mv(用于重命名或移动文件), mkdir(新建文件夹), cp(复制文件)</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Last login: Tue Nov  3 17:59:22 on ttys007</span><br><span class="line"><span class="comment"># username @ MacBook-Air in ~ [13:34:52]</span></span><br><span class="line">$ date</span><br><span class="line">2020年11月 4日 星期三 13时48分16秒 CST</span><br><span class="line">$ <span class="built_in">echo</span> hello DaiYing</span><br><span class="line">hello DaiYing</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/Users/hostname/.yarn/bin:/Users/hostname/.config/yarn/global/node_modules/.bin:/Users/hostname/.avn/bin:/Users/hostname/.nvm/versions/node/v8.9.4/bin:/usr/<span class="built_in">local</span>/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/hostname/.rvm/bin</span><br><span class="line">$ <span class="built_in">which</span> <span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span>: shell built-in <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment"># -l  use a long listing format</span></span><br><span class="line">$ ls -l /home</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x   3 user  staff   96 12  9  2016 beginning</span><br><span class="line">  _3_           /|\</span><br><span class="line">   |_____________|</span><br><span class="line"><span class="comment"># d -&gt; directory</span></span><br><span class="line"><span class="comment"># 然后接下来的九个字符，每三个字符构成一组</span></span><br><span class="line"><span class="comment"># rwx -&gt; 指(user)文件所有者的权限</span></span><br><span class="line"><span class="comment"># r-x -&gt; 用户(staff)的权限，`-x`代表staff没有执行文件(x)的权限</span></span><br><span class="line"><span class="comment"># r-x -&gt; 其他客人用户的权限</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Last login: Fri Nov  6 18:13:54 on ttys007</span><br><span class="line"><span class="comment"># username @ MacBook-Air in ~ [13:34:52]</span></span><br><span class="line">$ date</span><br><span class="line">2020年11月 7日 星期六 16时09分15秒 CST</span><br><span class="line">$ <span class="built_in">echo</span> hello DaiYing</span><br><span class="line">hello DaiYing</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/Users/hostname/.yarn/bin:/Users/hostname/.config/yarn/global/node_modules/.bin:/Users/hostname/.avn/bin:/Users/hostname/.nvm/versions/node/v8.9.4/bin:/usr/<span class="built_in">local</span>/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/hostname/.rvm/bin</span><br><span class="line">$ <span class="built_in">which</span> <span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span>: shell built-in <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="在程序间建立连接"><a href="#在程序间建立连接" class="headerlink" title="在程序间建立连接"></a>在程序间建立连接</h3><blockquote>
+<p>输入流，输出流，重定向(重定向方向 &lt;, &gt;重定向方向, &gt;&gt;追加内容方向)<br>| (pipes)管道操作符，连接左边的输入到右边的输出<br>sudo(super user do)根用户</p>
+</blockquote>
+<h3 id="练习题：Mac-OSX系统"><a href="#练习题：Mac-OSX系统" class="headerlink" title="练习题：Mac OSX系统"></a>练习题：Mac OSX系统</h3><ul>
+<li>新建tmp/missing/semester文件，按行向semester输入内容</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># username @ MacBook-Air in ~ [16:52:44]</span></span><br><span class="line">$ mkdir tmp</span><br><span class="line">$ <span class="built_in">cd</span> tmp/</span><br><span class="line">$ mkdir missing</span><br><span class="line">$ <span class="built_in">cd</span> missing/</span><br><span class="line">$ touch semester</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;#!/bin/sh&#x27;</span> &gt; semester</span><br><span class="line"><span class="comment"># 追加第二行内容</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;curl --head --silent https://missing.csail.mit.edu&#x27;</span> &gt;&gt; semester</span><br><span class="line">$ vim semester</span><br><span class="line"><span class="comment"># :q退出</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -218,7 +235,10 @@
     <a href="/2020/11/03/sad-punk/" rel="prev" title="The Adventure of DaiYing">
       <i class="fa fa-chevron-left"></i> The Adventure of DaiYing
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/07/Docker/" rel="next" title="Docker">
+      Docker <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -277,7 +297,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%A6%82%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">第一章：概览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%88bash-zsh%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">shell的界面（bash@zsh）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.</span> <span class="nav-text">基础命令</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E6%A6%82%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">第一章：概览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%88bash-zsh%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">shell的界面（bash@zsh）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-%E4%BD%BF%E7%94%A8-man-command-%E6%9D%A5%E4%BA%86%E8%A7%A3%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.2.</span> <span class="nav-text">基础命令: 使用 man [command]来了解这些命令的详细信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%A8%8B%E5%BA%8F%E9%97%B4%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.1.3.</span> <span class="nav-text">在程序间建立连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%9AMac-OSX%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.4.</span> <span class="nav-text">练习题：Mac OSX系统</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -291,12 +311,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
