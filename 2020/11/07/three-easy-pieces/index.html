@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="操作系统阅读笔记 - Three Easy Pieces参考资料 免费书籍PDF版本 Homework Projects 其余教辅资料请向contact@epubit.com.cn发送邮件获取 ostep-Projects   鉴于书中所有示例全是c,(我暂时不太会)，所以为了容易理解，改写成了nodejs示例，请在文件夹下查看并运行，示例文件以章节为单位。  第一章 - 虚拟化第一节 - CPU">
+<meta property="og:type" content="article">
 <meta property="og:title" content="three-easy-pieces">
 <meta property="og:url" content="https://github.com/MillyTang/MillyTang.github.io/2020/11/07/three-easy-pieces/index.html">
 <meta property="og:site_name" content="戴英的mini世界">
+<meta property="og:description" content="操作系统阅读笔记 - Three Easy Pieces参考资料 免费书籍PDF版本 Homework Projects 其余教辅资料请向contact@epubit.com.cn发送邮件获取 ostep-Projects   鉴于书中所有示例全是c,(我暂时不太会)，所以为了容易理解，改写成了nodejs示例，请在文件夹下查看并运行，示例文件以章节为单位。  第一章 - 虚拟化第一节 - CPU">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-07T08:15:53.000Z">
-<meta property="article:modified_time" content="2020-11-07T08:15:53.990Z">
+<meta property="article:modified_time" content="2020-12-13T07:35:33.307Z">
 <meta property="article:author" content="主体-客体联合创作">
 <meta name="twitter:card" content="summary">
 
@@ -174,6 +176,13 @@
 
               <time title="创建时间：2020-11-07 16:15:53" itemprop="dateCreated datePublished" datetime="2020-11-07T16:15:53+08:00">2020-11-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-13 15:35:33" itemprop="dateModified" datetime="2020-12-13T15:35:33+08:00">2020-12-13</time>
+              </span>
 
           
 
@@ -186,7 +195,376 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="操作系统阅读笔记-Three-Easy-Pieces"><a href="#操作系统阅读笔记-Three-Easy-Pieces" class="headerlink" title="操作系统阅读笔记 - Three Easy Pieces"></a>操作系统阅读笔记 - Three Easy Pieces</h1><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="http://pages.cs.wisc.edu/~remzi/OSTEP/">免费书籍PDF版本</a></li>
+<li><a target="_blank" rel="noopener" href="http://pages.cs.wisc.edu/~remzi/OSTEP/Homework/homework.html">Homework</a></li>
+<li><a href="https://github.com/remzi-arpacidusseau/ostep-projects">Projects</a></li>
+<li><code>其余教辅资料</code>请向<code>contact@epubit.com.cn</code>发送邮件获取</li>
+<li><a href="https://github.com/remzi-arpacidusseau/ostep-projects">ostep-Projects</a></li>
+</ol>
+<blockquote>
+<p>鉴于书中所有示例全是<code>c</code>,(我暂时不太会)，所以为了容易理解，改写成了<code>nodejs</code>示例，请在文件夹下查看并运行，示例文件以章节为单位。</p>
+</blockquote>
+<h2 id="第一章-虚拟化"><a href="#第一章-虚拟化" class="headerlink" title="第一章 - 虚拟化"></a>第一章 - 虚拟化</h2><h3 id="第一节-CPU虚拟化-时分共享-进程（和空分共享-磁盘）"><a href="#第一节-CPU虚拟化-时分共享-进程（和空分共享-磁盘）" class="headerlink" title="第一节 - CPU虚拟化: 时分共享-进程（和空分共享-磁盘）"></a>第一节 - CPU虚拟化: 时分共享-进程（和空分共享-磁盘）</h3><h4 id="进程-操作系统为正在运行的程序提供的抽象"><a href="#进程-操作系统为正在运行的程序提供的抽象" class="headerlink" title="进程: 操作系统为正在运行的程序提供的抽象"></a>进程: 操作系统为正在运行的程序提供的抽象</h4><ol>
+<li><p>进程的机器状态组成：</p>
+<ul>
+<li>内存</li>
+<li>寄存器<ul>
+<li>类型：程序计数器 &amp; 栈指针 &amp; 帧指针</li>
+<li>3部分组成：状态，数据，指令</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>启动程序的过程：操作系统将程序的 <code>代码</code>和<code>静态数据</code>从磁盘加载到内存中，同时为程序的<code>运行时栈</code>和动态内存<code>堆</code>分配内存，最后启动程序，通常是程序入口（以<code>c</code>为例通常是main(）函数）。</p>
+</li>
+<li><p>默认情况下进程都有<code>3个文件描述符</code></p>
+<ul>
+<li>标准输入</li>
+<li>标准输出</li>
+<li>标准错误</li>
+</ul>
+</li>
+<li><p>进程状态</p>
+<ul>
+<li>initial: 创建进程时的状态</li>
+<li>running</li>
+<li>ready</li>
+<li>blocked</li>
+<li>final: 僵死状态，待回收，有时候会出现父进程已经被回收但是子进程还在僵死状态时，此时有高一级的init进程回收，或者直接关机也行（有些垃圾程序只能关机。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进程主要状态</span></span><br><span class="line">running  &lt;----------- 调度|取消调度 ----------&gt; ready</span><br><span class="line">  |                                             |</span><br><span class="line">  |---I/O: start---&gt; blocked --I/O: finished---&gt;|</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>上下文切换：操作系统保存和恢复该进程的寄存器内容的过程</li>
+</ol>
+<h4 id="进程API-系统调用陷入内核模式-区别于用户模式）"><a href="#进程API-系统调用陷入内核模式-区别于用户模式）" class="headerlink" title="进程API(系统调用陷入内核模式,区别于用户模式）"></a>进程API(系统调用陷入内核模式,区别于用户模式）</h4><blockquote>
+<p>暂时只考虑单CPU的情况，不管是什么进程，CPU都有可能不断中断，切换任意进程，记住就算是亲父子（进程）也是不存在尊老爱幼的，谁先运行取决于CPU调度程序，所以执行顺序是不确定的。这种不确定性贯穿全文，是时候增加一点奇怪的不确定的知识了。</p>
+</blockquote>
+<ol>
+<li>fork()：调用一次返回两次，争先恐后，父慈子孝</li>
+</ol>
+<ul>
+<li>fork()虽然复制了父进程，但是由于写时复制拥有私有虚拟内存（用户栈），但是调用时返回值却不相同，子进程的返回值是0，父进程的返回值是子进程的pid。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 有必要理解一下返回2次, 示例代码（c）如下：</span></span><br><span class="line"><span class="comment">// 头文件省略</span></span><br><span class="line"><span class="comment">// 让我们先假定子进程先运行</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;您好，当前运行进程pid:%d&quot;</span>, <span class="keyword">int</span> getpid());</span><br><span class="line">  <span class="keyword">int</span> rc = fork()</span><br><span class="line">  <span class="comment">// 不考虑fork失败</span></span><br><span class="line">  <span class="keyword">if</span> (rc == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// child process, 这里根据 rc 的返回值运行一次 - !!返回一次</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rc &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// parent process, 这里根据 rc 的返回值再运行一次 - !!返回两次</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>‼️注意：nodejs child_process.fork()虽然调用的是fork(2),但是却有所不同，衍生的子进程不会克隆当前父进程，只能通过IPC通信。。。这个命名太坑爹了。由于child_process.fork()是spawn的特例，所以使用child_process.spawn()作为示例。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令行执行: node ./os-notes/chapter-5.js 输出结果:</span></span><br><span class="line">此消息最新显示</span><br><span class="line">衍生的子进程的 pid：95650</span><br><span class="line">此进程的 pid 是 95649</span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>exec()：鸠占鹊巢，臭不要脸</li>
+</ol>
+<blockquote>
+<p>其他变体：execl(), execle(), execlp(), execv(), execvp()等。‼️成功调用不会返回。</p>
+</blockquote>
+<ul>
+<li>exec()会直接覆写当前进程的代码，堆，栈和其他内存空间等。所以新的程序的虚拟地址不变，进程id不变</li>
+</ul>
+<ol start="3">
+<li>wait()：非得父慈子孝的话，父进程可以通过调用<code>wait()</code>来确保自己后运行，此时2种情况：<ul>
+<li>子进程先运行，然后父进程运行，天意如此。</li>
+<li>父进程先运行，马上调用<code>wait()</code>，该系统调用会在子进程运行结束后返回，然后父进程输出。父慈子孝局面达成。</li>
+</ul>
+</li>
+</ol>
+<p>总结：这3个系统调用可以用来实现shell的很多有用的功能，例如重定向输出，管道的实现方式等。</p>
+<blockquote>
+<p>‼️问题：多进程程序是怎么抽象的？</p>
+</blockquote>
+<blockquote>
+<p>进程是程序运行的一个实例，多进程就是程序运行的多个实例，<code>fork()</code>函数在新的子进程中运行相同的程序，子进程是父进程的复制品，进程上下文中将只有<code>栈</code>内数据不同（通过标记为私有的写时复制，复制时是完全相同的，运行后不同），<code>堆</code>、<code>代码</code>中的数据完全相同，因为fork复制进程时只是重新分配了一段虚拟内存复制原进程内容，并且标记为只读，可以通过绘制进程图来了解fork()。而通过<code>exec()</code>是在当前进程中的上下文中运行另一个新程序，将覆盖当前进程的地址空间（该进程所在的虚拟内存），但是<code>PID</code>(进程id)不变且继承了调用该函数时已打开的所有文件描述符（即包含<code>stdin</code>,<code>stdout</code>,<code>stderr</code>3个描述符）。更多内容请参考<code>csapp第八章异常控制流</code>一起食用。</p>
+</blockquote>
+<h4 id="机制-受限直接执行-limited-direct-execution-简称LDE协议"><a href="#机制-受限直接执行-limited-direct-execution-简称LDE协议" class="headerlink" title="机制: 受限直接执行(limited direct execution, 简称LDE协议)"></a>机制: 受限直接执行(limited direct execution, 简称LDE协议)</h4><blockquote>
+<p>LDE协议的两个过程：1. 内核初始化陷阱表，并记住位置以便后续执行操作；2. 在进程中设置节点分配内存，用于保存陷入陷阱和返回的信息</p>
+</blockquote>
+<p>此协议下需要解决2个问题：</p>
+<ol>
+<li><p>受限制操作：引入<strong>用户模式(user mode)**，与之对应的是</strong>内核模式(kernel mode)**</p>
+<ul>
+<li>用户模式 和 系统交互 通过 内核模式暴露一些关键功能，如：访问文件系统，创建或销毁进程，或与其他进程通信以及分配更多内存等，称为系统调用。暴露功能的方式为在启动时设置 <strong>陷阱表</strong> 系统可以在 <strong><em>用户模式和内核模式</em></strong>中反复横跳</li>
+<li>例如：用户模式下进程不能发出I/O请求 ，否则会导致进程终止</li>
+</ul>
+</li>
+<li><p>进程切换：</p>
+<ul>
+<li>需要解决操作系统重新获取占据主动权的问题<ul>
+<li>等待进程执行系统调用或者出错 - 该进程必须是个听话的好孩子才行</li>
+<li>时钟中断</li>
+</ul>
+</li>
+<li>保存进程上下文：2种可能，存储位置，存储内容和存储方式均不相同<ul>
+<li>时钟中断时：用户寄存器有硬件隐式保存，使用该进程的<strong>内核栈</strong>。</li>
+<li>调度程序切换进程：内核寄存器被软件OS保存，并存储在该进程的进程结构的内存中（‼️用户栈吗？）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进程并发：锁？中断中禁止中断 - 禁止套娃？信号？ =&gt; 并发章节会详细讨论</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进程的地址空间：</span></span><br><span class="line">-------------------------</span><br><span class="line">| 内核栈（代码，数据，堆，栈）|  ----&gt; 用户代码不可见的内存</span><br><span class="line">--------------------------</span><br><span class="line">|   用户栈（运行时创建）     |</span><br><span class="line">--------------------------</span><br><span class="line">|  共享库的内存映射区域      |</span><br><span class="line">---------------------------</span><br><span class="line">|    运行时堆              |</span><br><span class="line">--------------------------</span><br><span class="line">|    读/写段（.data,.bss） |   ----&gt; 从可执行文件加载</span><br><span class="line">--------------------------</span><br><span class="line">|       只读代码段         |   ----&gt; 从可执行文件加载</span><br><span class="line">|（.init,.text,.rodata）  |</span><br><span class="line">--------------------------</span><br></pre></td></tr></table></figure>
+
+<h4 id="进程调度：介绍"><a href="#进程调度：介绍" class="headerlink" title="进程调度：介绍"></a>进程调度：介绍</h4><blockquote>
+<p>如何开发调度策略？ 想一想什么情况下要使用调度策略？然后弄清楚评价调度策略的关键指标是什么？</p>
+</blockquote>
+<pre><code>工作负载假设：
+1. 每一个进程运行相同的时间 -&gt; 完全公平
+2. 所有工作同时到达 -&gt; 平均响应时间
+3. 一旦开始，每个进程运行到完成 -&gt; 运行时独占CPU
+4. 所有进程不涉及I/O -&gt; 进程任务单一
+5. 已知每个进程的运行时间 -&gt; 平均周转时间
+
+调度指标：
+1. 周转时间 = T完成时间 - T到达时间 =&gt; 性能指标
+2. 公平
+3. 响应时间 = T首次运行 - T到达时间
+让我们设置一个时间函数 T(参与进程, 策略, [放开的假设条件])</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 工作进程假设: 基于逐渐放开以上5个假设条件</span></span><br><span class="line"><span class="comment"># test1: 假定目前的进程为（随机排序执行）：A（10s完成），B（10s完成），C（10s完成）</span></span><br><span class="line"> 10s  10s  10s</span><br><span class="line">-----|||||/////30s</span><br><span class="line">  A    B    C</span><br><span class="line"><span class="comment"># test2: 假定目前的进程为（随机排序执行）：A（100s完成），B（10s完成），C（10s完成） - 假设1</span></span><br><span class="line">         100s                   10s  10s</span><br><span class="line">-------------------------------|||||/////120s</span><br><span class="line">  A    B    C</span><br><span class="line"><span class="comment"># test3: 假定目前的进程为（随机排序执行）：A（100s完成）0s到达，B（10s完成）10s到达，C（10s完成）10s到达 - 假设1&amp;2</span></span><br><span class="line">         100s                   10s  10s</span><br><span class="line">-------------------------------|||||/////120s</span><br><span class="line">  A    B    C</span><br><span class="line"><span class="comment"># test4: 假定目前的进程为（随机排序执行）：A（100s完成）0s到达，B（10s完成）10s到达，C（10s完成）10s到达 - 假设1&amp;2&amp;3</span></span><br><span class="line"> 10s  10s  10s         90s</span><br><span class="line">-----|||||/////--------------------------120s</span><br><span class="line">  A    B    C           A</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>先进先出<strong>FIFO</strong>：队列</p>
+<ul>
+<li>平均周转时间： <ul>
+<li>Tt(test1,FIFO,[]) = (10 + 20 + 30) / 3 = 20s</li>
+<li>Tt(test2,FIFO,[1]) = (100 + 110 + 120) / 3 = 110s</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最短任务优先<strong>SJF</strong>：FIFO下一旦出现单个长任务周转时间就很长，改进一下策略</p>
+<ul>
+<li>平均周转时间： <ul>
+<li>Tt(test2,SJF,[1]) = (10 + 20 + 120) / 3 = 50s</li>
+<li>Tt(test3,SJF,[1,2]) = (100 + 110-10 + 120-10 ) / 3 = 103.3s</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>最短完成时间优先<strong>STCF</strong>：SJF下短任务后到达时，长任务的周转时间并没有改善</p>
+<ul>
+<li><p>平均周转时间： </p>
+<ul>
+<li>Tt(test4,STCF,[1,2，3]) = (120 + 10 + 20) / 3 = 50s</li>
+</ul>
+<p>平均周转时间作为唯一指标的话，<strong>STCF</strong>表现良好。然鹅，引入分时系统后用户要求系统交互性好，所以引入响应时间作为新的指标<br>平均响应时间：Tr(test4,STCF,[1，2，3]) = (0 + 10 - 10 + 20 - 10) / 3 = 3.3s;<br>Tr(test1,FIFO,[]) = (0 + 10 - 10 + 20 - 10) / 3 = 3.3s;</p>
+</li>
+</ul>
+</li>
+<li><p>轮转<strong>RR(Round-Robin)</strong>: RR在一个时间片内运行，然后切换到队列的下一个工作，反复切换执行直到所有任务完成。</p>
+<ul>
+<li>时间片(time slice)的长度为时钟中断周期的倍数: 以下示例假设RR时间片为1s</li>
+<li>平均响应时间：Tr(test1,SJF,[3]) = (0 + 10 + 20) / 3 = 10</li>
+<li>平均响应时间：Tr(test1,RR,[3]) = (0 + 1 + 2) / 3 = 1</li>
+<li>假设RR时间片为50ms: Tr(test1,RR,[3]) = (0 + 0.05 + 0.1) / 3 = 0.05s</li>
+<li>RR效率的关键就是时间片的大小，然鹅时间片太小会频繁切换进程上下文，影响整体性能</li>
+<li>摊销技术：将时间片的大小与切换上下文时间比较，1ms/10ms * 100% =  10% =&gt; 太大；1ms/100ms * 100% =  1% =&gt; 可以考虑</li>
+<li>平均周转时间：Tt(test1,RR,[3]) = (26 + 28 + 30) / 3 = 28s ‼️周转时间太可怕惹</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>两种调度程序：SJF,STCF 优化了周转时间，不利于响应时间；RR优化了响应时间，不利于周转时间，接下来需要放开假设4和假设5</p>
+</blockquote>
+<pre><code>结合I/O: 重叠，当一个进程被I/O阻塞，CPU可以切换其他进程运行
+工作进程假设：A 50ms 运行10ms 发出I/O; B 50ms 没有I/O</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 没有重叠</span></span><br><span class="line">     A   A   A   A  A  B B B B B</span><br><span class="line">CPU: --  --  --  --  --||||||||||</span><br><span class="line">I/O:   --  --  --  --</span><br><span class="line"><span class="comment"># 重叠后</span></span><br><span class="line">CPU: --||--||--||--||--||</span><br><span class="line">I/O:   --  --  --  --</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>实际上调度程序并不知道每个工作的长度，下一章将通过构建一个调度程序利用最近的使用情况预测未来从而解决未知工作长度的问题：多级反馈队列</p>
+</blockquote>
+<h4 id="多级反馈队列-Multi-level-Feedback-Queue"><a href="#多级反馈队列-Multi-level-Feedback-Queue" class="headerlink" title="多级反馈队列(Multi-level Feedback Queue)"></a>多级反馈队列(Multi-level Feedback Queue)</h4><p>这是我遇到的第二个多级，真是相当美妙的思想，第一个多级是多级页表（这本书它出现在第二章，我发誓我没有跳着看书🐶）</p>
+<blockquote>
+<p>多级反馈队列要解决2个问题：优化周转时间 &amp;&amp; 降低响应时间 =&gt; 从历史中学习并预测</p>
+</blockquote>
+<pre><code>MLFQ基本规则：
+MLFQ有许多独立的队列(queue),每个队列有不同的优先级(priority level)。一个进程只能在一个队列中，MLFQ总是优先执行较高优先级的进程，每个队列中的进程都拥有相同的优先级。
+MLFQ的关键在于如何设置优先级。
+规则1：若A的优先级 &gt; B的优先级，运行A
+规则2：如果A的优先级 == B的优先级，RR（轮转）运行</code></pre>
+<blockquote>
+<p>刚定下2个规则就出现一个问题：AB两个进程在高优先级队列中，CD两个进程在低优先级队列中，假设AB任务一直运行，CD岂不是等到死都没法运行</p>
+</blockquote>
+<pre><code>如何改变优先级：
+先考虑工作负载的类型：1.运行时间短，频繁放弃CPU的交互型工作；2.需要更多CPU时间，响应时间不重要的长时间计算密集型工作。
+所以调整算法，增加规则：
+规则3：工作进入系统，放到最高优先级 - 单个长工作（密集计算型）
+规则4a：工作用完整个时间片后，降低到下一个优先级 - 长工作运行一段时间来了一个短工作（交互型）
+规则4b：如果工作在时间片内动释放CPU，则优先级不变 - 交互型短工作执行大量I/O操作
+以上实例皆运行良好，但是会出现长工作的饥饿问题：
+系统中出现了大量的交互型短工作，导致长工作无法得到CPU
+||
+提升优先级：S太高长工作会饿死，太低交互型工作得不到合适的CPU时间比例
+规则5：周期性提升所有工作的优先级，经过一段时间S，将系统中的素有工作重新加入最高优先级队列
+更好的计时方式：修改规则4a &amp; 4b:
+规则4：一旦工作用来了某一层的时间配额（无论中间主动放弃了多少次CPU），就降低优先级 =&gt; 防止恶意程序愚弄CPU</code></pre>
+<blockquote>
+<p>MLFQ调优及其他问题</p>
+</blockquote>
+<ol>
+<li><p>配置多少优先级队列？</p>
+</li>
+<li><p>每一层队列的时间片设置为多大？</p>
+</li>
+<li><p>多久提升一次进程的优先级？</p>
+<p> 大多数的MLFQ变体都支持不同队列可变的时间片长度。高优先级队列通常只有较短的时间片，因此这一层的交互工作可以更快的切换，相反，低优先级队列更多的是密集型工作</p>
+</li>
+</ol>
+<h4 id="比例份额"><a href="#比例份额" class="headerlink" title="比例份额"></a>比例份额</h4><h4 id="多处理器调度"><a href="#多处理器调度" class="headerlink" title="多处理器调度"></a>多处理器调度</h4><h3 id="第二节-内存虚拟化"><a href="#第二节-内存虚拟化" class="headerlink" title="第二节 - 内存虚拟化"></a>第二节 - 内存虚拟化</h3><h4 id="地址空间"><a href="#地址空间" class="headerlink" title="地址空间"></a>地址空间</h4><h4 id="内存操作API"><a href="#内存操作API" class="headerlink" title="内存操作API"></a>内存操作API</h4><h4 id="地址转换"><a href="#地址转换" class="headerlink" title="地址转换"></a>地址转换</h4><ol>
+<li>分段</li>
+<li>分页<ul>
+<li>快速地址转换</li>
+<li>较小的表</li>
+</ul>
+</li>
+<li>交换空间<ul>
+<li>虚拟化磁盘空间</li>
+<li>替换策略</li>
+<li>虚拟内存技巧及示例</li>
+</ul>
+</li>
+</ol>
+<h4 id="空闲空间管理"><a href="#空闲空间管理" class="headerlink" title="空闲空间管理"></a>空闲空间管理</h4><h2 id="第二章-并发"><a href="#第二章-并发" class="headerlink" title="第二章 - 并发"></a>第二章 - 并发</h2><h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><h3 id="基于并发的数据结构"><a href="#基于并发的数据结构" class="headerlink" title="基于并发的数据结构"></a>基于并发的数据结构</h3><h3 id="条件变量"><a href="#条件变量" class="headerlink" title="条件变量"></a>条件变量</h3><h3 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h3><h3 id="常见并发问题"><a href="#常见并发问题" class="headerlink" title="常见并发问题"></a>常见并发问题</h3><h3 id="基于事件的并发"><a href="#基于事件的并发" class="headerlink" title="基于事件的并发"></a>基于事件的并发</h3><h4 id="事件循环："><a href="#事件循环：" class="headerlink" title="事件循环："></a>事件循环：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 伪代码</span></span><br><span class="line"><span class="keyword">while</span>(1) &#123;</span><br><span class="line">  events = getEvents()</span><br><span class="line">  <span class="keyword">for</span> (e <span class="keyword">in</span> events)</span><br><span class="line">    processEvents(e)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>基于事件的服务器如何决定事件的发生顺序？尤其是网络和I/O</p>
+</blockquote>
+<pre><code>这里我们有一个例子，来首先了解一下select()函数：这个例子是从CSAPP上抄来的，select真是令人印象深刻
+假设有一个echo服务器，它很强，一边接收网络请求，一边也可以响应用户的命令行键入请求。肿么办捏，先处理哪一个？更具体的代码示例请参考`《CSAPP》第12章第2节基于I/O多路复用的并发编程`
+基于I/O多路复用技术的并发：使用select(),要求内核挂起进程，只有在一个或者多个I/O发生后才将控制权返回给应用程序（说人话：多个I/O请求注册到同一个select, select搞一个集合存储他们的状态，只要有I/O触发那么就由系统调用转回应用程序（用户模式））。</code></pre>
+<h4 id="重要API-select-or-poll-系统调用"><a href="#重要API-select-or-poll-系统调用" class="headerlink" title="重要API: select() or poll() 系统调用"></a>重要API: select() or poll() 系统调用</h4><pre><code>select() 检查I/O描述符集合, 地址通过`readfds`,`writefds`, `errorfds`传入；
+在每个集合中检查前nfds个描述符。
+返回时，select()用给定请求操作准备好的描述符组成的子集替换给定的描述符集合，返回所有集合中就绪描述符的总数。</code></pre>
+<blockquote>
+<p>请注意select()的超时参数，常见用法是设置为NULL,但会导致无限期阻塞，直到有可用的就绪描述符。更好的做法是将超时设置为0，因此让调用的select()立即返回，这种方式提供了一种构建非阻塞（异步）事件循环的方法。</p>
+</blockquote>
+<pre><code>补充：阻塞与非阻塞接口
+阻塞（同步）接口：在返回给调用者之前完成所有工作，非阻塞（异步）接口开始一些工作但是立即返回，从而让所有需要完成的工作都在后台完成。
+通常阻塞调用的就是某种I/O。
+非阻塞接口可用于任何类型的编程（例如使用线程），但在基于事件的方法中非常重要，因为阻塞的调用会阻塞所有进展。</code></pre>
+<blockquote>
+<p>‼️要分清楚并不是所有的非阻塞=异步，I/O就不是，非阻塞I/O!==异步I/O</p>
+</blockquote>
+<blockquote>
+<p>使用单个CPU和基于事件的并发服务器，线程并发的程序中存在的抢占锁释放锁等问题不复存在，因为只有一个线程，不会被其他线程中断，但是请务必记住‼️不要阻塞基于事件的服务器，即node中，小心使用同步api.</p>
+</blockquote>
+<blockquote>
+<p>阻塞系统的调用：I/O大boss如何解决？</p>
+</blockquote>
+<h4 id="异步I-O-Asyncchronous-I-O"><a href="#异步I-O-Asyncchronous-I-O" class="headerlink" title="异步I/O(Asyncchronous I/O):"></a>异步I/O(Asyncchronous I/O):</h4><ol>
+<li>发出异步读取</li>
+<li>如何才能知道I/O已经完成，并且缓冲区(aio_buf)已经有了数据: aio_error系统调用检查aiocbp引用的请求是否已经完成，如果完成则函数返回成功 <strong><em>（用0表示）</em></strong>,否则返回EINPROGRESS。对于每个未完成的AIO，应用程序可以调用aio_error来周期性的轮询(poll)系统，以确定所述I/O是否完成。这条看着很累，看下一条，宝贝。</li>
+<li>poll一个I/O害行，1000个捏恐怕要累屎惹，所以某些系统提供了 <strong>基于中断(interrupt)</strong> 的方法。使用UNIX信号(signal)在异步I/O完成时通知一下程序，从而消除了轮询的痛苦，从今以后幸福快乐🥰。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// AIO control block</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">aiocb</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> aio_fildes; <span class="comment">/* file descriptor */</span></span><br><span class="line">  <span class="keyword">off_t</span> aio_offser; <span class="comment">/* file offset */</span></span><br><span class="line">  <span class="keyword">volatile</span> <span class="keyword">void</span> *aio_buf; <span class="comment">/* location of buffer */</span></span><br><span class="line">  <span class="keyword">size_t</span> aio_nbytes; <span class="comment">/* length of transfer */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// AIO 第一步： 向文件发出异步读取,发出成功后会立即返回并且应用程序可以继续工作</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">aio_read</span><span class="params">(struct aiocb * aiocbp)</span></span>;</span><br><span class="line"><span class="comment">// AIO 第二步：</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">aio_error</span><span class="params">(<span class="keyword">const</span> struct aiocb *aiocbp)</span></span></span><br></pre></td></tr></table></figure>
+
+<pre><code>补充：UNIX信号
+信号提供了一种与进程通信的方式，可以将信号传递给应用程序，进程将暂停当前工作开始运行信号处理程序。完成后，该进程就回复先前的行为。
+每个信号都有名字，如：HUP(挂断),INT(中断),SEGV(段违规)
+内核或者程序都可以发出信号
+可以用kill命令行工具发出信号，例如：
+prompt &gt; ./main &amp; [3] 36705
+prompt &gt; kill -HUP 36705
+stop wakin&#39; me up...</code></pre>
+<blockquote>
+<p>在没有异步I/O的系统中，纯基于事件的方法无法实现。然鹅可以使用某种混合方法，使用线程池来管理未完成的I/O。参考《flash: an efficient and portable web server》来了解更多。</p>
+</blockquote>
+<h4 id="状态管理：基于事件的方法的另一个复杂问题"><a href="#状态管理：基于事件的方法的另一个复杂问题" class="headerlink" title="状态管理：基于事件的方法的另一个复杂问题"></a>状态管理：基于事件的方法的另一个复杂问题</h4><pre><code>当事件处理程序（事件循环中待处理的一个事件）发出异步I/O时，必须打包一些程序状态，以便下一个事件处理程序在I/O完成完成时使用。而基于线程的工作是不需要的，因为状态都保存在线程栈内。
+node是如何处理这个问题的？
+据鄙人看完的《深入浅出nodejs》后的一些笔记来看，node只是JS运行在单线程上，异步I/O另有线程：
+部分线程通过阻塞或非阻塞&amp;轮询技术来完成数据获取，一个线程进行计算处理，通过线程间通信进行数据传递，实现异步I/O，也就是说node处理异步I/O是通过管理线程池来实现的。（没想到吧Σ(⊙▽⊙&quot;a）</code></pre>
+<h4 id="太难了"><a href="#太难了" class="headerlink" title="太难了"></a>太难了</h4><p>当系统是多核CPU时，基于事件的一些简单性（不用加锁，不存在线程中断）就没有了，为了利用多个CPU，事件服务器必须并行运行多个事件处理程序，这时会出现「缓存一致性」？「加锁！必须加锁!!」,「发生缺页肿么办！被堵死了」等各种问题，现在先不要心塞，后面心塞的还多着呢，抽屉里放点硝酸甘油片啥的❤️。</p>
+<blockquote>
+<p>思考：同步I/O包含非阻塞I/O吗？异步I/O呢？</p>
+</blockquote>
+<p>I/O包含两步：请求和数据复制到缓冲区</p>
+<table>
+<thead>
+<tr>
+<th>I/O类型</th>
+<th>请求</th>
+<th>数据复制到缓冲区（aio_buf）</th>
+<th>检查I/O是否完成的方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>同步I/O</td>
+<td>阻塞</td>
+<td>阻塞</td>
+<td>等前两步完成也就拿到了</td>
+</tr>
+<tr>
+<td>非阻塞I/O</td>
+<td>异步</td>
+<td>阻塞</td>
+<td>轮询，CPU很忙</td>
+</tr>
+<tr>
+<td>I/O多路复用</td>
+<td>异步</td>
+<td>阻塞</td>
+<td>轮询，CPU很忙（linux: epoll;）</td>
+</tr>
+<tr>
+<td>异步I/O</td>
+<td>异步</td>
+<td>异步</td>
+<td>中断时发信号(windows:IOCP)</td>
+</tr>
+</tbody></table>
+<h4 id="技术总结：组合使用用于网络的select-接口和用于磁盘的AIO的调用（我猜node就是这样）"><a href="#技术总结：组合使用用于网络的select-接口和用于磁盘的AIO的调用（我猜node就是这样）" class="headerlink" title="技术总结：组合使用用于网络的select()接口和用于磁盘的AIO的调用（我猜node就是这样）"></a>技术总结：组合使用用于网络的select()接口和用于磁盘的AIO的调用（我猜node就是这样）</h4><p>node基于I/O（AIO（通过线程池来实现异步I/O））多路复用，所以是<strong>单线程（JS）、非阻塞、异步I/O</strong>，JS运行的单线程不会阻塞，但是I/O过程有可能是阻塞的，一旦遇到缺页就会卡住，就算主动去非洲客户也不会原谅你，OMG生活真是苦涩。</p>
+<blockquote>
+<p>思考: node单线程是怎么实现并发的？</p>
+</blockquote>
+<pre><code>nodejs使用cluster(集群)创建多个共享服务器端口的子进程来利用多核CPU系统
+原理是：child_process.fork()衍生的是独立的子进程，和父进程只通过IPC管道来通信，可以根据需要随时关闭或者创建，不影响其他进程。
+cluster分发连接：主进程负责监听接口，然后循环分发给各子进程。</code></pre>
+<blockquote>
+<p>思考：多个进程为什么可以共享服务器端口？</p>
+</blockquote>
+<pre><code>首先要知道监听描述符和已连接描述的区别，是并发服务器的基础，每次一个请求到达监听描述符时，可以在此时派发fork()一个新进程来连接已连接描述符与客户端通信。服务器调用server.listen(&#123;fd:7&#125;)将消息发给主进程，父进程将监听监听描述符并将句柄（handle）派发给子进程，子进程调用server.listen(handle)会显式监听handle而不是与父进程通信，子进程还会调用server.listen(0)会收到相同的「随机端口」，随机端口在第一次随机分配，而后都是已知的。
+如果需要独立端口，可根据子进程的PID来生成。</code></pre>
+<blockquote>
+<p>思考again: nodejs 主进程挂了肿么办？所有相关子进程会一起被回收还是移交给主进程挂掉时立即重启一个新的父进程呢？</p>
+</blockquote>
+<pre><code>子进程死亡不会影响父进程, 不过子进程死亡时（线程组的最后一个线程，通常是“领头”线程死亡时），会向它的父进程发送死亡信号. 反之父进程死亡, 一般情况下子进程也会随之死亡, 但如果此时子进程处于可运行态、僵死状态等等的话, 子进程将被进程1（init 进程，由内核创建，是所有进程的祖先）收养，从而成为孤儿进程. 另外, 子进程死亡的时候（处于“终止状态”），父进程没有及时调用 wait() 或 waitpid() 来返回死亡进程的相关信息，此时子进程还有一个 PCB (Process Control Block进程控制结构)残留在进程表中，被称作僵尸进程.</code></pre>
+<blockquote>
+<p>思考：让我们来想想 <strong><em>nodejs进程管理</em></strong> 是怎么实现的?</p>
+</blockquote>
+<h2 id="第三章-持久性"><a href="#第三章-持久性" class="headerlink" title="第三章 - 持久性"></a>第三章 - 持久性</h2><h3 id="I-O-设备"><a href="#I-O-设备" class="headerlink" title="I/O 设备"></a>I/O 设备</h3><h3 id="磁盘驱动器"><a href="#磁盘驱动器" class="headerlink" title="磁盘驱动器"></a>磁盘驱动器</h3><h3 id="RAID-冗余磁盘阵列"><a href="#RAID-冗余磁盘阵列" class="headerlink" title="RAID 冗余磁盘阵列"></a>RAID 冗余磁盘阵列</h3><h3 id="文件与目录"><a href="#文件与目录" class="headerlink" title="文件与目录"></a>文件与目录</h3><h3 id="文件系统的实现"><a href="#文件系统的实现" class="headerlink" title="文件系统的实现"></a>文件系统的实现</h3><h4 id="局部性和快速文件系统"><a href="#局部性和快速文件系统" class="headerlink" title="局部性和快速文件系统"></a>局部性和快速文件系统</h4><h4 id="崩溃一致性"><a href="#崩溃一致性" class="headerlink" title="崩溃一致性"></a>崩溃一致性</h4><h4 id="日志结构文件系统"><a href="#日志结构文件系统" class="headerlink" title="日志结构文件系统"></a>日志结构文件系统</h4><h4 id="数据完整性和保护"><a href="#数据完整性和保护" class="headerlink" title="数据完整性和保护"></a>数据完整性和保护</h4><h4 id="思考：数据库"><a href="#思考：数据库" class="headerlink" title="思考：数据库"></a>思考：数据库</h4><h2 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h2><h3 id="通信基础"><a href="#通信基础" class="headerlink" title="通信基础"></a>通信基础</h3><h3 id="Sun的网络文件系统-NFS-Network-File-System"><a href="#Sun的网络文件系统-NFS-Network-File-System" class="headerlink" title="Sun的网络文件系统 NFS (Network File System)"></a>Sun的网络文件系统 NFS (Network File System)</h3><h3 id="Andrew-文件系统-AFS"><a href="#Andrew-文件系统-AFS" class="headerlink" title="Andrew 文件系统 AFS"></a>Andrew 文件系统 AFS</h3><h3 id="思考：与计算机网络的联系"><a href="#思考：与计算机网络的联系" class="headerlink" title="思考：与计算机网络的联系"></a>思考：与计算机网络的联系</h3><h4 id="TCP与UDP的比较"><a href="#TCP与UDP的比较" class="headerlink" title="TCP与UDP的比较"></a>TCP与UDP的比较</h4><h4 id="TCP握手挥手机制"><a href="#TCP握手挥手机制" class="headerlink" title="TCP握手挥手机制"></a>TCP握手挥手机制</h4><h4 id="TCP与UDP的丢包处理"><a href="#TCP与UDP的丢包处理" class="headerlink" title="TCP与UDP的丢包处理"></a>TCP与UDP的丢包处理</h4><h4 id="实践：局部网络中的通信-wireless"><a href="#实践：局部网络中的通信-wireless" class="headerlink" title="实践：局部网络中的通信-wireless"></a>实践：局部网络中的通信-wireless</h4><h4 id="推荐阅读：以操作系统为基础按顺序阅读以下书籍"><a href="#推荐阅读：以操作系统为基础按顺序阅读以下书籍" class="headerlink" title="推荐阅读：以操作系统为基础按顺序阅读以下书籍"></a>推荐阅读：以操作系统为基础按顺序阅读以下书籍</h4><ol>
+<li>CSAPP</li>
+<li>unix环境高级编程</li>
+<li>图解TCP/IP &amp;&amp; Wireshark网络分析就是这么简单</li>
+<li>深入浅出nodejs</li>
+<li>算法</li>
+<li>数据库概论</li>
+<li>SQL基础教程</li>
+<li>Redis深度历险：核心原理与应用实践</li>
+<li>Redis设计与实现</li>
+<li>数据密集型应用系统设计</li>
+</ol>
+<!-- ### 思考：与CDN的比较 -->
+
+<!-- ## 梳理：数据结构和算法的应用
+1. LRU... -->
+
+<!-- ## 练习
+### Homework(js版本)
+### Projects(js版本) -->
+
+<!-- ## 待补充：《UNIX环境高级编程》
+### 文件I/O
+### 终端I/O
+### 文件与目录
+### 进程
+### 线程
+### 信号
+### IPC -->
+
+
     </div>
 
     
@@ -201,12 +579,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/07/Array-leetcode/" rel="prev" title="Array-leetcode">
-      <i class="fa fa-chevron-left"></i> Array-leetcode
+    <a href="/2020/11/07/Docker/" rel="prev" title="Docker">
+      <i class="fa fa-chevron-left"></i> Docker
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/11/07/network-lab/" rel="next" title="network-lab">
-      network-lab <i class="fa fa-chevron-right"></i>
+    <a href="/2020/11/07/middle-life/" rel="next" title="精卫填海-新编">
+      精卫填海-新编 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -266,6 +644,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-Three-Easy-Pieces"><span class="nav-number">1.</span> <span class="nav-text">操作系统阅读笔记 - Three Easy Pieces</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.1.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">第一章 - 虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-CPU%E8%99%9A%E6%8B%9F%E5%8C%96-%E6%97%B6%E5%88%86%E5%85%B1%E4%BA%AB-%E8%BF%9B%E7%A8%8B%EF%BC%88%E5%92%8C%E7%A9%BA%E5%88%86%E5%85%B1%E4%BA%AB-%E7%A3%81%E7%9B%98%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一节 - CPU虚拟化: 时分共享-进程（和空分共享-磁盘）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%BA%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%8F%90%E4%BE%9B%E7%9A%84%E6%8A%BD%E8%B1%A1"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">进程: 操作系统为正在运行的程序提供的抽象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8BAPI-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E9%99%B7%E5%85%A5%E5%86%85%E6%A0%B8%E6%A8%A1%E5%BC%8F-%E5%8C%BA%E5%88%AB%E4%BA%8E%E7%94%A8%E6%88%B7%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">进程API(系统调用陷入内核模式,区别于用户模式）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%BA%E5%88%B6-%E5%8F%97%E9%99%90%E7%9B%B4%E6%8E%A5%E6%89%A7%E8%A1%8C-limited-direct-execution-%E7%AE%80%E7%A7%B0LDE%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">机制: 受限直接执行(limited direct execution, 简称LDE协议)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%EF%BC%9A%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">进程调度：介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97-Multi-level-Feedback-Queue"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">多级反馈队列(Multi-level Feedback Queue)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E4%BE%8B%E4%BB%BD%E9%A2%9D"><span class="nav-number">1.2.1.6.</span> <span class="nav-text">比例份额</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6"><span class="nav-number">1.2.1.7.</span> <span class="nav-text">多处理器调度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E5%86%85%E5%AD%98%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="nav-number">1.2.2.</span> <span class="nav-text">第二节 - 内存虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">地址空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9CAPI"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">内存操作API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">地址转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A9%BA%E9%97%B2%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">空闲空间管理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%B9%B6%E5%8F%91"><span class="nav-number">1.3.</span> <span class="nav-text">第二章 - 并发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81"><span class="nav-number">1.3.2.</span> <span class="nav-text">锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%B9%B6%E5%8F%91%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.3.</span> <span class="nav-text">基于并发的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.4.</span> <span class="nav-text">条件变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-number">1.3.5.</span> <span class="nav-text">信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.6.</span> <span class="nav-text">常见并发问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%B9%B6%E5%8F%91"><span class="nav-number">1.3.7.</span> <span class="nav-text">基于事件的并发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%9A"><span class="nav-number">1.3.7.1.</span> <span class="nav-text">事件循环：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E8%A6%81API-select-or-poll-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">1.3.7.2.</span> <span class="nav-text">重要API: select() or poll() 系统调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5I-O-Asyncchronous-I-O"><span class="nav-number">1.3.7.3.</span> <span class="nav-text">异步I&#x2F;O(Asyncchronous I&#x2F;O):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%EF%BC%9A%E5%9F%BA%E4%BA%8E%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%A4%8D%E6%9D%82%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.7.4.</span> <span class="nav-text">状态管理：基于事件的方法的另一个复杂问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%AA%E9%9A%BE%E4%BA%86"><span class="nav-number">1.3.7.5.</span> <span class="nav-text">太难了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93%EF%BC%9A%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8%E7%94%A8%E4%BA%8E%E7%BD%91%E7%BB%9C%E7%9A%84select-%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%94%A8%E4%BA%8E%E7%A3%81%E7%9B%98%E7%9A%84AIO%E7%9A%84%E8%B0%83%E7%94%A8%EF%BC%88%E6%88%91%E7%8C%9Cnode%E5%B0%B1%E6%98%AF%E8%BF%99%E6%A0%B7%EF%BC%89"><span class="nav-number">1.3.7.6.</span> <span class="nav-text">技术总结：组合使用用于网络的select()接口和用于磁盘的AIO的调用（我猜node就是这样）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%8C%81%E4%B9%85%E6%80%A7"><span class="nav-number">1.4.</span> <span class="nav-text">第三章 - 持久性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#I-O-%E8%AE%BE%E5%A4%87"><span class="nav-number">1.4.1.</span> <span class="nav-text">I&#x2F;O 设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E9%A9%B1%E5%8A%A8%E5%99%A8"><span class="nav-number">1.4.2.</span> <span class="nav-text">磁盘驱动器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-%E5%86%97%E4%BD%99%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97"><span class="nav-number">1.4.3.</span> <span class="nav-text">RAID 冗余磁盘阵列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95"><span class="nav-number">1.4.4.</span> <span class="nav-text">文件与目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.5.</span> <span class="nav-text">文件系统的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E6%80%A7%E5%92%8C%E5%BF%AB%E9%80%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">局部性和快速文件系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B4%A9%E6%BA%83%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">崩溃一致性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%BB%93%E6%9E%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.5.3.</span> <span class="nav-text">日志结构文件系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7%E5%92%8C%E4%BF%9D%E6%8A%A4"><span class="nav-number">1.4.5.4.</span> <span class="nav-text">数据完整性和保护</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%80%83%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.5.5.</span> <span class="nav-text">思考：数据库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.5.</span> <span class="nav-text">分布式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80"><span class="nav-number">1.5.1.</span> <span class="nav-text">通信基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sun%E7%9A%84%E7%BD%91%E7%BB%9C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F-NFS-Network-File-System"><span class="nav-number">1.5.2.</span> <span class="nav-text">Sun的网络文件系统 NFS (Network File System)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Andrew-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F-AFS"><span class="nav-number">1.5.3.</span> <span class="nav-text">Andrew 文件系统 AFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%80%83%EF%BC%9A%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E8%81%94%E7%B3%BB"><span class="nav-number">1.5.4.</span> <span class="nav-text">思考：与计算机网络的联系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E4%B8%8EUDP%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">1.5.4.1.</span> <span class="nav-text">TCP与UDP的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E6%8F%A1%E6%89%8B%E6%8C%A5%E6%89%8B%E6%9C%BA%E5%88%B6"><span class="nav-number">1.5.4.2.</span> <span class="nav-text">TCP握手挥手机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E4%B8%8EUDP%E7%9A%84%E4%B8%A2%E5%8C%85%E5%A4%84%E7%90%86"><span class="nav-number">1.5.4.3.</span> <span class="nav-text">TCP与UDP的丢包处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%B1%80%E9%83%A8%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E9%80%9A%E4%BF%A1-wireless"><span class="nav-number">1.5.4.4.</span> <span class="nav-text">实践：局部网络中的通信-wireless</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB%EF%BC%9A%E4%BB%A5%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%BA%E5%9F%BA%E7%A1%80%E6%8C%89%E9%A1%BA%E5%BA%8F%E9%98%85%E8%AF%BB%E4%BB%A5%E4%B8%8B%E4%B9%A6%E7%B1%8D"><span class="nav-number">1.5.4.5.</span> <span class="nav-text">推荐阅读：以操作系统为基础按顺序阅读以下书籍</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -279,7 +658,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
