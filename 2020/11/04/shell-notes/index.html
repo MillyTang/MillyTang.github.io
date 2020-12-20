@@ -28,7 +28,7 @@
 <meta property="og:description" content="第一章：概览shell: 计算机提供给用户的一种文字接口，核心功能 - 允许用户执行程序，输入并获取某种半结构化的输出；shell是一个编程环境，所以它具备变量、条件、循环和函数。当你在 shell 中执行命令时，实际上是在执行一段 shell 可以解释执行的简短代码。如果要求 shell 执行某个指令，但是该指令并不是 shell 所了解的编程关键字，那么它会去查询环境变量 $PATH，搜索由:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-04T05:11:30.000Z">
-<meta property="article:modified_time" content="2020-12-04T10:12:14.376Z">
+<meta property="article:modified_time" content="2020-12-13T08:55:13.330Z">
 <meta property="article:author" content="主体-客体联合创作">
 <meta property="article:tag" content="shell,bash">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-04 18:12:14" itemprop="dateModified" datetime="2020-12-04T18:12:14+08:00">2020-12-04</time>
+                <time title="修改时间：2020-12-13 16:55:13" itemprop="dateModified" datetime="2020-12-13T16:55:13+08:00">2020-12-13</time>
               </span>
 
           
@@ -237,12 +237,19 @@
 <li><code>!!</code>-使用<code>sudo !!</code>执行上一个command(包含所有参数)</li>
 <li><code>$_</code>-上一个命令的最后一个参数</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># testShellFunc.sh</span></span><br><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="function"><span class="title">mcd</span></span>() &#123;</span><br><span class="line">  mkdir -p <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">  <span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># bash执行testShellFunc.sh文件</span></span><br><span class="line"><span class="built_in">source</span> testShellFunc.sh</span><br><span class="line"><span class="comment"># cd 是在 mcd()内部，针对的是子shell, 不影响外部，所以不能直接执行 ./testShellFunc.sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># testShellFunc.sh</span></span><br><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="function"><span class="title">mcd</span></span>() &#123;</span><br><span class="line">  mkdir -p <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">  <span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># bash执行testShellFunc.sh文件</span></span><br><span class="line"><span class="comment"># source 可执行shell文件</span></span><br><span class="line"><span class="built_in">source</span> testShellFunc.sh</span><br><span class="line"><span class="comment"># cd 是在 mcd()内部，针对的是子shell, 不影响外部，所以不能直接执行 ./testShellFunc.sh</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="短路操作符"><a href="#短路操作符" class="headerlink" title="短路操作符"></a>短路操作符</h3><blockquote>
 <p>||, &amp;&amp;, ;</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 和js的短路操作符结果相似，这里唯一特别的是「;」，始终能运行短路后面的语句</span></span><br><span class="line"><span class="literal">true</span> ; <span class="built_in">echo</span> <span class="string">&#x27;I can run!&#x27;</span></span><br><span class="line"><span class="comment"># 输出：I can run!</span></span><br><span class="line"><span class="literal">false</span> ; <span class="built_in">echo</span> <span class="string">&#x27;I can run again!&#x27;</span></span><br><span class="line"><span class="comment"># 输出：I can run again!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>linux中： | and ||, &amp; and &amp;&amp;, &amp;&gt; and &gt; 的区别：<br>&amp; 表示任务在后台执行，如要在后台运行<br>| 表示管道，上一条命令的输出，作为下一条命令参数(输入)</p>
+<blockquote>
+<p>符号是指：将正常信息重定向; &amp;&gt;可以将错误信息或者普通信息都重定向输出</p>
+</blockquote>
+</blockquote>
 
     </div>
 
