@@ -146,6 +146,172 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/02/18/vite2-vue3-ts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="主体-客体联合创作">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戴英 is All right">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/18/vite2-vue3-ts/" class="post-title-link" itemprop="url">构建 vite2 & Vue3 & ts项目</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-02-18 17:27:53 / 修改时间：18:48:00" itemprop="dateCreated datePublished" datetime="2021-02-18T17:27:53+08:00">2021-02-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>使用nvm切换不同版本的node来适用不同项目</p>
+</blockquote>
+<h2 id="命令行使用vite生成项目模板"><a href="#命令行使用vite生成项目模板" class="headerlink" title="命令行使用vite生成项目模板"></a>命令行使用vite生成项目模板</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"><span class="comment"># v8.9.4</span></span><br><span class="line">nvm use 12</span><br><span class="line"><span class="comment"># Now using node v12.19.0 (npm v6.14.8)</span></span><br><span class="line">yarn create @vitejs/app</span><br><span class="line"><span class="comment"># 选择 vue-ts 预设模板</span></span><br><span class="line"><span class="built_in">cd</span> my-vue3-vite2-app</span><br><span class="line">yarn</span><br><span class="line">yarn dev</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-TypeScript"><a href="#配置-TypeScript" class="headerlink" title="配置 TypeScript"></a>配置 TypeScript</h2><h3 id="tsconfig-json文件-增加2项配置"><a href="#tsconfig-json文件-增加2项配置" class="headerlink" title="tsconfig.json文件 增加2项配置"></a>tsconfig.json文件 增加2项配置</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;isolatedModules&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;types&quot;</span>: [<span class="string">&quot;vite/client&quot;</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-ts-类型检查"><a href="#安装-ts-类型检查" class="headerlink" title="安装 ts 类型检查"></a>安装 ts 类型检查</h3><blockquote>
+<p>打开 vite.config.ts文件时 控制台就会报  failed to load the eslint library for the vite.config.ts 错误，这是因为本地eslint无法解析ts文件，需要安装ts依赖 &amp; vite不提供ts类型检查</p>
+</blockquote>
+<ul>
+<li>详见<a href="https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md">typescript-eslint配置</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装ts eslint 依赖</span></span><br><span class="line"><span class="comment"># node version &gt;= 12</span></span><br><span class="line">yarn add -D eslint typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>工作目录下新增 <code>.eslintrc.js</code> 文件</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  parser: <span class="string">&#x27;@typescript-eslint/parser&#x27;</span>,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="string">&#x27;@typescript-eslint&#x27;</span>,</span><br><span class="line">  ],</span><br><span class="line">  <span class="keyword">extends</span>: [</span><br><span class="line">    <span class="string">&#x27;eslint:recommended&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;plugin:@typescript-eslint/recommended&#x27;</span>,</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>工作目录下新增 <code>.eslintignore</code> 文件</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># don&#39;t ever lint node_modules</span><br><span class="line">node_modules</span><br><span class="line"># don&#39;t lint build output (make sure it&#39;s set to your correct build folder name)</span><br><span class="line">dist</span><br><span class="line"># don&#39;t lint nyc coverage output</span><br><span class="line">coverage</span><br><span class="line"># don&#39;t lint .vscode</span><br><span class="line">.vscode</span><br><span class="line"># don&#39;t lint .eslintrc.js</span><br><span class="line">.eslintrc.js</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="安装CSS预处理器"><a href="#安装CSS预处理器" class="headerlink" title="安装CSS预处理器"></a>安装CSS预处理器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .scss and .sass</span></span><br><span class="line">npm install -D sass</span><br><span class="line"><span class="comment"># .less</span></span><br><span class="line">npm install -D less</span><br><span class="line"><span class="comment"># .styl and .stylus</span></span><br><span class="line">npm install -D stylus</span><br></pre></td></tr></table></figure>
+
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><h3 id="配置环境文件"><a href="#配置环境文件" class="headerlink" title="配置环境文件"></a>配置环境文件</h3><ul>
+<li>构建包文件会通过环境文件来确定环境变量，在项目下新增:<ul>
+<li><code>.env.production</code>文件</li>
+<li><code>.env.development</code>文件</li>
+<li><code>.env.stagging</code>文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="依赖强缓存"><a href="#依赖强缓存" class="headerlink" title="依赖强缓存"></a>依赖强缓存</h3><ul>
+<li>通过浏览器 devtools 的 Network 选项卡暂时禁用缓存；</li>
+<li>重启 Vite dev server，使用 –force 标志重新打包依赖；</li>
+<li>重新载入页面。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/01/18/security-cryptography/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="主体-客体联合创作">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="戴英 is All right">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/18/security-cryptography/" class="post-title-link" itemprop="url">Security & Cryptography</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-18 13:54:14" itemprop="dateCreated datePublished" datetime="2021-01-18T13:54:14+08:00">2021-01-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-14 13:07:37" itemprop="dateModified" datetime="2021-02-14T13:07:37+08:00">2021-02-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>熵(Entropy), 单位：bit, 信息熵的计算公式：H(X)= -</p>
+</blockquote>
+<h2 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">hash</span>(value: array&lt;byte&gt;) -&gt; vector&lt;byte, N&gt; (N对于该函数固定)</span><br></pre></td></tr></table></figure>
+
+<h2 id="SHA-1-git-中使用的"><a href="#SHA-1-git-中使用的" class="headerlink" title="SHA-1,git 中使用的"></a>SHA-1,git 中使用的</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/01/10/command-line/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -177,7 +343,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-18 13:48:17" itemprop="dateModified" datetime="2021-01-18T13:48:17+08:00">2021-01-18</time>
+                <time title="修改时间：2021-01-18 13:53:06" itemprop="dateModified" datetime="2021-01-18T13:53:06+08:00">2021-01-18</time>
               </span>
 
           
@@ -285,101 +451,6 @@
 </li>
 </ol>
 <h2 id="练习-见missing-semester文件夹"><a href="#练习-见missing-semester文件夹" class="headerlink" title="练习-见missing-semester文件夹"></a>练习-见<a href="https://github.com/MillyTang/missing-semester">missing-semester文件夹</a></h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2020/11/07/middle-life/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="主体-客体联合创作">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="戴英 is All right">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/07/middle-life/" class="post-title-link" itemprop="url">精卫填海-新编</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-07 16:30:39" itemprop="dateCreated datePublished" datetime="2020-11-07T16:30:39+08:00">2020-11-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-13 16:05:40" itemprop="dateModified" datetime="2020-12-13T16:05:40+08:00">2020-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="第一章-预言成真"><a href="#第一章-预言成真" class="headerlink" title="第一章 预言成真"></a>第一章 预言成真</h2><blockquote>
-<p>公欲渡河，公竟渡河，渡河而死，其耐公何</p>
-</blockquote>
-<p>炎帝之少女-女娃好游泳，已有西方上帝赠与的开光水晶球预示其将溺亡，其父及众人忧心忡忡勒令少女禁止下水，少女忤逆，于预言10年后在东海溺亡。</p>
-<p>女娃死了，炎帝命人在三界搜寻其魂魄。最终在发鸠之山发现了新生的女娃，名曰精卫，可惜肉身损坏不能还魂。</p>
-<!-- 变形记仿写 -->
-<!-- 起初，精卫只觉得轻盈了许多，除了没有手-继续
-过了几个月精卫发觉家人已经开始习惯女娃变成了一只鸟，吃食，居住已经完全按照鸟类的起居习惯设置-继续
-精卫开始后悔 -->
-<p>最终精卫大闹议事厅，离家出走，回到了发鸠之山，到东海去扔石子权当发泄，被好事者告与炎帝，炎帝默许。每日投2次，精卫力竭，然围观者众，每日投三次，力竭则停。<br>起初是愤怒驱使的自愿行为，随后被围观者怂恿每日投掷3次甚至更多，紧接着已经无以为继，当起了唐璜，谁多说一句开始啄人，最后已经没有围观者，精卫开始规律投石，心情好投2颗，心情不好只往海里拉泡屎，不仅自己拉，甚至在发鸠之山培养追随者一起拉屎，仇恨早已消失，此后在后悔，愤怒，失望，自闭，仇恨，平静中反复沉沦。</p>
-<!-- -继续 -->
-<!-- 真真是国产西西弗， -->
-<p>东海之水并没有因为这几颗石子而减少，每日生物新生消亡吃喝拉撒，泥石冲刷几乎可以忽略不计。微不足道的石子等同于无效的复仇。</p>
-<p>然而精卫向炎帝发问：复仇并没有解决她的痛苦，到底她的痛苦来源是什么？炎帝沉默，不日，<br>被扔进不周山的水晶球被炎帝又捡了回来，炎帝要求水晶球再做一则新的预言，要求显示如果女娃在第一个预言之后不再游泳后的命运，否则就会被扔进东海当成填海的边角料。</p>
-<h2 id="新预言的故事"><a href="#新预言的故事" class="headerlink" title="新预言的故事"></a>新预言的故事</h2><p>女娃不再游泳，终日沉闷不语，在海边，湖边，河边一切有水的地方保持观望，仿佛下一秒就准备入水。不久开始生病，反反复复怎么都治不好，巫师问了情况，告诉炎帝在家里搞个大水桶，让女娃每日泡一泡，反正面积小高度小游不起来。女娃的病情开始有所缓解，但也终归没治好，就这样预言的10年之期很快过去，女娃离解禁的日子越来越近了。在最后一天女娃纵身一跃跳进了东海享受游泳，可惜由于多年没有练习女娃在海里体力不支，虽然最后被鲲背了上来，没有出事。但是对女娃来讲，生疏的技能，是空白的十年</p>
-<p>可以说新预言的故事是女娃失去的十年，没有想到，因为听话反而受到了重重桎梏，<br>女娃可以选择自杀来反抗溺亡的命运，但是结局是没有变的，她最终依旧是在预言的时机死亡，反抗不仅没有作用，反而失去了最重要的东西。</p>
-<h2 id="水晶球"><a href="#水晶球" class="headerlink" title="水晶球"></a>水晶球</h2><p>水晶球由于频繁干涉东方神话的独立发展（地狱事务）被谛听一脚踩碎了，形成了现代的溶洞景观。</p>
-<h2 id="痛苦的根源"><a href="#痛苦的根源" class="headerlink" title="痛苦的根源"></a>痛苦的根源</h2><p>水晶球的2个预言基本宣告了女娃溺死的既定命运，女娃的死亡不是自杀，而是意外。即使开了上帝视角，<br>无论是选择什么都逃脱不了的意外死亡。那么在第二则预言后为什么女娃是失去了反抗被预示的既定命运，假如她信上帝的水晶球，那么死前她不信她信上帝，而死后是她不信她不信上帝。终日悔恨，被剥夺了正常生活的节奏，无法掌控自己的人生是核心痛苦。</p>
-<p>人生所有的可能性被水晶球断言为真，失去了神秘感，新鲜感，再无让人探索的欲望，女娃不再是生机勃勃的女娃，女娃变成了木偶，为水晶球所操控的木偶。那么，她的痛苦是来源于水晶球吗？</p>
-<p>假如没有水晶球，她依旧无法避免溺亡的结局，但是在溺亡之前她的所剩人生里没有被死亡的恐惧所控制，她是局部自由的。<br>没有水晶球也就没有新预言，她和家人还可以通过幻想「假如」来宽慰悲剧，安抚心灵。</p>
-<p>水晶球的存在是人生痛苦的潘多拉魔盒，一旦知晓其存在就是悲剧，更遑论打开<br>可以说，人生少见 「种瓜的瓜」，几乎没有「只要」「就会」，更多的是「假如」「也许」，潘多拉打开了就只剩下「倒霉」「恐惧」「悲惨」「解脱」「自杀」「最终失去一切」。</p>
-<p>现代中国神话已经偏离了当时东方神话发展的路线，已经失去了培养神棍和巫婆的土壤，那么，我们就可以脱离水晶球的魔咒了吗？</p>
-<p>显然不能，水晶球只是一个隐喻。预示着命运的大致走向和人生发展历程的隐喻。最显而易见的是慢性疾病，乃至癌症。意志的衰弱不一定会拖垮躯体，只会干脆利落选择同归于尽，痛苦是短暂而单纯的，然而，躯体的衰弱几乎会拖垮意志，恶性循环最终走向共同死亡的结局。要说这两种有何不同，前者只包含一种单纯的痛苦，相当于电脑某个软件中了病毒，经过介入修复后可以康复和正常人无异，后者是多重痛苦，相当于电脑本身硬件出了问题，所有软件都得承受硬件卡顿崩溃的后果，最终不是更换硬件就是成为废弃的电子垃圾。</p>
-<p>人当然不会成为一种废弃的电子垃圾，人只有一种结局一种命运：无可避免的死亡。区别在于，健康人的达摩克里斯剑或许永远不会到来，不健康的人24小时都在感受即将死亡的恐惧。</p>
-<p>也许是明天，也许是下一刻，达摩克里斯斩下的前1秒，人生只剩下恐惧，没有了其他色彩，其他可能性，带着枷锁，每天除了等待死亡就是无所事事。</p>
-<p>女娃死后尚且还可以转生为鸟投石泄愤，结果却是微不足道的复仇，甚至无法从「某种痛苦中」解脱，普通人别无选择，只剩下惨烈的自杀。</p>
-<blockquote>
-<p>「我永远不会选择自杀」- 加缪</p>
-</blockquote>
-<p>自杀之所以称得上惨烈，是因为这是最大且唯一的赌注，赌上生命的代价来反抗当下的命运，而结局自己是永远无法知晓的，刹那间却承受了人生最大的痛苦和一瞬间失去了全部的可能性。悲剧就在于，无法知晓反抗的结局，甚至生者也无法断定反抗是有效的。</p>
-<p>无法判定的反抗，甚至包含反抗的结局，对于反抗本身来说是微不足道的，对于自己的命运来说却是毁灭性的。为了反抗既定命运，最终，却失去了一切。如加缪所说，自杀最终是无效的。</p>
-
       
     </div>
 
@@ -1378,7 +1449,7 @@ cluster分发连接：主进程负责监听接口，然后循环分发给各子�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
