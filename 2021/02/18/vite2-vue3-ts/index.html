@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="使用nvm切换不同版本的node来适用不同项目  命令行使用vite生成项目模板123456789node -v# v8.9.4nvm use 12# Now using node v12.19.0 (npm v6.14.8)yarn create @vitejs&#x2F;app# 选择 vue-ts 预设模板cd my-vue3-vite2-appyarnyarn dev  配置 TypeScript">
+  <meta name="description" content="准备工作 使用nvm切换不同版本的node来适用不同项目  命令行使用vite生成项目模板123456789node -v# v8.9.4nvm use 12# Now using node v12.19.0 (npm v6.14.8)yarn create @vitejs&#x2F;app# 选择 vue-ts 预设模板cd my-vue3-vite2-appyarnyarn dev  配置 TypeSc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="构建 vite2 &amp; Vue3 &amp; ts项目">
 <meta property="og:url" content="https://github.com/MillyTang/MillyTang.github.io/2021/02/18/vite2-vue3-ts/index.html">
 <meta property="og:site_name" content="戴英 is All right">
-<meta property="og:description" content="使用nvm切换不同版本的node来适用不同项目  命令行使用vite生成项目模板123456789node -v# v8.9.4nvm use 12# Now using node v12.19.0 (npm v6.14.8)yarn create @vitejs&#x2F;app# 选择 vue-ts 预设模板cd my-vue3-vite2-appyarnyarn dev  配置 TypeScript">
+<meta property="og:description" content="准备工作 使用nvm切换不同版本的node来适用不同项目  命令行使用vite生成项目模板123456789node -v# v8.9.4nvm use 12# Now using node v12.19.0 (npm v6.14.8)yarn create @vitejs&#x2F;app# 选择 vue-ts 预设模板cd my-vue3-vite2-appyarnyarn dev  配置 TypeSc">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-18T09:27:53.000Z">
-<meta property="article:modified_time" content="2021-02-18T10:48:00.777Z">
+<meta property="article:modified_time" content="2021-03-04T11:02:33.255Z">
 <meta property="article:author" content="主体-客体联合创作">
 <meta name="twitter:card" content="summary">
 
@@ -173,10 +173,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-02-18 17:27:53 / 修改时间：18:48:00" itemprop="dateCreated datePublished" datetime="2021-02-18T17:27:53+08:00">2021-02-18</time>
+              <time title="创建时间：2021-02-18 17:27:53" itemprop="dateCreated datePublished" datetime="2021-02-18T17:27:53+08:00">2021-02-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-04 19:02:33" itemprop="dateModified" datetime="2021-03-04T19:02:33+08:00">2021-03-04</time>
+              </span>
 
           
 
@@ -189,21 +195,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
+        <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><blockquote>
 <p>使用nvm切换不同版本的node来适用不同项目</p>
 </blockquote>
-<h2 id="命令行使用vite生成项目模板"><a href="#命令行使用vite生成项目模板" class="headerlink" title="命令行使用vite生成项目模板"></a>命令行使用vite生成项目模板</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"><span class="comment"># v8.9.4</span></span><br><span class="line">nvm use 12</span><br><span class="line"><span class="comment"># Now using node v12.19.0 (npm v6.14.8)</span></span><br><span class="line">yarn create @vitejs/app</span><br><span class="line"><span class="comment"># 选择 vue-ts 预设模板</span></span><br><span class="line"><span class="built_in">cd</span> my-vue3-vite2-app</span><br><span class="line">yarn</span><br><span class="line">yarn dev</span><br></pre></td></tr></table></figure>
+<h3 id="命令行使用vite生成项目模板"><a href="#命令行使用vite生成项目模板" class="headerlink" title="命令行使用vite生成项目模板"></a>命令行使用vite生成项目模板</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"><span class="comment"># v8.9.4</span></span><br><span class="line">nvm use 12</span><br><span class="line"><span class="comment"># Now using node v12.19.0 (npm v6.14.8)</span></span><br><span class="line">yarn create @vitejs/app</span><br><span class="line"><span class="comment"># 选择 vue-ts 预设模板</span></span><br><span class="line"><span class="built_in">cd</span> my-vue3-vite2-app</span><br><span class="line">yarn</span><br><span class="line">yarn dev</span><br></pre></td></tr></table></figure>
 
-<h2 id="配置-TypeScript"><a href="#配置-TypeScript" class="headerlink" title="配置 TypeScript"></a>配置 TypeScript</h2><h3 id="tsconfig-json文件-增加2项配置"><a href="#tsconfig-json文件-增加2项配置" class="headerlink" title="tsconfig.json文件 增加2项配置"></a>tsconfig.json文件 增加2项配置</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;isolatedModules&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;types&quot;</span>: [<span class="string">&quot;vite/client&quot;</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置-TypeScript"><a href="#配置-TypeScript" class="headerlink" title="配置 TypeScript"></a>配置 TypeScript</h3><h4 id="tsconfig-json文件-增加2项配置"><a href="#tsconfig-json文件-增加2项配置" class="headerlink" title="tsconfig.json文件 增加2项配置"></a>tsconfig.json文件 增加2项配置</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;isolatedModules&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;types&quot;</span>: [<span class="string">&quot;vite/client&quot;</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="安装-ts-类型检查"><a href="#安装-ts-类型检查" class="headerlink" title="安装 ts 类型检查"></a>安装 ts 类型检查</h3><blockquote>
+<h4 id="安装-ts-类型检查"><a href="#安装-ts-类型检查" class="headerlink" title="安装 ts 类型检查"></a>安装 ts 类型检查</h4><blockquote>
 <p>打开 vite.config.ts文件时 控制台就会报  failed to load the eslint library for the vite.config.ts 错误，这是因为本地eslint无法解析ts文件，需要安装ts依赖 &amp; vite不提供ts类型检查</p>
 </blockquote>
 <ul>
 <li>详见<a href="https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md">typescript-eslint配置</a></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装ts eslint 依赖</span></span><br><span class="line"><span class="comment"># node version &gt;= 12</span></span><br><span class="line">yarn add -D eslint typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装ts eslint 依赖</span></span><br><span class="line"><span class="comment"># node version &gt;= 12</span></span><br><span class="line">yarn add -D eslint typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin</span><br><span class="line"><span class="comment"># 安装node变量的类型声明</span></span><br><span class="line">npm i --save-dev @types/node</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>下载额外的<code>npm</code>包需要添加其他类型定义：1.安装<code>npm i --save-dev @types/xxx</code>；2.在<code>tsconfig.json</code>中添加``types`的配置『 <strong><em>由于vite2创建的ts项目中已添加默认的types定义，标明只使用该类型定义，所以如果需要其他类型（不在@vite/client中），需要增加配置</em></strong> 』</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tsconfig.json</span></span><br><span class="line"><span class="comment">// 在 node 后面增加一项xxx即可</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;types&quot;</span>: [<span class="string">&quot;vite/client&quot;</span>, <span class="string">&quot;node&quot;</span>, <span class="string">&quot;xxx&quot;</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>本项目使用 eslint:recommended 规范，如需修改请参照tslint官方提示</p>
+</blockquote>
 <ol>
 <li><p>工作目录下新增 <code>.eslintrc.js</code> 文件</p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  parser: <span class="string">&#x27;@typescript-eslint/parser&#x27;</span>,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="string">&#x27;@typescript-eslint&#x27;</span>,</span><br><span class="line">  ],</span><br><span class="line">  <span class="keyword">extends</span>: [</span><br><span class="line">    <span class="string">&#x27;eslint:recommended&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;plugin:@typescript-eslint/recommended&#x27;</span>,</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -213,7 +227,7 @@
 
 </li>
 </ol>
-<h2 id="安装CSS预处理器"><a href="#安装CSS预处理器" class="headerlink" title="安装CSS预处理器"></a>安装CSS预处理器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .scss and .sass</span></span><br><span class="line">npm install -D sass</span><br><span class="line"><span class="comment"># .less</span></span><br><span class="line">npm install -D less</span><br><span class="line"><span class="comment"># .styl and .stylus</span></span><br><span class="line">npm install -D stylus</span><br></pre></td></tr></table></figure>
+<h3 id="安装CSS预处理器"><a href="#安装CSS预处理器" class="headerlink" title="安装CSS预处理器"></a>安装CSS预处理器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .scss and .sass</span></span><br><span class="line">npm install -D sass</span><br><span class="line"><span class="comment"># .less</span></span><br><span class="line">npm install -D less</span><br><span class="line"><span class="comment"># .styl and .stylus</span></span><br><span class="line">npm install -D stylus</span><br></pre></td></tr></table></figure>
 
 <h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><h3 id="配置环境文件"><a href="#配置环境文件" class="headerlink" title="配置环境文件"></a>配置环境文件</h3><ul>
 <li>构建包文件会通过环境文件来确定环境变量，在项目下新增:<ul>
@@ -223,10 +237,58 @@
 </ul>
 </li>
 </ul>
+<h3 id="配置别名【可选】"><a href="#配置别名【可选】" class="headerlink" title="配置别名【可选】"></a>配置别名【可选】</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&quot;path&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// https://vitejs.dev/config/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineConfig(&#123;</span><br><span class="line">  plugins: [vue()],</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: &#123;</span><br><span class="line">      <span class="string">&quot;@&quot;</span>: path.resolve(__dirname, <span class="string">&quot;./src&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add vue-router@4</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">&#x27;@/components/hello-world.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; createRouter, createWebHashHistory, RouteRecordRaw &#125; <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 路由懒加载</span></span><br><span class="line"><span class="keyword">const</span> About = <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;../components/about.vue&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> routes: RouteRecordRaw[] = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    component: HelloWorld <span class="comment">// 非懒加载</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">    component: About,</span><br><span class="line">    <span class="comment">// meta类型需要额外声明，此声明在 src/typings/augmenation.d.ts内</span></span><br><span class="line">    meta: &#123;</span><br><span class="line">      isAdmin: <span class="literal">false</span>,</span><br><span class="line">      title: <span class="string">&#x27;关于&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> router = createRouter(&#123;</span><br><span class="line">  history: createWebHashHistory(),</span><br><span class="line">  routes</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加额外的-meta-字段的类型声明"><a href="#添加额外的-meta-字段的类型声明" class="headerlink" title="添加额外的 meta 字段的类型声明"></a>添加额外的 meta 字段的类型声明</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// augmenation.d.ts</span></span><br><span class="line"><span class="comment">// Ensure this file is parsed as a module regardless of dependencies.</span></span><br><span class="line"><span class="keyword">export</span> &#123;&#125;</span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> &#x27;vue-router&#x27; &#123;</span><br><span class="line">  <span class="comment">// 自定义元字段声明</span></span><br><span class="line">  <span class="keyword">interface</span> RouteMeta &#123;</span><br><span class="line">    <span class="comment">// is optional</span></span><br><span class="line">    isAdmin?: <span class="built_in">boolean</span></span><br><span class="line">    <span class="comment">// is optional</span></span><br><span class="line">    requiresAuth?: <span class="built_in">boolean</span>,</span><br><span class="line">    <span class="comment">// must be declared by every route</span></span><br><span class="line">    title?: <span class="built_in">string</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加路由元信息声明"><a href="#添加路由元信息声明" class="headerlink" title="添加路由元信息声明"></a>添加路由元信息声明</h4><h3 id="响应式API"><a href="#响应式API" class="headerlink" title="响应式API"></a>响应式API</h3><ul>
+<li><code>reaåctive()</code>: 返回对象的响应式副本</li>
+</ul>
+<h3 id="SetUp-amp-ref-unRef-amp-toRefs"><a href="#SetUp-amp-ref-unRef-amp-toRefs" class="headerlink" title="SetUp &amp; ref() || unRef() &amp; toRefs()"></a>SetUp &amp; ref() || unRef() &amp; toRefs()</h3><p><strong><em>SetUp(props, context)</em></strong> 逻辑块组合，可组合:<code>生命周期函数/watch/computed</code>，返回<strong>对象</strong>，对象可包含 <code>data/methods/computed</code></p>
+<h4 id="生命周期映射关系"><a href="#生命周期映射关系" class="headerlink" title="生命周期映射关系"></a>生命周期映射关系</h4><ul>
+<li><del><code>beforeCreate</code></del> -&gt; use <code>setup()</code></li>
+<li><del><code>created</code></del> -&gt; use <code>setup()</code></li>
+<li><code>beforeMount</code> -&gt; <code>onBeforeMount</code></li>
+<li><code>mounted</code> -&gt; <code>onMounted</code></li>
+<li><code>beforeUpdate</code> -&gt; <code>onBeforeUpdate</code></li>
+<li><code>updated</code> -&gt; <code>onUpdated</code></li>
+<li><code>beforeUnmount</code> -&gt; <code>onBeforeUnmount</code></li>
+<li><code>unmounted</code> -&gt; <code>onUnmounted</code></li>
+<li><code>errorCaptured</code> -&gt; <code>onErrorCaptured</code></li>
+<li><code>renderTracked</code> -&gt; <code>onRenderTracked</code></li>
+<li><code>renderTriggered</code> -&gt; <code>onRenderTriggered</code></li>
+</ul>
+<blockquote>
+<p>由于 <code>props</code> 是响应式的，所以不能使用<code>ES6解构</code>，因为 <strong><em>解构是深复制，跟原prop已经脱离了引用</em></strong> 所以会消除prop的响应性，如果需要解构prop,使用 <code>toRefs</code></p>
+</blockquote>
+<blockquote>
+<p>若要获取传递给 setup() 的参数的类型推断，请使用 <code>defineComponent</code></p>
+</blockquote>
+<h4 id="在Setup中使用Router"><a href="#在Setup中使用Router" class="headerlink" title="在Setup中使用Router"></a>在Setup中使用Router</h4><blockquote>
+<p>请使用<code>useRouter()</code> || <code>useRoute()</code>, 模板中可以访问 <code>$router</code> 和 <code>$route</code>，所以不需要在 setup 中返回 <code>router</code> 或 <code>route</code></p>
+</blockquote>
+<ul>
+<li><code>userLink &amp; RouterLink</code>: 内部行为已经作为一个组合式 API 函数公开</li>
+</ul>
+<h3 id="ts相关"><a href="#ts相关" class="headerlink" title="ts相关"></a>ts相关</h3><ul>
+<li><code>setup()</code> 函数中，不需要将类型传递给 props 参数，因为它将从 props 组件选项推断类型</li>
+<li><code>refs()</code> 1.初始值推断类型;2.传递一个泛型参数;3. 使用<code>Ref&lt;T&gt;</code>替代<code>ref</code></li>
+<li><code>readtive()</code> 使用接口(<code>Interface</code>)</li>
+<li><code>computed</code>自动推断</li>
+</ul>
 <h3 id="依赖强缓存"><a href="#依赖强缓存" class="headerlink" title="依赖强缓存"></a>依赖强缓存</h3><ul>
 <li>通过浏览器 devtools 的 Network 选项卡暂时禁用缓存；</li>
 <li>重启 Vite dev server，使用 –force 标志重新打包依赖；</li>
 <li>重新载入页面。</li>
+</ul>
+<h2 id="esbuild-预构建"><a href="#esbuild-预构建" class="headerlink" title="esbuild 预构建"></a>esbuild 预构建</h2><h2 id="Filed-Under"><a href="#Filed-Under" class="headerlink" title="Filed Under"></a>Filed Under</h2><ul>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md">tslint配置</a></li>
+<li><a target="_blank" rel="noopener" href="https://esbuild.github.io/getting-started/#bundling-for-the-browser">esbuild</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.vitejs.dev/guide/">vite</a></li>
 </ul>
 
     </div>
@@ -246,7 +308,10 @@
     <a href="/2021/01/18/security-cryptography/" rel="prev" title="Security & Cryptography">
       <i class="fa fa-chevron-left"></i> Security & Cryptography
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/04/profiling-zsh-shell-scripts/" rel="next" title="profiling zsh shell scripts">
+      profiling zsh shell scripts <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -305,7 +370,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8vite%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">命令行使用vite生成项目模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-TypeScript"><span class="nav-number">2.</span> <span class="nav-text">配置 TypeScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tsconfig-json%E6%96%87%E4%BB%B6-%E5%A2%9E%E5%8A%A02%E9%A1%B9%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">tsconfig.json文件 增加2项配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ts-%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5"><span class="nav-number">2.2.</span> <span class="nav-text">安装 ts 类型检查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85CSS%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">安装CSS预处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91"><span class="nav-number">4.</span> <span class="nav-text">开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">配置环境文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E5%BC%BA%E7%BC%93%E5%AD%98"><span class="nav-number">4.2.</span> <span class="nav-text">依赖强缓存</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8vite%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.1.</span> <span class="nav-text">命令行使用vite生成项目模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-TypeScript"><span class="nav-number">1.2.</span> <span class="nav-text">配置 TypeScript</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tsconfig-json%E6%96%87%E4%BB%B6-%E5%A2%9E%E5%8A%A02%E9%A1%B9%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.1.</span> <span class="nav-text">tsconfig.json文件 增加2项配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ts-%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5"><span class="nav-number">1.2.2.</span> <span class="nav-text">安装 ts 类型检查</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85CSS%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">1.3.</span> <span class="nav-text">安装CSS预处理器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91"><span class="nav-number">2.</span> <span class="nav-text">开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">配置环境文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D%E3%80%90%E5%8F%AF%E9%80%89%E3%80%91"><span class="nav-number">2.2.</span> <span class="nav-text">配置别名【可选】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1"><span class="nav-number">2.3.</span> <span class="nav-text">配置路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">2.3.1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%A2%9D%E5%A4%96%E7%9A%84-meta-%E5%AD%97%E6%AE%B5%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E"><span class="nav-number">2.3.2.</span> <span class="nav-text">添加额外的 meta 字段的类型声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1%E5%85%83%E4%BF%A1%E6%81%AF%E5%A3%B0%E6%98%8E"><span class="nav-number">2.3.3.</span> <span class="nav-text">添加路由元信息声明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8FAPI"><span class="nav-number">2.4.</span> <span class="nav-text">响应式API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SetUp-amp-ref-unRef-amp-toRefs"><span class="nav-number">2.5.</span> <span class="nav-text">SetUp &amp; ref() || unRef() &amp; toRefs()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.5.1.</span> <span class="nav-text">生命周期映射关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8Setup%E4%B8%AD%E4%BD%BF%E7%94%A8Router"><span class="nav-number">2.5.2.</span> <span class="nav-text">在Setup中使用Router</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ts%E7%9B%B8%E5%85%B3"><span class="nav-number">2.6.</span> <span class="nav-text">ts相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E5%BC%BA%E7%BC%93%E5%AD%98"><span class="nav-number">2.7.</span> <span class="nav-text">依赖强缓存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esbuild-%E9%A2%84%E6%9E%84%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">esbuild 预构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filed-Under"><span class="nav-number">4.</span> <span class="nav-text">Filed Under</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -319,12 +384,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
