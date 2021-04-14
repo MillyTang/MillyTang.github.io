@@ -239,7 +239,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-28 16:00:20" itemprop="dateModified" datetime="2021-03-28T16:00:20+08:00">2021-03-28</time>
+                <time title="修改时间：2021-04-14 18:44:40" itemprop="dateModified" datetime="2021-04-14T18:44:40+08:00">2021-04-14</time>
               </span>
 
           
@@ -307,7 +307,20 @@
 
 <h4 id="添加额外的-meta-字段的类型声明"><a href="#添加额外的-meta-字段的类型声明" class="headerlink" title="添加额外的 meta 字段的类型声明"></a>添加额外的 meta 字段的类型声明</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// augmenation.d.ts</span></span><br><span class="line"><span class="comment">// Ensure this file is parsed as a module regardless of dependencies.</span></span><br><span class="line"><span class="keyword">export</span> &#123;&#125;</span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> &#x27;vue-router&#x27; &#123;</span><br><span class="line">  <span class="comment">// 自定义元字段声明</span></span><br><span class="line">  <span class="keyword">interface</span> RouteMeta &#123;</span><br><span class="line">    <span class="comment">// is optional</span></span><br><span class="line">    isAdmin?: <span class="built_in">boolean</span></span><br><span class="line">    <span class="comment">// is optional</span></span><br><span class="line">    requiresAuth?: <span class="built_in">boolean</span>,</span><br><span class="line">    <span class="comment">// must be declared by every route</span></span><br><span class="line">    title: <span class="built_in">string</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="添加路由元信息声明"><a href="#添加路由元信息声明" class="headerlink" title="添加路由元信息声明"></a>添加路由元信息声明</h4><h3 id="响应式API"><a href="#响应式API" class="headerlink" title="响应式API"></a>响应式API</h3><ul>
+<h4 id="添加路由元信息声明"><a href="#添加路由元信息声明" class="headerlink" title="添加路由元信息声明"></a>添加路由元信息声明</h4><h3 id="选择组件库-☞-本项目使用-ant-design-vue-所以选用-less-方便覆盖默认主题"><a href="#选择组件库-☞-本项目使用-ant-design-vue-所以选用-less-方便覆盖默认主题" class="headerlink" title="选择组件库 ☞ 本项目使用 ant-design-vue, 所以选用 less, 方便覆盖默认主题"></a>选择组件库 ☞ 本项目使用 <code>ant-design-vue</code>, 所以选用 less, 方便覆盖默认主题</h3><h4 id="配置主题文件"><a href="#配置主题文件" class="headerlink" title="配置主题文件"></a>配置主题文件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用插件转换文件</span></span><br><span class="line"><span class="keyword">import</span> lessToJS <span class="keyword">from</span> <span class="string">&#x27;less-vars-to-js&#x27;</span></span><br><span class="line"><span class="keyword">const</span> themeVariables = lessToJS(</span><br><span class="line">  fs.readFileSync(path.resolve(__dirname, <span class="string">&#x27;./src/styles/variable.less&#x27;</span>), <span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">)</span><br><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line">&#123;</span><br><span class="line">  css: &#123;</span><br><span class="line">    preprocessorOptions: &#123;</span><br><span class="line">      <span class="comment">// 在这里覆盖css全局变量, 可覆盖变量可在varible.less中查看</span></span><br><span class="line">      less: &#123;</span><br><span class="line">        modifyVars: themeVariables,</span><br><span class="line">        javascriptEnabled: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="替换-moment-为-dayjs"><a href="#替换-moment-为-dayjs" class="headerlink" title="替换 moment 为 dayjs"></a>替换 moment 为 dayjs</h4><ol>
+<li><p><code>yarn add dayjs</code> or  <code>npm i dayjs</code></p>
+</li>
+<li><p>在 <code>vite.config</code>中添加alias</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: &#123;</span><br><span class="line">      moment: <span class="string">&#x27;dayjs&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>main.ts</code>文件里添加相关插件, 添加前后分别打包进行比较</p>
+</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.ts</span></span><br><span class="line"><span class="keyword">import</span> dayjs <span class="keyword">from</span> <span class="string">&#x27;dayjs&#x27;</span></span><br><span class="line"><span class="keyword">import</span> isSameOrBefore <span class="keyword">from</span> <span class="string">&#x27;dayjs/plugin/isSameOrBefore&#x27;</span> </span><br><span class="line"><span class="keyword">import</span> isSameOrAfter <span class="keyword">from</span> <span class="string">&#x27;dayjs/plugin/isSameOrAfter&#x27;</span> </span><br><span class="line"><span class="keyword">import</span> advancedFormat <span class="keyword">from</span> <span class="string">&#x27;dayjs/plugin/advancedFormat&#x27;</span> </span><br><span class="line"><span class="keyword">import</span> customParseFormat <span class="keyword">from</span> <span class="string">&#x27;dayjs/plugin/customParseFormat&#x27;</span> </span><br><span class="line"><span class="keyword">import</span> weekday <span class="keyword">from</span> <span class="string">&#x27;dayjs/plugin/weekday&#x27;</span> </span><br><span class="line"><span class="keyword">import</span> weekOfYear <span class="keyword">from</span> <span class="string">&#x27;dayjs/plugin/weekOfYear&#x27;</span> </span><br><span class="line"><span class="keyword">import</span> isMoment <span class="keyword">from</span> <span class="string">&#x27;dayjs/plugin/isMoment&#x27;</span> </span><br><span class="line"><span class="keyword">import</span> localeData <span class="keyword">from</span> <span class="string">&#x27;dayjs/plugin/localeData&#x27;</span> </span><br><span class="line"><span class="keyword">import</span> localizedFormat <span class="keyword">from</span> <span class="string">&#x27;dayjs/plugin/localizedFormat&#x27;</span> </span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;dayjs/locale/zh-cn&#x27;</span> <span class="comment">// 导入本地化语言</span></span><br><span class="line"></span><br><span class="line">dayjs.extend(isSameOrBefore)</span><br><span class="line">dayjs.extend(isSameOrAfter)</span><br><span class="line">dayjs.extend(advancedFormat)</span><br><span class="line">dayjs.extend(customParseFormat)</span><br><span class="line">dayjs.extend(weekday)</span><br><span class="line">dayjs.extend(weekOfYear)</span><br><span class="line">dayjs.extend(isMoment)</span><br><span class="line">dayjs.extend(localeData)</span><br><span class="line">dayjs.extend(localizedFormat)</span><br><span class="line">dayjs.locale(<span class="string">&#x27;zh-cn&#x27;</span>) <span class="comment">// 使用本地化语言</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="响应式API"><a href="#响应式API" class="headerlink" title="响应式API"></a>响应式API</h3><ul>
 <li><code>reaåctive()</code>: 返回对象的响应式副本</li>
 </ul>
 <h3 id="SetUp-amp-ref-unRef-amp-toRefs"><a href="#SetUp-amp-ref-unRef-amp-toRefs" class="headerlink" title="SetUp &amp; ref() || unRef() &amp; toRefs()"></a>SetUp &amp; ref() || unRef() &amp; toRefs()</h3><p><strong><em>SetUp(props, context)</em></strong> 逻辑块组合，可组合:<code>生命周期函数/watch/computed</code>，返回<strong>对象</strong>，对象可包含 <code>data/methods/computed</code></p>
@@ -368,7 +381,10 @@
 </ul>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> year = ref&lt;<span class="built_in">string</span> | <span class="built_in">number</span>&gt;(<span class="string">&#x27;2020&#x27;</span>) <span class="comment">// year&#x27;s type: Ref&lt;string | number&gt;</span></span><br><span class="line">year.value = <span class="number">2020</span> <span class="comment">// ok!</span></span><br><span class="line"><span class="comment">// 如果泛型的类型未知，建议将 ref 转换为 Ref&lt;T&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="类型声明-reactive"><a href="#类型声明-reactive" class="headerlink" title="类型声明 reactive"></a>类型声明 reactive</h4><ul>
+<h4 id="类型声明-reactive"><a href="#类型声明-reactive" class="headerlink" title="类型声明 reactive"></a>类型声明 reactive</h4><blockquote>
+<p>与 <code>ref</code> 的区别： 当变量基础类型时使用<code>ref</code>, 引用类型-对象/数组等使用 <code>reactive</code></p>
+</blockquote>
+<ul>
 <li>当声明类型 reactive property，我们可以使用接口</li>
 </ul>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineComponent, reactive &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Book &#123;</span><br><span class="line">  title: <span class="built_in">string</span></span><br><span class="line">  year?: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">  name: <span class="string">&#x27;HelloWorld&#x27;</span>,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    <span class="keyword">const</span> book = reactive&lt;Book&gt;(&#123; title: <span class="string">&#x27;Vue 3 Guide&#x27;</span> &#125;)</span><br><span class="line">    <span class="comment">// or</span></span><br><span class="line">    <span class="keyword">const</span> book: Book = reactive(&#123; title: <span class="string">&#x27;Vue 3 Guide&#x27;</span> &#125;)</span><br><span class="line">    <span class="comment">// or</span></span><br><span class="line">    <span class="keyword">const</span> book = reactive(&#123; title: <span class="string">&#x27;Vue 3 Guide&#x27;</span> &#125;) <span class="keyword">as</span> Book</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -511,7 +527,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-19 10:56:18" itemprop="dateModified" datetime="2021-02-19T10:56:18+08:00">2021-02-19</time>
+                <time title="修改时间：2021-04-07 17:53:24" itemprop="dateModified" datetime="2021-04-07T17:53:24+08:00">2021-04-07</time>
               </span>
 
           
@@ -532,7 +548,7 @@
 </li>
 <li><p>替换文本：键入 <strong><em>R</em></strong> 进入替换模式</p>
 </li>
-<li><p>可视化： 选中文本块，键入 <strong><em>v</em></strong> 进入可视化一般模式，*<strong>V*** 进入可视化行模式，*</strong>Ctrl+v*** 可视化块模式</p>
+<li><p>可视化： 选中文本块，键入 <strong><em>v</em></strong> 进入可视化一般模式，<strong><em>V</em></strong> 进入可视化行模式，<strong><em>Ctrl+v</em></strong> 可视化块模式</p>
 </li>
 <li><p>执行命令：键入 <strong><em>:</em></strong> 进入命令模式：</p>
 <ul>
@@ -543,7 +559,7 @@
 <li><code>:ls</code> 显示打开的缓存</li>
 <li><code>:help &#123;标题&#125;</code> 打开帮助文档：<ul>
 <li><code>:help :w</code> 打开<code>:w</code>命令的帮助文档</li>
-<li><code>:help w</code> 打开<code>w</code>移动的帮助文档 </li>
+<li><code>:help w</code> 打开<code>w</code>移动的帮助文档</li>
 </ul>
 </li>
 </ul>
@@ -560,7 +576,7 @@
 <li>翻页：<code>Ctrl+u</code>上翻，<code>Ctrl+d</code>下翻</li>
 <li>文件： <code>gg</code>-文件头，<code>G</code>文件尾部</li>
 <li>杂项：<code>:&#123;line number&#125;&lt;CR&gt;</code> or <code>&#123;line number&#125;G</code></li>
-<li>查找：<code>f&#123;character&#125;, t&#123;character&#125;, F&#123;character&#125;, T&#123;character&#125;</code>, (f/F = find, t/T = to, 小写是forward, 大写是backward)<ul>
+<li>查找：<code>f&#123;character&#125;, t&#123;character&#125;, F&#123;character&#125;, T&#123;character&#125;</code>, (f/F = find, t/T = to, 小写是 forward, 大写是 backward)<ul>
 <li>find/to forward/backward {character} on the current line</li>
 <li><code>,</code> or <code>;</code>用于导航匹配</li>
 </ul>
@@ -569,7 +585,7 @@
 </ol>
 <h3 id="编辑-动词"><a href="#编辑-动词" class="headerlink" title="编辑-动词"></a>编辑-动词</h3><ul>
 <li><code>i</code> - insert mode</li>
-<li><code>o</code>/<code>O</code> insert line below / above向下、上插入行</li>
+<li><code>o</code>/<code>O</code> insert line below / above 向下、上插入行</li>
 <li><code>d&#123;motion&#125;</code>删除{移动命令}，<code>dw</code>删除词,<code>d$</code>删除到行尾,<code>d0</code>-删除到行头</li>
 <li><code>c&#123;motion&#125;</code>改变{移动命令}，<code>cw</code>改变词，<code>d&#123;motion&#125;</code>再<code>i</code></li>
 <li><code>x</code>删除字符，等同于<code>dl</code></li>
@@ -584,7 +600,7 @@
 <li><code>~</code> 改变字符大小写</li>
 </ul>
 <h3 id="计数"><a href="#计数" class="headerlink" title="计数"></a>计数</h3><blockquote>
-<p><code>3w</code>向前移动3个词，<code>5j</code>向下移动5行，<code>7dw</code>删除7个词</p>
+<p><code>3w</code>向前移动 3 个词，<code>5j</code>向下移动 5 行，<code>7dw</code>删除 7 个词</p>
 </blockquote>
 <h3 id="修饰语：用修饰语改变语义"><a href="#修饰语：用修饰语改变语义" class="headerlink" title="修饰语：用修饰语改变语义"></a>修饰语：用修饰语改变语义</h3><blockquote>
 <p><code>i</code>, <code>a</code>表示在内部，在周围</p>
@@ -601,7 +617,7 @@
 <li><p>搜索&amp;替换：<code>:s</code>替换</p>
 </li>
 <li><p>多窗口：<code>:sp</code> or <code>:vsp</code>分割窗口，同一个缓存可以在多个窗口显示</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下载的 vimrc 文件为例</span></span><br><span class="line">vim vimrc</span><br><span class="line">:sp</span><br><span class="line"><span class="comment"># 此时会有2个窗口查看或编辑vimrc文件</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下载的 vimrc 文件为例</span></span><br><span class="line">vim vimrc</span><br><span class="line">:sp</span><br><span class="line"><span class="comment"># 此时会有2个窗口查看或编辑vimrc文件</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>宏：<code>q&#123;character&#125;</code>开始在寄存器<code>&#123;character&#125;</code>中录制宏，<code>q</code>停止录制，<code>@</code>重放宏</p>
 </li>
@@ -609,22 +625,20 @@
 </li>
 <li><p>宏递归：</p>
 <ol>
-<li><p><code>q&#123;character&#125;q</code>清除宏</p>
-</li>
-<li><p>录制该宏，用@{character}来递归调用该宏</p>
+<li><code>q&#123;character&#125;q</code>清除宏</li>
+<li>录制该宏，用@{character}来递归调用该宏</li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自动加末尾行注释宏**@t**</span></span><br><span class="line">touch new-practice-vimrc</span><br><span class="line">vim new-practice-vimrc</span><br><span class="line"><span class="comment"># 录制宏t</span></span><br><span class="line">qt</span><br><span class="line"><span class="comment"># i进入编辑模式,编辑器底部显示： --INSERT --Recording @t</span></span><br><span class="line">i</span><br><span class="line"><span class="comment"># 输入通用行尾注释</span></span><br><span class="line"><span class="comment"># esc退出到编辑模式,底部显示 --Recording @t</span></span><br><span class="line"><span class="comment"># q停止宏录制</span></span><br><span class="line">q</span><br><span class="line"><span class="comment"># :wq!保存退出编辑模式，结束</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
-</li>
-</ol>
-<h2 id="vscode-配置-vim插件"><a href="#vscode-配置-vim插件" class="headerlink" title="vscode 配置 vim插件"></a>vscode 配置 vim插件</h2><ul>
+<h2 id="vscode-配置-vim-插件"><a href="#vscode-配置-vim-插件" class="headerlink" title="vscode 配置 vim 插件"></a>vscode 配置 vim 插件</h2><ul>
 <li>下载插件 Vim</li>
 <li>配置 setting.json</li>
 </ul>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;vim.easymotion&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.suround&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.incsearch&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.useSystemClipboard&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.useCtrlKeys&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.hlsearch&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.insertModeKeyBindings&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;before&quot;</span>: [<span class="string">&quot;j&quot;</span>, <span class="string">&quot;j&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;after&quot;</span>: [<span class="string">&quot;&lt;Esc&gt;&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;vim.normalModeKeyBindingsNonRecursive&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;before&quot;</span>: [<span class="string">&quot;&lt;leader&gt;&quot;</span>, <span class="string">&quot;d&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;after&quot;</span>: [<span class="string">&quot;d&quot;</span>, <span class="string">&quot;d&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;before&quot;</span>: [<span class="string">&quot;&lt;C-n&gt;&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;commands&quot;</span>: [<span class="string">&quot;:nohl&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;vim.leader&quot;</span>: <span class="string">&quot;&lt;space&gt;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;vim.handleKeys&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;&lt;C-a&gt;&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;&lt;C-f&gt;&quot;</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="练习-见missing-semester文件夹"><a href="#练习-见missing-semester文件夹" class="headerlink" title="练习-见missing-semester文件夹"></a>练习-见<a href="https://github.com/MillyTang/missing-semester">missing-semester文件夹</a></h2>
+<h2 id="练习-见missing-semester-文件夹"><a href="#练习-见missing-semester-文件夹" class="headerlink" title="练习-见missing-semester 文件夹"></a>练习-见<a href="https://github.com/MillyTang/missing-semester">missing-semester 文件夹</a></h2>
       
     </div>
 
