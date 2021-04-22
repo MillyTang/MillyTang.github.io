@@ -20,16 +20,17 @@
     var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="配合Ajax 使用 new Blob 下载文件不会导致跨域问题：  Blob URL &#x2F; Object URL是一种伪协议，可以让Blob和File对象用作图像和二进制数据下载链接等URL源  浏览器在内部通过URL.createObjectURL()创建一个对 Blob 或 File 对象的特殊引用，生成的 Blob URL 只能在浏览器本地的单个实例和同一会话中使用，并且这个 URL 对象会在">
+  <meta name="description" content="配合 Ajax 使用 new Blob 下载文件不会导致跨域问题：  Blob URL &#x2F; Object URL 是一种伪协议，可以让 Blob 和 File 对象用作图像和二进制数据下载链接等 URL 源  当你需要在 HTML 中通过 URL 来引用一个 File 对象时，你可以创建一个对象 URL，这个对象 URL 是一个标识 File 对象的字符串，当文档关闭时，它们会自动被释放或者通过">
 <meta property="og:type" content="article">
-<meta property="og:title" content="using-blob-in-Ajax-will-work-without-cross-origin">
+<meta property="og:title" content="配合Ajax 使用 new Blob 下载文件不会导致跨域问题">
 <meta property="og:url" content="https://github.com/MillyTang/MillyTang.github.io/2021/04/15/using-blob-in-Ajax-will-work-without-cross-origin/index.html">
 <meta property="og:site_name" content="戴英 is All right">
-<meta property="og:description" content="配合Ajax 使用 new Blob 下载文件不会导致跨域问题：  Blob URL &#x2F; Object URL是一种伪协议，可以让Blob和File对象用作图像和二进制数据下载链接等URL源  浏览器在内部通过URL.createObjectURL()创建一个对 Blob 或 File 对象的特殊引用，生成的 Blob URL 只能在浏览器本地的单个实例和同一会话中使用，并且这个 URL 对象会在">
+<meta property="og:description" content="配合 Ajax 使用 new Blob 下载文件不会导致跨域问题：  Blob URL &#x2F; Object URL 是一种伪协议，可以让 Blob 和 File 对象用作图像和二进制数据下载链接等 URL 源  当你需要在 HTML 中通过 URL 来引用一个 File 对象时，你可以创建一个对象 URL，这个对象 URL 是一个标识 File 对象的字符串，当文档关闭时，它们会自动被释放或者通过">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-15T07:48:12.000Z">
-<meta property="article:modified_time" content="2021-04-15T07:49:40.393Z">
+<meta property="article:modified_time" content="2021-04-20T03:09:29.618Z">
 <meta property="article:author" content="主体-客体联合创作">
+<meta property="article:tag" content="Blob, URL.createObjectURL">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://github.com/MillyTang/MillyTang.github.io/2021/04/15/using-blob-in-Ajax-will-work-without-cross-origin/">
@@ -45,7 +46,7 @@
   };
 </script>
 
-  <title>using-blob-in-Ajax-will-work-without-cross-origin | 戴英 is All right</title>
+  <title>配合Ajax 使用 new Blob 下载文件不会导致跨域问题 | 戴英 is All right</title>
   
 
 
@@ -164,7 +165,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          using-blob-in-Ajax-will-work-without-cross-origin
+          配合Ajax 使用 new Blob 下载文件不会导致跨域问题
         </h1>
 
         <div class="post-meta">
@@ -173,10 +174,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-04-15 15:48:12 / 修改时间：15:49:40" itemprop="dateCreated datePublished" datetime="2021-04-15T15:48:12+08:00">2021-04-15</time>
+              <time title="创建时间：2021-04-15 15:48:12" itemprop="dateCreated datePublished" datetime="2021-04-15T15:48:12+08:00">2021-04-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-20 11:09:29" itemprop="dateModified" datetime="2021-04-20T11:09:29+08:00">2021-04-20</time>
+              </span>
 
           
 
@@ -189,13 +196,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>配合Ajax 使用 new Blob 下载文件不会导致跨域问题：</p>
+        <p>配合 Ajax 使用 new Blob 下载文件不会导致跨域问题：</p>
 <blockquote>
-<p>Blob URL / Object URL是一种伪协议，可以让Blob和File对象用作图像和二进制数据下载链接等URL源</p>
+<p>Blob URL / Object URL 是一种伪协议，可以让 Blob 和 File 对象用作图像和二进制数据下载链接等 URL 源</p>
 </blockquote>
-<p>浏览器在内部通过URL.createObjectURL()创建一个对 Blob 或 File 对象的特殊引用，生成的 Blob URL 只能在浏览器本地的单个实例和同一会话中使用，并且这个 URL 对象会在页面退出的时候被浏览器释放。</p>
-<p>因此 Blob URL 并不能指向一个服务器资源，你无法在其它页面中打开它。同时由于编码格式有所差别，Blob URL 比起 Data URLs 所占的空间资源更少，性能也更好。</p>
-<p>Blob 为 Web 开发提供了一个非常有用的功能：创建 Blob URL。将二进制数据封装为 Blob 对象，然后使用URL.createObjectURL()生成 Blob URL，由于Blob URL本身就是一个同源URL，可以使用该 URL 配合download解决跨域资源的下载以及命名问题</p>
+<p>当你需要在 HTML 中通过 URL 来引用一个 File 对象时，你可以创建一个对象 URL，这个对象 URL 是一个标识 File 对象的字符串，当文档关闭时，它们会自动被释放或者通过 URL.revokeObjectURL 来主动释放。</p>
+<p>因此 Blob URL 并不能指向一个服务器资源，你无法在其它页面中打开它，只能在当前页面打开。</p>
+<p>Blob 为 Web 开发提供了一个非常有用的功能：创建 Blob URL。将二进制数据封装为 Blob 对象，然后使用 URL.createObjectURL()生成 Blob URL，由于 Blob URL 本身就是一个同源 URL，可以使用该 URL 配合 download 解决<strong>跨域资源的下载（配合 XMLHttpRequest 使用）</strong></p>
+<blockquote>
+<p>将文件名放到返回头<code>Content-Disposition</code>时，要注意在服务端设置<code>Access-Control-Expose-Headers: Content-Disposition</code>, 否则返回头拿不到Content-Disposition头信息 </p>
+</blockquote>
+<h2 id="URL-createObjectURL-的适用对象"><a href="#URL-createObjectURL-的适用对象" class="headerlink" title="URL.createObjectURL 的适用对象"></a>URL.createObjectURL 的适用对象</h2><ol>
+<li><p>对象缩略图</p>
+</li>
+<li><p>显示 PDF：注意在 Firefox 中，要让 PDF 嵌入式地显示在 iframe 中（而不是作为下载的文件弹出），必须将 pdfjs.disabled 设为 false</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj_url = <span class="built_in">window</span>.URL.createObjectURL(blob);</span><br><span class="line"><span class="keyword">const</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;viewer&#x27;</span>);</span><br><span class="line">iframe.setAttribute(<span class="string">&#x27;src&#x27;</span>, obj_url);</span><br><span class="line"><span class="built_in">window</span>.URL.revokeObjectURL(obj_url);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传视频</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> video = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;video&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> obj_url = <span class="built_in">window</span>.URL.createObjectURL(blob);</span><br><span class="line">video.src = obj_url;</span><br><span class="line">video.play()</span><br><span class="line"><span class="built_in">window</span>.URL.revokeObjectURL(obj_url);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
     </div>
 
@@ -204,6 +224,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Blob-URL-createObjectURL/" rel="tag"># Blob, URL.createObjectURL</a>
+          </div>
 
         
 
@@ -276,6 +299,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-createObjectURL-%E7%9A%84%E9%80%82%E7%94%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">URL.createObjectURL 的适用对象</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -294,7 +318,7 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
