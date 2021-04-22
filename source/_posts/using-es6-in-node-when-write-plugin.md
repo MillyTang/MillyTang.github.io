@@ -67,7 +67,7 @@ tags: vite-plugin-vue, cjs, es6
 
 ## 插件步骤
 
-如果要写也不是不行：看上面的配置步骤即可知道思路，可参考项目['vite-plugin-vue-antd-dayjs'](https://github.com/MillyTang/vite-plugin-for-antd-dayjs)
+如果要写也不是不行：看上面的配置步骤即可知道思路，可参考项目[vite-plugin-vue-antd-dayjs](https://github.com/MillyTang/vite-plugin-for-antd-dayjs)
 
 ### 第一种： 使用非打包插件
 
@@ -160,7 +160,7 @@ module.exports = function VitePluginVueXXX(Options = {}) {
 #### 4. 安装 没有发布的包文件
 
 ```bash
-# 安装 ppeerDependencies
+# 安装 插件的 peerDependencies
 yarn add dayjs
 # 安没有发布的装插件包
 yarn add git+ssh://git@github.com:xxx.git --dev
@@ -196,15 +196,25 @@ import "@virtual-file";
 
 ### 第二种：使用打包后的插件
 
-> 步骤跟上面的差不多，只是写的时候使用 es6 模块,多一步打包&入口文件有点不同
+> 步骤跟上面的差不多，只是写的时候使用 es6 模块,多一步打包&入口文件有点不同，可参考项目[vite-plugin-antd-vue-ts](https://github.com/MillyTang/vite-plugin-antd-vue-ts)
 
 1. packgae.json 的配置
 
    ```json
    {
      "main": "dist/index.js",
+     "types": "dist/index.d.ts",
      "scripts": {
-       "build:boundle": "`esbuild src/index.ts --bundle --platform=node --target=node12 --external:@vue/compiler-sfc --outfile=dist/index.js"
+       "build:boundle": "`esbuild src/index.ts --bundle --platform=node --target=node12 --external:dayjs --outfile=dist/index.js"
+     },
+     "dependencies": {
+       "esbuild": "*"
+     },
+     "devDependencies": {
+       "dayjs": "*"
+     },
+     "peerDependencies": {
+       "dayjs": "*"
      }
    }
    ```
@@ -222,3 +232,5 @@ npm run build:boudle
 ```
 
 4. 配置 `vite.config.js` & 在`main.js`引入文件步骤同上
+
+> 如果要实现在入口文件的引用方式为 `import someplugin from 'path/to/all-plugin-file-name'`,在插件内使用 `export default` 和 `module.exports`是一样的效果
