@@ -146,7 +146,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/07/19/ui/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/09/07/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -160,7 +160,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/19/ui/" class="post-title-link" itemprop="url">vue3 composables 组件</a>
+            <a href="/2021/09/07/hello-world/" class="post-title-link" itemprop="url">Hexo & travis bot坑爹的自动部署</a>
         </h2>
 
         <div class="post-meta">
@@ -170,15 +170,8 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-19 14:36:15" itemprop="dateCreated datePublished" datetime="2021-07-19T14:36:15+08:00">2021-07-19</time>
+              <time title="创建时间：2021-09-07 13:39:23" itemprop="dateCreated datePublished" datetime="2021-09-07T13:39:23+08:00">2021-09-07</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-07 13:21:35" itemprop="dateModified" datetime="2021-09-07T13:21:35+08:00">2021-09-07</time>
-              </span>
 
           
 
@@ -191,87 +184,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>施工🚧中，敬请期待</p>
+          <h2 id="没有修改主题前的自动部署流程十分顺滑"><a href="#没有修改主题前的自动部署流程十分顺滑" class="headerlink" title="没有修改主题前的自动部署流程十分顺滑"></a>没有修改主题前的自动部署流程十分顺滑</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git:main 分支</span></span><br><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line">$ git add .</span><br><span class="line">$ git commit msg</span><br><span class="line">$ git push</span><br><span class="line"><span class="comment"># 剩下的交给travis.bot发布到gh-pages分支</span></span><br></pre></td></tr></table></figure>
 
-      
-    </div>
+<h2 id="一切变故来源于更换了更好看的主题"><a href="#一切变故来源于更换了更好看的主题" class="headerlink" title="一切变故来源于更换了更好看的主题"></a>一切变故来源于更换了更好看的主题</h2><p>  同样操作一遍，线上的直接404，在.travis.yml脚本中增加了 npm install,就此成功了一次，当第三次推送时又不行了，本地server完全OK，查看node版本，换成.travis.yml中的10.22.0,再clean掉，不行，第五次，第六次，尝试了多种办法还是不行，一气之下改成私有部署，本地1个命令，真香。</p>
+<h3 id="推荐私有部署-hexo-deployer-git-再无头秃烦恼"><a href="#推荐私有部署-hexo-deployer-git-再无头秃烦恼" class="headerlink" title="推荐私有部署 hexo-deployer-git 再无头秃烦恼"></a>推荐私有部署 hexo-deployer-git 再无头秃烦恼</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="comment"># your-git-repo-url</span></span><br><span class="line">  <span class="attr">token:</span> <span class="string">$GH_TOKEN</span> <span class="comment"># 你的token, 跟在travis.com上配置是同一个token,这里写token名：$GH_TOKEN</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">gh-pages</span> <span class="comment"># 发布分支</span></span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置完成后接下来命令行：直接一个命令</span></span><br><span class="line">$ npx hexo clean &amp;&amp; npx hexo deploy</span><br><span class="line"><span class="comment"># 接下来就是vscode-auth =&gt; github.com的认证过程，按照提示操作即可</span></span><br><span class="line"><span class="comment"># 如果碰到 关键字中有 LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443错误，更换网络，不要用流量</span></span><br><span class="line"><span class="comment"># 如果碰到 Authentication failed for &#x27;https://github.com/xxx/xxx.github.io/&#x27;，那就是travis上配置的$ $GH_TOKEN与.config.yml中的不一致</span></span><br><span class="line"><span class="comment"># 这两个问题都没碰到，基本成功</span></span><br></pre></td></tr></table></figure>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/06/26/ts-type-challenges/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="主体-客体联合创作">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Comfortably Numb">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/26/ts-type-challenges/" class="post-title-link" itemprop="url">TypeScript 类型体操</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-26 16:48:14" itemprop="dateCreated datePublished" datetime="2021-06-26T16:48:14+08:00">2021-06-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-01 12:54:40" itemprop="dateModified" datetime="2021-09-01T12:54:40+08:00">2021-09-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>挑战类型体操答案合集，一部分是自己做的，一部分是自己抄的</p>
-</blockquote>
-<h2 id="热身运动"><a href="#热身运动" class="headerlink" title="热身运动"></a>热身运动</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 期望是一个 string 类型</span></span><br><span class="line"><span class="comment">// any -&gt; string</span></span><br><span class="line"><span class="keyword">type</span> HelloWorld = <span class="built_in">string</span></span><br><span class="line"><span class="comment">// 你需要使得如下这行不会抛出异常</span></span><br><span class="line"><span class="keyword">type</span> test = Expect&lt;Equal&lt;HelloWorld, <span class="built_in">string</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="实现Pick"><a href="#实现Pick" class="headerlink" title="实现Pick"></a>实现Pick</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Todo &#123;</span><br><span class="line">  title: <span class="built_in">string</span></span><br><span class="line">  description: <span class="built_in">string</span></span><br><span class="line">  completed: <span class="built_in">boolean</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyPick&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> K]: T[P] </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> TodoPreview = MyPick&lt;Todo, <span class="string">&#x27;title&#x27;</span> | <span class="string">&#x27;completed&#x27;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todo: TodoPreview = &#123;</span><br><span class="line">    title: <span class="string">&#x27;Clean room&#x27;</span>,</span><br><span class="line">    completed: <span class="literal">false</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Readonly"><a href="#Readonly" class="headerlink" title="Readonly"></a>Readonly</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Todo &#123;</span><br><span class="line">  title: <span class="built_in">string</span></span><br><span class="line">  description: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyReadonly&lt;T&gt; = &#123;</span><br><span class="line">  <span class="keyword">readonly</span> [P <span class="keyword">in</span> keyof T]: T[P]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todo: MyReadonly&lt;Todo&gt; = &#123;</span><br><span class="line">  title: <span class="string">&quot;Hey&quot;</span>,</span><br><span class="line">  description: <span class="string">&quot;foobar&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">todo.title = <span class="string">&quot;Hello&quot;</span> <span class="comment">// Error: cannot reassign a readonly property</span></span><br><span class="line">todo.description = <span class="string">&quot;barFoo&quot;</span> <span class="comment">// Error: cannot reassign a readonly property</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Omit"><a href="#Omit" class="headerlink" title="Omit"></a>Omit</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Todo &#123;</span><br><span class="line">  title: <span class="built_in">string</span></span><br><span class="line">  description: <span class="built_in">string</span></span><br><span class="line">  completed: <span class="built_in">boolean</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyOmit&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> keyof T <span class="keyword">as</span> P <span class="keyword">extends</span> K ? <span class="built_in">never</span>: P]: T[P]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> TodoPreview = MyOmit&lt;Todo, <span class="string">&#x27;description&#x27;</span> | <span class="string">&#x27;title&#x27;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todo: TodoPreview = &#123;</span><br><span class="line">  completed: <span class="literal">false</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Exclude"><a href="#Exclude" class="headerlink" title="Exclude"></a>Exclude</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从T中排除可分配给U的类型</span></span><br><span class="line"><span class="comment">// T, U 都是类型</span></span><br><span class="line"><span class="comment">// MyExclude&lt;&#x27;a&#x27; | &#x27;b&#x27; | &#x27;c&#x27;, &#x27;a&#x27;&gt; // 输出 &#x27;b&#x27; | &#x27;c&#x27;</span></span><br><span class="line"><span class="keyword">type</span> MyExclude&lt;T, U&gt; = T <span class="keyword">extends</span> U ? <span class="built_in">never</span> : T</span><br></pre></td></tr></table></figure>
-
-<!-- ## PromiseAll
-
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> PromiseAll&lt;&gt;</span><br><span class="line"><span class="keyword">const</span> promise1 = <span class="built_in">Promise</span>.resolve(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">const</span> promise2 = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">const</span> promise3 = <span class="keyword">new</span> <span class="built_in">Promise</span>&lt;<span class="built_in">string</span>&gt;(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(resolve, <span class="number">100</span>, <span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// expected to be `Promise&lt;[number, number, string]&gt;`</span></span><br><span class="line"><span class="keyword">const</span> p = <span class="built_in">Promise</span>.all([promise1, promise2, promise3] <span class="keyword">as</span> <span class="keyword">const</span>) --&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -321,7 +240,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-27 10:46:29" itemprop="dateModified" datetime="2021-04-27T10:46:29+08:00">2021-04-27</time>
+                <time title="修改时间：2021-09-07 13:39:34" itemprop="dateModified" datetime="2021-09-07T13:39:34+08:00">2021-09-07</time>
               </span>
 
           
@@ -444,7 +363,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-02 17:02:56" itemprop="dateModified" datetime="2021-09-02T17:02:56+08:00">2021-09-02</time>
+                <time title="修改时间：2021-09-07 13:39:34" itemprop="dateModified" datetime="2021-09-07T13:39:34+08:00">2021-09-07</time>
               </span>
 
           
@@ -735,7 +654,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-14 13:07:37" itemprop="dateModified" datetime="2021-02-14T13:07:37+08:00">2021-02-14</time>
+                <time title="修改时间：2021-09-07 13:39:23" itemprop="dateModified" datetime="2021-09-07T13:39:23+08:00">2021-09-07</time>
               </span>
 
           
@@ -804,7 +723,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-07 17:53:24" itemprop="dateModified" datetime="2021-04-07T17:53:24+08:00">2021-04-07</time>
+                <time title="修改时间：2021-09-07 13:39:23" itemprop="dateModified" datetime="2021-09-07T13:39:23+08:00">2021-09-07</time>
               </span>
 
           
@@ -965,7 +884,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-02 17:08:32" itemprop="dateModified" datetime="2021-09-02T17:08:32+08:00">2021-09-02</time>
+                <time title="修改时间：2021-09-07 13:39:34" itemprop="dateModified" datetime="2021-09-07T13:39:34+08:00">2021-09-07</time>
               </span>
 
           
@@ -1402,7 +1321,7 @@ cluster分发连接：主进程负责监听接口，然后循环分发给各chil
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-10 18:38:42" itemprop="dateModified" datetime="2020-11-10T18:38:42+08:00">2020-11-10</time>
+                <time title="修改时间：2021-09-07 13:39:23" itemprop="dateModified" datetime="2021-09-07T13:39:23+08:00">2021-09-07</time>
               </span>
 
           
@@ -1489,7 +1408,7 @@ cluster分发连接：主进程负责监听接口，然后循环分发给各chil
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-26 15:44:46" itemprop="dateModified" datetime="2021-06-26T15:44:46+08:00">2021-06-26</time>
+                <time title="修改时间：2021-09-07 13:39:34" itemprop="dateModified" datetime="2021-09-07T13:39:34+08:00">2021-09-07</time>
               </span>
 
           
@@ -1665,7 +1584,7 @@ cluster分发连接：主进程负责监听接口，然后循环分发给各chil
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-07 13:21:20" itemprop="dateModified" datetime="2021-09-07T13:21:20+08:00">2021-09-07</time>
+                <time title="修改时间：2021-09-07 13:39:34" itemprop="dateModified" datetime="2021-09-07T13:39:34+08:00">2021-09-07</time>
               </span>
 
           
@@ -1695,11 +1614,100 @@ cluster分发连接：主进程负责监听接口，然后循环分发给各chil
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2020/10/30/new-lemon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="主体-客体联合创作">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Comfortably Numb">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/30/new-lemon/" class="post-title-link" itemprop="url">git ssh 本机多账号</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-30 15:18:08" itemprop="dateCreated datePublished" datetime="2020-10-30T15:18:08+08:00">2020-10-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-07 13:39:23" itemprop="dateModified" datetime="2021-09-07T13:39:23+08:00">2021-09-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="本机如何使用ssh连接多个GitHub账号来生产多倍快乐"><a href="#本机如何使用ssh连接多个GitHub账号来生产多倍快乐" class="headerlink" title="本机如何使用ssh连接多个GitHub账号来生产多倍快乐"></a>本机如何使用ssh连接多个GitHub账号来生产多倍快乐</h1><blockquote>
+<p>github账号对应的邮箱账号个数</p>
+</blockquote>
+<h2 id="生成过程"><a href="#生成过程" class="headerlink" title="生成过程"></a>生成过程</h2><ol>
+<li><p>按照<a target="_blank" rel="noopener" href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh">generating new ssh key and adding it to the ssh-agent</a>指示操作</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开命令行</span></span><br><span class="line"><span class="comment"># 查看现有的ssh keys</span></span><br><span class="line">ls -al ~/.ssh</span><br><span class="line"><span class="comment"># 如果有以下文件中的一个，则代表待会创建的就是第二份的 ssh publick id_rsa</span></span><br><span class="line">id_rsa.pub id_ecdsa.pub id_ed25519.pub</span><br><span class="line"><span class="comment"># Generating a new ssh key by your_email@example.com</span></span><br><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br><span class="line"><span class="comment"># 命令行提示</span></span><br><span class="line">&gt; Generating public/private rsa key pair.</span><br><span class="line"><span class="comment"># 不要直接回车，否则会覆盖已有的，重新键入: 比如文件名这里改成了 id_dubble_rsa，记住这个文件名！</span></span><br><span class="line">&gt; Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa): /Users/you/.ssh/id_dubble_rsa</span><br><span class="line"><span class="comment"># 接下来按照提示键入</span></span><br><span class="line">&gt; Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">&gt; Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将新的ssh key添加到 ssh-agent</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(ssh-agent -s)</span>&quot;</span></span><br><span class="line">&gt; Agent pid 59566</span><br><span class="line"><span class="comment"># 如果你是 mac 用户，还需要修改 ~/.ssh/config文件</span></span><br><span class="line">open ~/.ssh/config</span><br><span class="line"><span class="comment"># 如果没有这个config文件，则手动生成一个</span></span><br><span class="line">touch ~/.ssh/config</span><br><span class="line"><span class="comment"># 记事本会打开这个文件</span></span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">AddKeysToAgent yes</span><br><span class="line">UseKeychain yes</span><br><span class="line"># id_dubble_rsa就是刚刚手动键入的文件名</span><br><span class="line">IdentityFile ~/.ssh/id_dubble_rsa</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最后一步添加</span></span><br><span class="line">ssh-add -K ~/.ssh/c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将新的 ssh key 添加到GitHub账号</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 复制对应的.pub文件内容</span></span><br><span class="line">pbcopy &lt; ~/.ssh/id_dubble_rsa.pub</span><br><span class="line"><span class="comment"># 打开 GitHub setting 页面的 ssh配置，将新的 key 复制进去即可</span></span><br><span class="line"><span class="comment"># 查看是否连接正确</span></span><br><span class="line">ssh -vT git@github.com</span><br><span class="line"><span class="comment"># 如果出现以下内容则成功！</span></span><br><span class="line">Hi your-github-name! You<span class="string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="使用之前"><a href="#使用之前" class="headerlink" title="使用之前"></a>使用之前</h2><blockquote>
+<p>操作：1. 本地仓库推到远程；2. 远程仓库克隆下来 之前需要改下 <code>git config</code></p>
+</blockquote>
+<h3 id="由于之前一直是单账号，所以现在要处理一下全局git配置"><a href="#由于之前一直是单账号，所以现在要处理一下全局git配置" class="headerlink" title="由于之前一直是单账号，所以现在要处理一下全局git配置"></a>由于之前一直是单账号，所以现在要处理一下全局git配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看本机全局git配置，注意最后2行</span></span><br><span class="line"><span class="comment"># user.name=&#x27;your-github-name&#x27;</span></span><br><span class="line"><span class="comment"># user.email=&#x27;your-register-email&#x27;</span></span><br><span class="line">git config -l</span><br><span class="line"><span class="comment"># 这2个值是第一个账号的值</span></span><br><span class="line"><span class="comment"># 现在如果进行新的github账号的各种仓库的操作，则需要进入到相关文件夹</span></span><br><span class="line"><span class="comment"># 使用一个空文件夹模拟过程</span></span><br><span class="line">mkdir new-github-repo</span><br><span class="line"><span class="built_in">cd</span> new-github-repo/</span><br><span class="line"><span class="comment"># git 初始化，根据提示操作</span></span><br><span class="line">git init</span><br><span class="line"><span class="comment"># 关键步骤：</span></span><br><span class="line"><span class="comment"># 清除全局配置</span></span><br><span class="line">git config --global <span class="built_in">unset</span> user.name your-old-github-name</span><br><span class="line">git config --global <span class="built_in">unset</span> user.email your-old-register-email-address</span><br><span class="line"><span class="comment"># 局部设置</span></span><br><span class="line">git config --<span class="built_in">local</span> user.name your-new-github-name</span><br><span class="line">git config --global <span class="built_in">unset</span> user.email your-new-register-email-address</span><br><span class="line"><span class="comment"># 最后再检查一下</span></span><br><span class="line">git config -l</span><br><span class="line"><span class="comment"># 如果已经进行了 git commit msg操作，不用慌，还可以修改</span></span><br><span class="line"><span class="comment"># git commit --amend --reset-author</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="本地多个项目有不同的node版本管理"><a href="#本地多个项目有不同的node版本管理" class="headerlink" title="本地多个项目有不同的node版本管理"></a>本地多个项目有不同的node版本管理</h2><ul>
+<li>nvm &amp; avn 联合控制</li>
+<li>项目中增加一个<code>.node-version</code> or <code>.nvmrc</code>文件即可,内容为该项目的node版本数字</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">12</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -1764,12 +1772,12 @@ cluster分发连接：主进程负责监听接口，然后循环分发给各chil
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
