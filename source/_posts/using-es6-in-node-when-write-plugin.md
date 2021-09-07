@@ -4,6 +4,8 @@ date: 2021-04-15 15:50:22
 tags: vite-plugin-vue, cjs, es6
 ---
 
+> 温馨提示： 先别替换 ant-design-vue 中的 moment 为 dayjs, 有bug, date-picker会坏掉，等作者修好再换
+
 本项目的技术栈是：`vite vue3 ant-desing-vue`。
 项目中需要用到的`ant-desing-vue`UI 组件依赖`moment`,我看官网提示有插件可以改成`dayjs`,可以使整个包小一点，看了`antd-dayjs-webpack-plugin`的代码后发现没有针对`vite ant-desing-vue`的,就跃跃欲试想写一个`vite-plugin-vue-ant-desing-vue-dayjs`插件，专门用在`vite vue3 ant-desing-vue`项目中。后面其实发现没必要，当然，写完才发现-\_-||
 

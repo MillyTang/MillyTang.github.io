@@ -273,3 +273,24 @@ rg --stats PATTERN
 * 第三题：[check_run](https://github.com/MillyTang/missing-semester/tree/main/second/check_run.bash)
 * 第四题：`find . -name '*.html' | xargs -0 zip -r output.zip` 注意文件名不要相同，否则zip会抛错停止
 * 第五题： `find . ctime 10`
+
+#### 其他练习&常用命令
+
+ssh本地上传包文件
+
+```bash
+# 压缩dist文件夹
+zip -r dist.zip dist
+scp dist.zip username@hostname:/path/in/dir/
+username@hostname'"s' password:
+# 登录服务器查看文件是否上传成功
+ssh username@hostname
+username@hostname'"s' password:
+cd /path/in/dir/
+# 查看文件详细信息
+ll
+# 解压上传的dist.zip
+unzip dist.zip
+mv old-dir save-old-dir
+mv dist old-dir
+```
