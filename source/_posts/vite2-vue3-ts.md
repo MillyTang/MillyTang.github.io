@@ -25,7 +25,7 @@ tags: vite, vue3, ts
 6. 安装 CSS 预处理器
 7. 开发过程中与 vue3 开发文档相关的一些知识点
 8. 开发过程中常见的问题
-9. [在项目中写出可维护可拓展的类型](https://github.com/MillyTang/ts-in-vue3-project)
+9. [在项目中写出可维护可拓展的类型](https://millytang.github.io/2021/09/12/ts-in-vue3/)
 
 > 结尾提供了其他相关链接
 
