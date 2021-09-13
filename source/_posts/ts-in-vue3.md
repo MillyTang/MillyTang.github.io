@@ -332,29 +332,29 @@ const a = ref<Map<tring, string[]>>(new Map())
       return get<T>('/path/to/get/list', data)
     }
 
-    const getCustomerInfoA = (data: { id: string; type: 0 }) => {
-      return getCustomerInfo<BaseInfo>(data)
+    const getCustomerInfoA = (id: string) => {
+      return getCustomerInfo<BaseInfo>({id, type: 0})
     }
 
-    const getCustomerInfoB = (data: { id: string; type: 1 }) => {
-      return getCustomerInfo<BaseInfo & MemberInfo>(data)
+    const getCustomerInfoB = (id: string) => {
+      return getCustomerInfo<BaseInfo & MemberInfo>({id, type: 1})
     }
 
-    const getCustomerInfoC = (data: { id: string; type: 2 }) => {
-      return getCustomerInfo<BaseInfo & MemberInfo & OrderInfo>(data)
+    const getCustomerInfoC = (id: string) => {
+      return getCustomerInfo<BaseInfo & MemberInfo & OrderInfo>({id, type: 2})
     }
 
-    const resA = getCustomerInfoA({ id: '123' }).then((res) => {
+    const resA = getCustomerInfoA('123').then((res) => {
       const { nickName } = res
       console.log(nickName)
     })
 
-    const resB = getCustomerInfoB({ id: '123' }).then((res) => {
+    const resB = getCustomerInfoB('123').then((res) => {
       const { nickName, level } = res
       console.log(nickName, level)
     })
 
-    const resC = getCustomerInfoC({ id: '123' }).then((res) => {
+    const resC = getCustomerInfoC('123').then((res) => {
       const { nickName, level, purchasedGoods } = res
       console.log(nickName, level, purchasedGoods)
     })
