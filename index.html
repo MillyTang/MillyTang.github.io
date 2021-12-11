@@ -146,6 +146,69 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/12/07/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="主体-客体联合创作">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Comfortably Numb">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/07/hello-world/" class="post-title-link" itemprop="url">Hexo & travis bot坑爹的自动部署</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-07 14:15:23" itemprop="dateCreated datePublished" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="没有修改主题前的自动部署流程十分顺滑"><a href="#没有修改主题前的自动部署流程十分顺滑" class="headerlink" title="没有修改主题前的自动部署流程十分顺滑"></a>没有修改主题前的自动部署流程十分顺滑</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git:main 分支</span></span><br><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line">$ git add .</span><br><span class="line">$ git commit msg</span><br><span class="line">$ git push</span><br><span class="line"><span class="comment"># 剩下的交给travis.bot发布到gh-pages分支</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="一切变故来源于更换了更好看的主题"><a href="#一切变故来源于更换了更好看的主题" class="headerlink" title="一切变故来源于更换了更好看的主题"></a>一切变故来源于更换了更好看的主题</h2><p>  同样操作一遍，线上的直接404，在.travis.yml脚本中增加了 npm install,就此成功了一次，当第三次推送时又不行了，本地server完全OK，查看node版本，换成.travis.yml中的10.22.0,再clean掉，不行，第五次，第六次，尝试了多种办法还是不行，一气之下改成私有部署，本地1个命令，真香。</p>
+<h3 id="推荐私有部署-hexo-deployer-git-再无头秃烦恼"><a href="#推荐私有部署-hexo-deployer-git-再无头秃烦恼" class="headerlink" title="推荐私有部署 hexo-deployer-git 再无头秃烦恼"></a>推荐私有部署 hexo-deployer-git 再无头秃烦恼</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="comment"># your-git-repo-url</span></span><br><span class="line">  <span class="attr">token:</span> <span class="string">$GH_TOKEN</span> <span class="comment"># 你的token, 跟在travis.com上配置是同一个token,这里写token名：$GH_TOKEN</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">gh-pages</span> <span class="comment"># 发布分支</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置完成后接下来命令行：直接一个命令</span></span><br><span class="line">$ npx hexo clean &amp;&amp; npx hexo deploy</span><br><span class="line"><span class="comment"># 接下来就是vscode-auth =&gt; github.com的认证过程，按照提示操作即可</span></span><br><span class="line"><span class="comment"># 如果碰到 关键字中有 LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443错误，更换网络，不要用流量</span></span><br><span class="line"><span class="comment"># 如果碰到 Authentication failed for &#x27;https://github.com/xxx/xxx.github.io/&#x27;，那就是travis上配置的$ $GH_TOKEN与.config.yml中的不一致</span></span><br><span class="line"><span class="comment"># 这两个问题都没碰到，基本成功</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/12/05/fast-to-know-new-project/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -169,10 +232,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-05 22:13:04 / 修改时间：22:39:10" itemprop="dateCreated datePublished" datetime="2021-12-05T22:13:04+08:00">2021-12-05</time>
+              <time title="创建时间：2021-12-05 22:13:04" itemprop="dateCreated datePublished" datetime="2021-12-05T22:13:04+08:00">2021-12-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-07 14:15:23" itemprop="dateModified" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
+              </span>
 
           
 
@@ -299,7 +368,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-09 10:34:35" itemprop="dateModified" datetime="2021-11-09T10:34:35+08:00">2021-11-09</time>
+                <time title="修改时间：2021-12-07 14:15:23" itemprop="dateModified" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
               </span>
 
           
@@ -352,69 +421,6 @@ tags:
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/09/13/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="主体-客体联合创作">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Comfortably Numb">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/13/hello-world/" class="post-title-link" itemprop="url">Hexo & travis bot坑爹的自动部署</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-13 10:52:44" itemprop="dateCreated datePublished" datetime="2021-09-13T10:52:44+08:00">2021-09-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="没有修改主题前的自动部署流程十分顺滑"><a href="#没有修改主题前的自动部署流程十分顺滑" class="headerlink" title="没有修改主题前的自动部署流程十分顺滑"></a>没有修改主题前的自动部署流程十分顺滑</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git:main 分支</span></span><br><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br><span class="line">$ git add .</span><br><span class="line">$ git commit msg</span><br><span class="line">$ git push</span><br><span class="line"><span class="comment"># 剩下的交给travis.bot发布到gh-pages分支</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="一切变故来源于更换了更好看的主题"><a href="#一切变故来源于更换了更好看的主题" class="headerlink" title="一切变故来源于更换了更好看的主题"></a>一切变故来源于更换了更好看的主题</h2><p>  同样操作一遍，线上的直接404，在.travis.yml脚本中增加了 npm install,就此成功了一次，当第三次推送时又不行了，本地server完全OK，查看node版本，换成.travis.yml中的10.22.0,再clean掉，不行，第五次，第六次，尝试了多种办法还是不行，一气之下改成私有部署，本地1个命令，真香。</p>
-<h3 id="推荐私有部署-hexo-deployer-git-再无头秃烦恼"><a href="#推荐私有部署-hexo-deployer-git-再无头秃烦恼" class="headerlink" title="推荐私有部署 hexo-deployer-git 再无头秃烦恼"></a>推荐私有部署 hexo-deployer-git 再无头秃烦恼</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="comment"># your-git-repo-url</span></span><br><span class="line">  <span class="attr">token:</span> <span class="string">$GH_TOKEN</span> <span class="comment"># 你的token, 跟在travis.com上配置是同一个token,这里写token名：$GH_TOKEN</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">gh-pages</span> <span class="comment"># 发布分支</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置完成后接下来命令行：直接一个命令</span></span><br><span class="line">$ npx hexo clean &amp;&amp; npx hexo deploy</span><br><span class="line"><span class="comment"># 接下来就是vscode-auth =&gt; github.com的认证过程，按照提示操作即可</span></span><br><span class="line"><span class="comment"># 如果碰到 关键字中有 LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443错误，更换网络，不要用流量</span></span><br><span class="line"><span class="comment"># 如果碰到 Authentication failed for &#x27;https://github.com/xxx/xxx.github.io/&#x27;，那就是travis上配置的$ $GH_TOKEN与.config.yml中的不一致</span></span><br><span class="line"><span class="comment"># 这两个问题都没碰到，基本成功</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/09/12/ts-type/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -446,7 +452,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-04 16:42:26" itemprop="dateModified" datetime="2021-11-04T16:42:26+08:00">2021-11-04</time>
+                <time title="修改时间：2021-12-07 14:15:23" itemprop="dateModified" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
               </span>
 
           
@@ -528,7 +534,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-13 10:52:44" itemprop="dateModified" datetime="2021-09-13T10:52:44+08:00">2021-09-13</time>
+                <time title="修改时间：2021-12-07 14:15:23" itemprop="dateModified" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
               </span>
 
           
@@ -655,7 +661,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-07 13:39:34" itemprop="dateModified" datetime="2021-09-07T13:39:34+08:00">2021-09-07</time>
+                <time title="修改时间：2021-12-07 14:15:23" itemprop="dateModified" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
               </span>
 
           
@@ -778,7 +784,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-13 10:52:44" itemprop="dateModified" datetime="2021-09-13T10:52:44+08:00">2021-09-13</time>
+                <time title="修改时间：2021-12-07 14:15:23" itemprop="dateModified" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
               </span>
 
           
@@ -1069,7 +1075,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-13 10:52:44" itemprop="dateModified" datetime="2021-09-13T10:52:44+08:00">2021-09-13</time>
+                <time title="修改时间：2021-12-07 14:15:23" itemprop="dateModified" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
               </span>
 
           
@@ -1138,7 +1144,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-13 10:52:44" itemprop="dateModified" datetime="2021-09-13T10:52:44+08:00">2021-09-13</time>
+                <time title="修改时间：2021-12-07 14:15:23" itemprop="dateModified" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
               </span>
 
           
@@ -1299,7 +1305,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-07 13:39:34" itemprop="dateModified" datetime="2021-09-07T13:39:34+08:00">2021-09-07</time>
+                <time title="修改时间：2021-12-07 14:15:23" itemprop="dateModified" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
               </span>
 
           
