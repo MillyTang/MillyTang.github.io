@@ -305,7 +305,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-07 15:59:29" itemprop="dateModified" datetime="2022-01-07T15:59:29+08:00">2022-01-07</time>
+                <time title="修改时间：2022-02-25 14:51:22" itemprop="dateModified" datetime="2022-02-25T14:51:22+08:00">2022-02-25</time>
               </span>
 
           
@@ -319,21 +319,9 @@ tags:
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="ts"><a href="#ts" class="headerlink" title="ts"></a>ts</h2><ol>
-<li><p><code>class</code> &amp; <code>enum</code> 横跨 类型空间 &amp; 值空间</p>
-</li>
-<li><p>泛型 可以约束 参数和返回值，而泛型可以用 extends 来约束</p>
-</li>
-<li><p>keyof 在类型空间使用（基本），返回的是集合（并集）</p>
-</li>
-<li><p>-? 操作符筛出 undefined </p>
- <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Shoes &#123;</span><br><span class="line">  sizes: <span class="built_in">number</span>[]</span><br><span class="line">  types: <span class="built_in">string</span></span><br><span class="line">  colors: <span class="built_in">string</span>[]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> ShoesKey = keyof Shoes</span><br><span class="line">ShoesKey = <span class="string">&#x27;sizes&#x27;</span> <span class="comment">// 👌</span></span><br><span class="line">ShoesKey = <span class="string">&#x27;types&#x27;</span> <span class="comment">// 👌</span></span><br><span class="line">ShoesKey = <span class="string">&#x27;cost&#x27;</span> <span class="comment">// 🙅‍♂️</span></span><br><span class="line"><span class="comment">// T = sizes | types | cost, 这里泛型T的类型已经被约束了</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buyAShoe</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">ShoesKey</span>&gt;(<span class="params">a: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>函数重载解决以下情况</p>
-</li>
-</ol>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 多参数函数，函数返回值与单个参数类型相关，参数之间可能有某种关联关系</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> </span></span><br></pre></td></tr></table></figure>
-
-<h2 id="es6-10"><a href="#es6-10" class="headerlink" title="es6 ~ 10"></a>es6 ~ 10</h2><h2 id="vue3"><a href="#vue3" class="headerlink" title="vue3"></a>vue3</h2><h2 id="react"><a href="#react" class="headerlink" title="react"></a>react</h2><h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><h2 id="几种通用模式"><a href="#几种通用模式" class="headerlink" title="几种通用模式"></a>几种通用模式</h2><ol>
+          <h2 id="es6-10"><a href="#es6-10" class="headerlink" title="es6 ~ 10"></a>es6 ~ 10</h2><!-- ## vue3 -->
+<!-- ## react -->
+<h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><h2 id="几种通用模式"><a href="#几种通用模式" class="headerlink" title="几种通用模式"></a>几种通用模式</h2><ol>
 <li>单例模式</li>
 <li>观察者模式</li>
 <li>代理模式/装饰器模式<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2></li>
@@ -344,9 +332,9 @@ tags:
 <li>reTryRequest: 接口轮询，一分钟内轮询直到成功，超时取消</li>
 <li>generator or async/await 实现排序动画</li>
 <li>vue3 composed 组件示例 + vue3 实现 formWrapper 类型标注</li>
-<li>使用 React &amp; vue3 分别实现 autoComplete 组件进行：心智负担，代码量，复杂度，组件设计层面进行比较</li>
+<li>设计一个 <code>generator</code> 状态机，和一个栈保留10个不同时间发出的异步任务，取消栈内除了栈顶的所有异步任务</li>
 </ol>
-
+<h2 id="debug"><a href="#debug" class="headerlink" title="debug"></a>debug</h2><h2 id="如何上报准确错误信息"><a href="#如何上报准确错误信息" class="headerlink" title="如何上报准确错误信息"></a>如何上报准确错误信息</h2><h3 id="不同类型的错误捕获"><a href="#不同类型的错误捕获" class="headerlink" title="不同类型的错误捕获"></a>不同类型的错误捕获</h3><h3 id="错误上报方式"><a href="#错误上报方式" class="headerlink" title="错误上报方式"></a>错误上报方式</h3><h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3>
       
     </div>
 
@@ -396,7 +384,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-06 17:14:48" itemprop="dateModified" datetime="2022-01-06T17:14:48+08:00">2022-01-06</time>
+                <time title="修改时间：2022-02-23 11:15:13" itemprop="dateModified" datetime="2022-02-23T11:15:13+08:00">2022-02-23</time>
               </span>
 
           
@@ -453,9 +441,14 @@ tags:
 <p><code>If&lt;true, T, F&gt; =&gt; T, If&lt;false, T, F&gt; =&gt; F</code></p>
 </blockquote>
 <blockquote>
-<p>这里还需要考虑 <code>any</code> &amp;&amp; <code>boolean</code>, 他俩也(also <strong>never</strong>)被视为 <code>union type</code>, but <code>unknown</code> 却不是</p>
+<p>这里还需要考虑 <code>any</code>, <code>never</code>, <code>boolean </code>被视为 <code>union type</code>, 同时 never是union运算的幺元【可在 category-theory-for-programmers 这本书上找到相关解释】, 但是 <code>unknown</code> 却没有</p>
 </blockquote>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> If&lt;C, T, F&gt; = C <span class="keyword">extends</span> <span class="literal">true</span> ? T : C <span class="keyword">extends</span> <span class="literal">false</span> ? F : <span class="built_in">never</span>; </span><br><span class="line"><span class="keyword">type</span> A = If&lt;<span class="literal">true</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"><span class="keyword">type</span> B = If&lt;<span class="literal">false</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;b&#x27;</span></span><br><span class="line"><span class="keyword">type</span> C = If&lt;<span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br><span class="line"><span class="comment">// 考虑输入  `any` &amp;&amp; `boolean`</span></span><br><span class="line"><span class="keyword">type</span> D = If&lt;<span class="built_in">boolean</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27; | &#x27;b&#x27;</span></span><br><span class="line"><span class="keyword">type</span> E = If&lt;<span class="built_in">any</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27; | &#x27;b&#x27;</span></span><br><span class="line"><span class="comment">// 所以需要去除 naked type，怎么办呢？和下面 IsNever 处理一致, 加入 array, record, function 结构</span></span><br><span class="line"><span class="keyword">type</span> If&lt;C, T, F&gt; = [C] <span class="keyword">extends</span> [<span class="literal">true</span>] ? T : [C] <span class="keyword">extends</span> [<span class="literal">false</span>] ? F : <span class="built_in">never</span>; </span><br><span class="line"><span class="comment">// 此时</span></span><br><span class="line"><span class="keyword">type</span> D = If&lt;<span class="built_in">boolean</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br><span class="line"><span class="keyword">type</span> E = If&lt;<span class="built_in">any</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"><span class="comment">// any 还是不对，还需要破坏any 的 checked type，处理方式就是加入 加入破坏条件 any extends C</span></span><br><span class="line"><span class="keyword">type</span> If&lt;C, T, F&gt; = [C] <span class="keyword">extends</span> [<span class="literal">true</span>] ? (<span class="built_in">any</span> <span class="keyword">extends</span> C ? <span class="built_in">never</span> : T) : [C] <span class="keyword">extends</span> [<span class="literal">false</span>] ? (<span class="built_in">any</span> <span class="keyword">extends</span> C ? <span class="built_in">never</span> : F) : <span class="built_in">never</span>;</span><br><span class="line"><span class="comment">// 此时</span></span><br><span class="line"><span class="keyword">type</span> D = If&lt;<span class="built_in">boolean</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br><span class="line"><span class="keyword">type</span> E = If&lt;<span class="built_in">any</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> If&lt;C, T, F&gt; = C <span class="keyword">extends</span> <span class="literal">true</span> ? T : C <span class="keyword">extends</span> <span class="literal">false</span> ? F : <span class="built_in">never</span>; </span><br><span class="line"><span class="keyword">type</span> A = If&lt;<span class="literal">true</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"><span class="keyword">type</span> B = If&lt;<span class="literal">false</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;b&#x27;</span></span><br><span class="line"><span class="keyword">type</span> C = If&lt;<span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br><span class="line"><span class="comment">// 考虑输入  `any` &amp;&amp; `boolean`</span></span><br><span class="line"><span class="keyword">type</span> D = If&lt;<span class="built_in">boolean</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27; | &#x27;b&#x27;, boolean 是 union type =&gt; distributive conditional types</span></span><br><span class="line"><span class="keyword">type</span> E = If&lt;<span class="built_in">any</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27; | &#x27;b&#x27;, any 是 union type =&gt; distributive conditional types</span></span><br><span class="line"><span class="comment">// 第一步去除 T 的 naked type 特点，怎么办呢？和下面 IsNever 处理一致, 加入 array, record, function 结构</span></span><br><span class="line"><span class="keyword">type</span> If&lt;C, T, F&gt; = [C] <span class="keyword">extends</span> [<span class="literal">true</span>] ? T : [C] <span class="keyword">extends</span> [<span class="literal">false</span>] ? F : <span class="built_in">never</span>; </span><br><span class="line"><span class="comment">// 此时 boolean 可以了，但是 any 还不行</span></span><br><span class="line"><span class="keyword">type</span> D = If&lt;<span class="built_in">boolean</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br><span class="line"><span class="keyword">type</span> E = If&lt;<span class="built_in">any</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"><span class="comment">// any 还是不对，还需要破坏类型检查，处理方式就是加入 加入破坏条件: 破坏 T 作为 checked type 的条件 即可</span></span><br><span class="line"><span class="comment">// any extends C ? never : T</span></span><br><span class="line"><span class="keyword">type</span> If&lt;C, T, F&gt; = [C] <span class="keyword">extends</span> [<span class="literal">true</span>] ? (<span class="built_in">any</span> <span class="keyword">extends</span> C ? <span class="built_in">never</span> : T) : [C] <span class="keyword">extends</span> [<span class="literal">false</span>] ? (<span class="built_in">any</span> <span class="keyword">extends</span> C ? <span class="built_in">never</span> : F) : <span class="built_in">never</span>;</span><br><span class="line"><span class="comment">// 此时</span></span><br><span class="line"><span class="keyword">type</span> D = If&lt;<span class="built_in">boolean</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br><span class="line"><span class="keyword">type</span> E = If&lt;<span class="built_in">any</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="插播：conditional-type-amp-distributive-conditional-types"><a href="#插播：conditional-type-amp-distributive-conditional-types" class="headerlink" title="插播：conditional type &amp; distributive conditional types"></a>插播：conditional type &amp; distributive conditional types</h2><blockquote>
+<p>distributive conditional types 的3个前提条件：1. T = naked type; 2. T = checked type; 3. T 实例化为 union type;</p>
+</blockquote>
+<figure class="highlight ts"><figcaption><span>conditional type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// T: checkedType 被检查的类型</span></span><br><span class="line"><span class="comment">// U: extendsType 判断条件</span></span><br><span class="line"><span class="comment">// 下面这个表达式的意思是：如果T能够assignable（这里不是subtype的意思）给U那么结果为X，否则结果为Y</span></span><br><span class="line"><span class="comment">// 根据官方文档的 assignable 图：</span></span><br><span class="line"><span class="keyword">type</span> checkTtype = T <span class="keyword">extends</span> U ? X : Y</span><br><span class="line"><span class="comment">// 如果 T 是 naked type: 详见本文末尾解释</span></span><br><span class="line"><span class="comment">// 则表达式就是 distributive conditional types</span></span><br><span class="line"><span class="comment">// T = A | B | C // A,B,C是naked type</span></span><br><span class="line"><span class="keyword">type</span> unionTypes = <span class="built_in">string</span> | <span class="built_in">number</span></span><br><span class="line"><span class="keyword">type</span> checkTtypeUnion&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">any</span> ? T[] : T</span><br><span class="line"><span class="keyword">type</span> checkTtypeUnionI1 = checkTtypeUnion&lt;unionTypes&gt; <span class="comment">//  string[] | number[]</span></span><br><span class="line"><span class="comment">// 如何消除 distributive conditional types</span></span><br><span class="line"><span class="comment">// 破坏上述3个条件即可，然后用 never 过滤掉该分支</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="TupleToUnion-lt-T-gt-元组转联合类型"><a href="#TupleToUnion-lt-T-gt-元组转联合类型" class="headerlink" title="TupleToUnion&lt;T&gt; 元组转联合类型"></a><code>TupleToUnion&lt;T&gt;</code> 元组转联合类型</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> TupleToUnion&lt;T <span class="keyword">extends</span> <span class="built_in">any</span>[]&gt; = T[<span class="built_in">number</span>]</span><br></pre></td></tr></table></figure>
 
@@ -466,9 +459,15 @@ tags:
 </blockquote>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IsNever</span></span><br><span class="line"><span class="keyword">type</span> IsNever&lt;T&gt; = [T] <span class="keyword">extends</span> [<span class="built_in">never</span>] ? <span class="literal">true</span> : <span class="literal">false</span></span><br><span class="line"><span class="comment">// 将输入变成 不可能是空列表的状态即可，[T] 🉑️， &#123;a: T&#125; 也 🉑️</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="Flatten-lt-T-gt"><a href="#Flatten-lt-T-gt" class="headerlink" title="Flatten&lt;T&gt;"></a><code>Flatten&lt;T&gt;</code></h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Flatten&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">Array</span>&lt;infer I&gt; ? I : T;</span><br></pre></td></tr></table></figure>
+
+
 <blockquote>
 <p><a href="https://github.com/type-challenges/type-challenges/">类型体操链接</a></p>
 </blockquote>
+<h2 id="TroubleShooting"><a href="#TroubleShooting" class="headerlink" title="TroubleShooting"></a>TroubleShooting</h2><ol>
+<li>naked type: The type parameter is present without being wrapped in another type, (ie, an array, or a tuple, or a function, or a promise or any other generic type)</li>
+</ol>
 
       
     </div>
@@ -1120,7 +1119,7 @@ tags:
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/10/command-line/" class="post-title-link" itemprop="url">命令行环境</a>
+            <a href="/2021/01/10/command-line/" class="post-title-link" itemprop="url">命令行环境&常用VScode快捷键</a>
         </h2>
 
         <div class="post-meta">
@@ -1137,7 +1136,7 @@ tags:
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-07 14:15:23" itemprop="dateModified" datetime="2021-12-07T14:15:23+08:00">2021-12-07</time>
+                <time title="修改时间：2022-02-24 10:22:49" itemprop="dateModified" datetime="2022-02-24T10:22:49+08:00">2022-02-24</time>
               </span>
 
           
@@ -1248,7 +1247,47 @@ tags:
 </ul>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;vim.easymotion&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.suround&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.incsearch&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.useSystemClipboard&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.useCtrlKeys&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.hlsearch&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.insertModeKeyBindings&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;before&quot;</span>: [<span class="string">&quot;j&quot;</span>, <span class="string">&quot;j&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;after&quot;</span>: [<span class="string">&quot;&lt;Esc&gt;&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;vim.normalModeKeyBindingsNonRecursive&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;before&quot;</span>: [<span class="string">&quot;&lt;leader&gt;&quot;</span>, <span class="string">&quot;d&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;after&quot;</span>: [<span class="string">&quot;d&quot;</span>, <span class="string">&quot;d&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;before&quot;</span>: [<span class="string">&quot;&lt;C-n&gt;&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;commands&quot;</span>: [<span class="string">&quot;:nohl&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;vim.leader&quot;</span>: <span class="string">&quot;&lt;space&gt;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;vim.handleKeys&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;&lt;C-a&gt;&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;&lt;C-f&gt;&quot;</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="练习-见missing-semester-文件夹"><a href="#练习-见missing-semester-文件夹" class="headerlink" title="练习-见missing-semester 文件夹"></a>练习-见<a href="https://github.com/MillyTang/missing-semester">missing-semester 文件夹</a></h2>
+<h2 id="练习-见missing-semester-文件夹"><a href="#练习-见missing-semester-文件夹" class="headerlink" title="练习-见missing-semester 文件夹"></a>练习-见<a href="https://github.com/MillyTang/missing-semester">missing-semester 文件夹</a></h2><h2 id="常用的VScode快捷键"><a href="#常用的VScode快捷键" class="headerlink" title="常用的VScode快捷键"></a>常用的VScode快捷键</h2><blockquote>
+<p>基于 macOS，有些是自定义后的快捷键，请 <code>command + k; command s</code> 查看自己的键盘快捷方式</p>
+</blockquote>
+<ul>
+<li><code>command + k; command s</code> 查看键盘快捷方式</li>
+<li><code>command + p</code> 搜索文件</li>
+<li><code>command + shift + p</code> 打开命令面板</li>
+<li><code>command + t</code> 全局搜索文件内容</li>
+<li><code>command + w</code> 关闭当前文件</li>
+<li><code>command + shift + n</code> 新建窗口</li>
+<li><code>command + shift + v</code> 预览 markdown 文件</li>
+<li><code>command + shift + k</code> 删除光标所在的一行</li>
+<li><code>command + /</code> 切换单行注释</li>
+<li><code>command + shift + /</code> 切换块注释</li>
+<li><code>command + j</code> 切换终端</li>
+<li><strong>ctrl + `</strong> 切换终端</li>
+<li><code>command + b</code> 切换侧边栏</li>
+<li><code>command + ,</code> 打开设置</li>
+<li><code>command + f2 + fn</code> 选择当前文件内所有和光标所在位置相同的单词 </li>
+<li><code>command + 1 or 2 or 3</code> 编辑区分区</li>
+<li><code>command + l</code> 选择当前行</li>
+<li><code>command + [ or ]</code> 缩进</li>
+<li><code>command + k; command + o</code>  全部折叠</li>
+<li><code>command + k; command + l</code>  切换折叠</li>
+<li><code>command + option + [ or ]</code> 折叠/展开代码块</li>
+<li><code>command + k; command + [ or ]</code> 递归折叠/展开代码块</li>
+<li><code>command + shift + l</code> 先执行一次 选择，再执行此命令可选择到所有相同文本或选项</li>
+<li><code>command + option + shift + 上下或左右箭头</code> 选择多行代码</li>
+<li><code>option + shift + 拖动光标</code> 选择多行代码</li>
+<li><code>option + shift + 上下箭头</code> 向上或向下复制行</li>
+<li><code>option + shift + 左右箭头</code> 向左或向右选择部分代码</li>
+<li><code>option + 上下箭头</code> 向上或向下移动行</li>
+<li><code>option + 上下箭头</code> 向上或向下移动行</li>
+<li><code>f3 + fn</code> 在结果中导航</li>
+<li><code>command + d</code> 选择多个结果</li>
+<li><code>command + g</code> 查找下一个</li>
+<li><code>command + shift + g</code> 查找上一个</li>
+<li><code>option + enter</code> 选择所有结果</li>
+<li><code>f8 + fn</code> 导航到错误或警告处</li>
+</ul>
+
       
     </div>
 
@@ -1861,7 +1900,7 @@ cluster分发连接：主进程负责监听接口，然后循环分发给各chil
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

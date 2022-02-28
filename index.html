@@ -177,7 +177,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-11 15:52:01" itemprop="dateModified" datetime="2022-02-11T15:52:01+08:00">2022-02-11</time>
+                <time title="修改时间：2022-02-22 17:03:12" itemprop="dateModified" datetime="2022-02-22T17:03:12+08:00">2022-02-22</time>
               </span>
 
           
@@ -256,9 +256,9 @@
 <h4 id="习题-1"><a href="#习题-1" class="headerlink" title="习题"></a>习题</h4><figure class="highlight ts"><figcaption><span>'Lazy(): T'</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Lazy&lt;T&gt; = <span class="function">() =&gt;</span> T;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lazyUnit</span>(<span class="params">val: T</span>): <span class="title">Lazy</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> val</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lazyMap</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt;(<span class="params">f: Lazy&lt;T&gt;,  func: (val: T) =&gt; U</span>): <span class="title">Lazy</span>&lt;<span class="title">U</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> func(f())</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lazyBind</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt;(<span class="params">f: Lazy&lt;T&gt;, func: (val: T) =&gt; Lazy&lt;U&gt;</span>): <span class="title">Lazy</span>&lt;<span class="title">U</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> func(f())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="继续学习"><a href="#继续学习" class="headerlink" title="继续学习"></a>继续学习</h3><h2 id="补充：范畴论部分内容"><a href="#补充：范畴论部分内容" class="headerlink" title="补充：范畴论部分内容"></a>补充：范畴论部分内容</h2><blockquote>
-<p>对《编程与类型系统》部分章节内容的补充，不代表本人对本书有深刻理解，（实际上不怎么理解</p>
+<p>对《编程与类型系统》部分章节内容的补充，不代表本人对本书有深刻理解</p>
 </blockquote>
-<h3 id="第五章-Products-and-Coproducts"><a href="#第五章-Products-and-Coproducts" class="headerlink" title="第五章-Products and Coproducts"></a>第五章-Products and Coproducts</h3><h3 id="第六章-simply-ADT-AlgeBraic-Data-Type-简单代数数据类型"><a href="#第六章-simply-ADT-AlgeBraic-Data-Type-简单代数数据类型" class="headerlink" title="第六章-simply ADT(AlgeBraic Data Type) 简单代数数据类型"></a>第六章-simply ADT(AlgeBraic Data Type) 简单代数数据类型</h3><h4 id="Product-Type-乘积"><a href="#Product-Type-乘积" class="headerlink" title="Product Type 乘积"></a>Product Type 乘积</h4><h4 id="Records-记录"><a href="#Records-记录" class="headerlink" title="Records 记录"></a>Records 记录</h4><h4 id="Sum-Type-和类型"><a href="#Sum-Type-和类型" class="headerlink" title="Sum Type 和类型"></a>Sum Type 和类型</h4><h4 id="Algebra-of-types"><a href="#Algebra-of-types" class="headerlink" title="Algebra of types"></a>Algebra of types</h4><h3 id="第九章-Function-Types"><a href="#第九章-Function-Types" class="headerlink" title="第九章-Function Types"></a>第九章-Function Types</h3><h4 id="Currying柯里化"><a href="#Currying柯里化" class="headerlink" title="Currying柯里化"></a>Currying柯里化</h4><h3 id="第十三章-Free-Monoids-自由单子"><a href="#第十三章-Free-Monoids-自由单子" class="headerlink" title="第十三章-Free Monoids 自由单子"></a>第十三章-Free Monoids 自由单子</h3><h2 id="纯函数、函数式编程入门、泛型编程"><a href="#纯函数、函数式编程入门、泛型编程" class="headerlink" title="纯函数、函数式编程入门、泛型编程"></a>纯函数、函数式编程入门、泛型编程</h2>
+<h3 id="第五章-Products-and-Coproducts"><a href="#第五章-Products-and-Coproducts" class="headerlink" title="第五章-Products and Coproducts"></a>第五章-Products and Coproducts</h3><h3 id="第六章-simply-ADT-AlgeBraic-Data-Type-简单代数数据类型"><a href="#第六章-simply-ADT-AlgeBraic-Data-Type-简单代数数据类型" class="headerlink" title="第六章-simply ADT(AlgeBraic Data Type) 简单代数数据类型"></a>第六章-simply ADT(AlgeBraic Data Type) 简单代数数据类型</h3><h4 id="Product-Type-乘积"><a href="#Product-Type-乘积" class="headerlink" title="Product Type 乘积"></a>Product Type 乘积</h4><h4 id="Records-记录"><a href="#Records-记录" class="headerlink" title="Records 记录"></a>Records 记录</h4><h4 id="Sum-Type-和类型"><a href="#Sum-Type-和类型" class="headerlink" title="Sum Type 和类型"></a>Sum Type 和类型</h4><h4 id="Algebra-of-types"><a href="#Algebra-of-types" class="headerlink" title="Algebra of types"></a>Algebra of types</h4><h3 id="第九章-Function-Types"><a href="#第九章-Function-Types" class="headerlink" title="第九章-Function Types"></a>第九章-Function Types</h3><h4 id="Currying柯里化"><a href="#Currying柯里化" class="headerlink" title="Currying柯里化"></a>Currying柯里化</h4><h3 id="第十三章-Free-Monoids-自由单子"><a href="#第十三章-Free-Monoids-自由单子" class="headerlink" title="第十三章-Free Monoids 自由单子"></a>第十三章-Free Monoids 自由单子</h3><h2 id="Learn-you-a-Haskell-的代码对比补充"><a href="#Learn-you-a-Haskell-的代码对比补充" class="headerlink" title="Learn you a Haskell 的代码对比补充"></a>Learn you a Haskell 的代码对比补充</h2><h3 id="函子"><a href="#函子" class="headerlink" title="函子"></a>函子</h3><h3 id="单子-1"><a href="#单子-1" class="headerlink" title="单子"></a>单子</h3>
       
     </div>
 
@@ -308,7 +308,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-28 21:19:35" itemprop="dateModified" datetime="2022-01-28T21:19:35+08:00">2022-01-28</time>
+                <time title="修改时间：2022-02-17 14:06:33" itemprop="dateModified" datetime="2022-02-17T14:06:33+08:00">2022-02-17</time>
               </span>
 
           
@@ -322,311 +322,141 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="动词"><a href="#动词" class="headerlink" title="动词"></a>动词</h2><h3 id="aller-er结尾-特殊"><a href="#aller-er结尾-特殊" class="headerlink" title="aller - er结尾+特殊"></a>aller - er结尾+特殊</h3><table>
-<thead>
-<tr>
-<th>主语</th>
-<th>直陈式现在时</th>
-<th>简单将来时</th>
-<th>复合过去时</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>je</td>
-<td>vais</td>
-<td>irai</td>
-<td>suis allé</td>
-</tr>
-<tr>
-<td>tu</td>
-<td>vas</td>
-<td>iras</td>
-<td>es allé</td>
-</tr>
-<tr>
-<td>il/elle/on</td>
-<td>va</td>
-<td>ira</td>
-<td>est allé(e)</td>
-</tr>
-<tr>
-<td>ils/elles</td>
-<td>vont</td>
-<td>iront</td>
-<td>sont allés</td>
-</tr>
-<tr>
-<td>nous</td>
-<td>allons</td>
-<td>irons</td>
-<td>sommes allés</td>
-</tr>
-<tr>
-<td>vous</td>
-<td>allez</td>
-<td>irez</td>
-<td>êtes allés</td>
-</tr>
-</tbody></table>
-<p>例句：</p>
-<h4 id="直陈式现在时"><a href="#直陈式现在时" class="headerlink" title="直陈式现在时"></a>直陈式现在时</h4><ul>
-<li>否定+动词原型<ol>
-<li>je ne vais pas <code>prendre</code> le petit déjeuner(m.s.n) ce matin(m.s.n)</li>
+          <h2 id="Speaking"><a href="#Speaking" class="headerlink" title="Speaking"></a>Speaking</h2><h3 id="1000-subjects"><a href="#1000-subjects" class="headerlink" title="1000 subjects"></a>1000 subjects</h3><ol>
+<li><h3 id="tell-a-story-about-yourself"><a href="#tell-a-story-about-yourself" class="headerlink" title="tell a story about yourself"></a>tell a story about yourself</h3></li>
 </ol>
-</li>
-</ul>
-<h4 id="简单将来时"><a href="#简单将来时" class="headerlink" title="简单将来时"></a>简单将来时</h4><h3 id="avoir-第三类"><a href="#avoir-第三类" class="headerlink" title="avoir - 第三类"></a>avoir - 第三类</h3><table>
-<thead>
-<tr>
-<th>主语</th>
-<th>直陈式现在时</th>
-<th>简单将来时</th>
-<th>复合过去时</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>je</td>
-<td>ai</td>
-<td>aurai</td>
-<td>ai eu</td>
-</tr>
-<tr>
-<td>tu</td>
-<td>as</td>
-<td>auras</td>
-<td>as eu</td>
-</tr>
-<tr>
-<td>il/elle/on</td>
-<td>a</td>
-<td>aura</td>
-<td>a eu</td>
-</tr>
-<tr>
-<td>ils/elles</td>
-<td>ont</td>
-<td>auront</td>
-<td>ont eu</td>
-</tr>
-<tr>
-<td>nous</td>
-<td>avons</td>
-<td>aurons</td>
-<td>avons eu</td>
-</tr>
-<tr>
-<td>vous</td>
-<td>avez</td>
-<td>aurez</td>
-<td>avez eu</td>
-</tr>
-</tbody></table>
-<h3 id="etre"><a href="#etre" class="headerlink" title="être"></a>être</h3><table>
-<thead>
-<tr>
-<th>主语</th>
-<th>直陈式现在时</th>
-<th>简单将来时</th>
-<th>复合过去时</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>je</td>
-<td>suis</td>
-<td>serai</td>
-<td>ai été</td>
-</tr>
-<tr>
-<td>tu</td>
-<td>es</td>
-<td>seras</td>
-<td>as été</td>
-</tr>
-<tr>
-<td>il/elle/on</td>
-<td>est</td>
-<td>sera</td>
-<td>a été</td>
-</tr>
-<tr>
-<td>ils/elles</td>
-<td>sont</td>
-<td>seront</td>
-<td>ont été</td>
-</tr>
-<tr>
-<td>nous</td>
-<td>sommes</td>
-<td>serons</td>
-<td>avons été</td>
-</tr>
-<tr>
-<td>vous</td>
-<td>êtes</td>
-<td>serez</td>
-<td>avez été</td>
-</tr>
-</tbody></table>
-<p>例句：</p>
-<h4 id="直陈式现在时-1"><a href="#直陈式现在时-1" class="headerlink" title="直陈式现在时"></a>直陈式现在时</h4><ul>
-<li>tu es en retard</li>
-</ul>
-<h4 id="简单将来时-1"><a href="#简单将来时-1" class="headerlink" title="简单将来时"></a>简单将来时</h4><ul>
-<li><p>否定</p>
-<ol>
-<li>je ne serai pas en retard.</li>
-</ol>
-</li>
-<li><p>肯定</p>
-<ol>
-<li>je serai de retour à vingt-deux heures.</li>
-</ol>
-</li>
-<li><p>反问</p>
-<ol>
-<li>tu ne seras pas en retard, <code>n&#39;est-ce pas</code> ? - non, je ne suis jamais en retard</li>
-</ol>
-</li>
-</ul>
-<h3 id="vouloir-第三类"><a href="#vouloir-第三类" class="headerlink" title="vouloir - 第三类"></a>vouloir - 第三类</h3><table>
-<thead>
-<tr>
-<th>主语</th>
-<th>直陈式现在时</th>
-<th>命令式现在时</th>
-<th>复合过去时</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>je</td>
-<td>veux</td>
-<td>-</td>
-<td>‘ai voulu</td>
-</tr>
-<tr>
-<td>tu</td>
-<td>veux</td>
-<td>veux/veuille</td>
-<td>as voulu</td>
-</tr>
-<tr>
-<td>il/elle/on</td>
-<td>veut</td>
-<td>-</td>
-<td>a voulu</td>
-</tr>
-<tr>
-<td>ils/elles</td>
-<td>veulent</td>
-<td>-</td>
-<td>ont voulu</td>
-</tr>
-<tr>
-<td>nous</td>
-<td>voulons</td>
-<td>voulons/veuillons</td>
-<td>avons voulu</td>
-</tr>
-<tr>
-<td>vous</td>
-<td>voulez</td>
-<td>voulez/veuillez</td>
-<td>avez voulu</td>
-</tr>
-</tbody></table>
-<h3 id="prendre-第三类"><a href="#prendre-第三类" class="headerlink" title="prendre - 第三类"></a>prendre - 第三类</h3><table>
-<thead>
-<tr>
-<th>主语</th>
-<th>直陈式现在时</th>
-<th>简单将来时</th>
-<th>复合过去时</th>
-</tr>
-</thead>
-</table>
-<h3 id="sortir-第三类"><a href="#sortir-第三类" class="headerlink" title="sortir - 第三类"></a>sortir - 第三类</h3><table>
-<thead>
-<tr>
-<th>主语</th>
-<th>直陈式现在时</th>
-<th>简单将来时</th>
-<th>复合过去时</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>je</td>
-<td>sor<code>s</code></td>
-<td>sor<code>tirai</code></td>
-<td>‘ai(suis) sor<code>ti</code></td>
-</tr>
-<tr>
-<td>tu</td>
-<td>sor<code>s</code></td>
-<td>sor<code>tiras</code></td>
-<td>as(es) sor<code>ti</code></td>
-</tr>
-<tr>
-<td>il/elle/on</td>
-<td>sor<code>t</code></td>
-<td>sor<code>tira</code></td>
-<td>a(est) sor<code>ti</code></td>
-</tr>
-<tr>
-<td>nous</td>
-<td>sor<code>tons</code></td>
-<td>sor<code>tirons</code></td>
-<td>avons(sommes) sor<code>ti(s)</code></td>
-</tr>
-<tr>
-<td>vous</td>
-<td>sor<code>tez</code></td>
-<td>sor<code>tirez</code></td>
-<td>avez(êtes) sor<code>ti(s)</code></td>
-</tr>
-<tr>
-<td>ils</td>
-<td>sor<code>tent</code></td>
-<td>sor<code>tiront</code></td>
-<td>ont(sont) sor<code>ti(s)</code></td>
-</tr>
-</tbody></table>
-<h2 id="代动词"><a href="#代动词" class="headerlink" title="代动词"></a>代动词</h2><h3 id="se-passer"><a href="#se-passer" class="headerlink" title="se passer"></a>se passer</h3><ol>
-<li>quelque chose va <code>se passer(happen)</code></li>
-<li>je t’informerai de ce qui <code>se passe</code></li>
-</ol>
-<h2 id="词组"><a href="#词组" class="headerlink" title="词组"></a>词组</h2><ul>
-<li>en mesure de: be able to</li>
-<li>en retard = tard: late</li>
-<li>quelque chose: something</li>
-<li>bien sûr: sure</li>
-<li>ne + plus: never again</li>
-<li>en blanc: in white</li>
-</ul>
-<h2 id="副词"><a href="#副词" class="headerlink" title="副词"></a>副词</h2><ul>
-<li>seule: alone, lonely</li>
-<li>ne + jamais: never</li>
-<li>seulment: just, only</li>
-<li>assurément: definitely, most certainly, for sure</li>
-<li>si: so, such</li>
-</ul>
-<h2 id="时间-amp-时间段"><a href="#时间-amp-时间段" class="headerlink" title="时间&amp;时间段"></a>时间&amp;时间段</h2><ul>
-<li>à l’heure: on time</li>
-<li>toute la journée: all day / all day long</li>
-<li>une mauvaise(grosse) journée: a bad(big) day</li>
-<li>à quelle heure: what time</li>
-<li>dans <strong>l’après-midi</strong>: in the afternoon</li>
-<li>ce matin, demain, après-midi</li>
-</ul>
-<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><ul>
-<li>vingt-deux</li>
-</ul>
-<h3 id="例句-简单将来时"><a href="#例句-简单将来时" class="headerlink" title="例句 - 简单将来时"></a>例句 - 简单将来时</h3><ol>
-<li>quelque chose va se passer - something is going to happen</li>
-<li>il sortira assurément dans l’après-midi</li>
-<li>je n’en suis pas certain - i don’t know for sure</li>
-<li>je vais être en retard - i am going to be late</li>
-</ol>
+<h3 id="read-a-text-out-loud"><a href="#read-a-text-out-loud" class="headerlink" title="read a text out loud"></a>read a text out loud</h3><h2 id="Accent"><a href="#Accent" class="headerlink" title="Accent"></a>Accent</h2><h2 id="Listening"><a href="#Listening" class="headerlink" title="Listening"></a>Listening</h2><h2 id="Vocabulary"><a href="#Vocabulary" class="headerlink" title="Vocabulary"></a>Vocabulary</h2><h2 id="Conversation"><a href="#Conversation" class="headerlink" title="Conversation"></a>Conversation</h2><!-- ## 动词
 
+### aller - er结尾+特殊
+
+| 主语 | 直陈式现在时 | 简单将来时 | 复合过去时 |
+| ----- | ----- | ----- | ----- |
+| je | vais | irai | suis allé |  
+| tu | vas | iras | es allé |  
+| il/elle/on | va | ira | est allé(e) |  
+| ils/elles | vont | iront | sont allés |  
+| nous | allons | irons| sommes allés |  
+| vous | allez | irez | êtes allés |
+
+例句：
+
+#### 直陈式现在时
+- 否定+动词原型
+  1. je ne vais pas `prendre` le petit déjeuner(m.s.n) ce matin(m.s.n)
+
+#### 简单将来时
+
+### avoir - 第三类
+
+| 主语 | 直陈式现在时 | 简单将来时 | 复合过去时 |
+| ----- | ----- | ----- | ----- |
+| je | ai | aurai | ai eu |  
+| tu | as | auras | as eu |  
+| il/elle/on | a |aura | a eu |  
+| ils/elles | ont | auront | ont eu |  
+| nous | avons | aurons | avons eu |  
+| vous | avez | aurez | avez eu |
+
+### être
+
+| 主语 | 直陈式现在时 | 简单将来时 | 复合过去时 |
+| ----- | ----- | ----- | ----- |
+| je | suis | serai | ai été | 
+| tu | es | seras | as été | 
+| il/elle/on | est |sera | a été |  
+| ils/elles | sont | seront | ont été | 
+| nous | sommes | serons | avons été | 
+| vous | êtes | serez | avez été | 
+
+例句：
+
+#### 直陈式现在时
+
+- tu es en retard
+
+
+#### 简单将来时
+
+- 否定
+  1. je ne serai pas en retard.
+
+- 肯定
+  1. je serai de retour à vingt-deux heures.
+
+- 反问
+  1. tu ne seras pas en retard, `n'est-ce pas` ? - non, je ne suis jamais en retard
+
+### vouloir - 第三类
+
+| 主语 | 直陈式现在时 | 命令式现在时 | 复合过去时 |
+| ----- | ----- | ----- | ----- |
+| je | veux | - | 'ai voulu | 
+| tu | veux | veux/veuille | as voulu | 
+| il/elle/on | veut | - | a voulu |  
+| ils/elles | veulent | - | ont voulu | 
+| nous | voulons | voulons/veuillons | avons voulu | 
+| vous | voulez | voulez/veuillez | avez voulu | 
+
+
+### prendre - 第三类
+
+| 主语 | 直陈式现在时 | 简单将来时 | 复合过去时 |
+| ----- | ----- | ----- | ----- |
+
+### sortir - 第三类
+
+| 主语 | 直陈式现在时 | 简单将来时 | 复合过去时 |
+| ----- | ----- | ----- | ----- |
+| je | sor`s` | sor`tirai` | 'ai(suis) sor`ti` |
+| tu | sor`s` | sor`tiras` | as(es) sor`ti` |
+| il/elle/on | sor`t` | sor`tira` | a(est) sor`ti` |
+| nous | sor`tons` | sor`tirons` | avons(sommes) sor`ti(s)` |
+| vous | sor`tez` | sor`tirez` | avez(êtes) sor`ti(s)` |
+| ils | sor`tent` | sor`tiront` | ont(sont) sor`ti(s)` |
+
+
+
+## 代动词
+
+### se passer
+
+1. quelque chose va `se passer(happen)`
+2. je t'informerai de ce qui `se passe`
+
+## 词组
+
+- en mesure de: be able to
+- en retard = tard: late
+- quelque chose: something
+- bien sûr: sure
+- ne + plus: never again
+- en blanc: in white
+
+## 副词
+- seule: alone, lonely
+- ne + jamais: never
+- seulment: just, only
+- assurément: definitely, most certainly, for sure
+- si: so, such
+
+## 时间&时间段
+- à l'heure: on time
+- toute la journée: all day / all day long
+- une mauvaise(grosse) journée: a bad(big) day
+- à quelle heure: what time
+- dans **l'après-midi**: in the afternoon
+- ce matin, demain, après-midi
+
+## 数字
+
+- vingt-deux
+
+### 例句 - 简单将来时
+
+1. quelque chose va se passer - something is going to happen
+2. il sortira assurément dans l'après-midi
+3. je n'en suis pas certain - i don't know for sure
+4. je vais être en retard - i am going to be late -->
       
     </div>
 
@@ -676,7 +506,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-11 16:20:20" itemprop="dateModified" datetime="2022-02-11T16:20:20+08:00">2022-02-11</time>
+                <time title="修改时间：2022-02-25 16:41:56" itemprop="dateModified" datetime="2022-02-25T16:41:56+08:00">2022-02-25</time>
               </span>
 
           
@@ -1004,13 +834,77 @@
 </blockquote>
 <figure class="highlight ts"><figcaption><span>'IRandomAccessIterator<T> & 更新后的 ArrayIterator<T>'</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> IRandomAccessIterator&lt;T&gt; <span class="keyword">extends</span> IReadable&lt;T&gt;, IWritable&lt;T&gt;, IIncrementable&lt;T&gt; &#123;</span><br><span class="line">  decrement(): <span class="built_in">void</span>;</span><br><span class="line">  equals(other: IRandomAccessIterator&lt;T&gt;): <span class="built_in">boolean</span>;</span><br><span class="line">  clone(): IRandomAccessIterator&lt;T&gt;;</span><br><span class="line">  move(n: <span class="built_in">number</span>): <span class="built_in">void</span>;</span><br><span class="line">  distance(other: IRandomAccessIterator&lt;T&gt;): <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> ArrayIterator&lt;T&gt; <span class="keyword">implements</span> IRandomAccessIterator&lt;T&gt; &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// 与上面相同的部分</span></span><br><span class="line">  <span class="comment">// 更新</span></span><br><span class="line">  equals(other: IRandomAccessIterator&lt;T&gt;): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.index == (&lt;ArrayIterator&lt;T&gt;&gt;other).index</span><br><span class="line">  &#125;</span><br><span class="line">  clone(): IRandomAccessIterator&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ArrayIterator(<span class="built_in">this</span>.array, <span class="built_in">this</span>.index)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 将迭代器推进 n 个步长（n 可以是负数，代表向后移动）</span></span><br><span class="line">  move(n: <span class="built_in">number</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.index += n</span><br><span class="line">  &#125;</span><br><span class="line">  distance(other: IRandomAccessIterator&lt;T&gt;): <span class="built_in">number</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.index - (&lt;ArrayIterator&lt;T&gt;&gt;other).index</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>实现一个 <code>elementAt()</code> 算法，返回只想序列中第n个元素的迭代器。使用一个输入迭代器来实现时：需要递增迭代器 <code>n</code> 次此案达到期望的原色，时间复杂度为 O(n)；使用随机访问迭代器时，时间复杂度为 O(1)；</p>
+<p>实现一个 <code>elementAt()</code> 算法，返回只想序列中第n个元素的迭代器。使用一个输入迭代器来实现时：需要递增迭代器 <code>n</code> 次此案达到期望的元素，时间复杂度为 O(n)；使用随机访问迭代器时，时间复杂度为 O(1)；</p>
 <figure class="highlight ts"><figcaption><span>访问指定位置的元素</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">elementAtRandomAccessIterator</span>&lt;<span class="title">T</span>&gt; (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  begin: IRandomAccessIterator&lt;T&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">  end: IRandomAccessIterator&lt;T&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">  n: <span class="built_in">number</span></span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">IRandomAccessIterator</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="comment">// 移动 n 个元素</span></span><br><span class="line">  begin.move(n)</span><br><span class="line">  <span class="keyword">if</span> (begin.distance(end) &lt;= <span class="number">0</span>) <span class="keyword">return</span> end;</span><br><span class="line">  <span class="keyword">return</span> begin;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="自适应算法"><a href="#自适应算法" class="headerlink" title="自适应算法"></a>自适应算法</h3><figure class="highlight ts"><figcaption><span>使用输入迭代器的elementAt</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">elementAtForwardIterator</span>&lt;<span class="title">T</span>&gt; (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  begin: IForwardIterator&lt;T&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">  end: IForwardIterator&lt;T&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">  n: <span class="built_in">number</span></span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">IForwardIterator</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(!begin.equals(end) &amp;&amp; n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    begin.increment()</span><br><span class="line">    n--</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> begin</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight ts"><figcaption><span>自适应的elementAt</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isRandomAccessIterator</span>&lt;<span class="title">T</span>&gt; (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  iter: IForwardIterator&lt;T&gt;</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">iter</span> <span class="title">is</span> <span class="title">IRandomAccessIterator</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;distabce&#x27;</span> <span class="keyword">in</span> iter</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">elementAt</span>&lt;<span class="title">T</span>&gt; (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  begin: IForwardIterator&lt;T&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">  end: IForwardIterator&lt;T&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">  n: <span class="built_in">number</span></span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">IForwardIterator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(isRandomAccessIterator(begin) &amp;&amp; isRandomAccessIterator(end)) &#123;</span><br><span class="line">    <span class="keyword">return</span> elementAtRandomAccessIterator(begin, end, n)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> elementAtForwardIterator(begin, end, n)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ES6遍历器-Iterator-和-for-of"><a href="#ES6遍历器-Iterator-和-for-of" class="headerlink" title="ES6遍历器 Iterator 和 for...of"></a>ES6遍历器 <code>Iterator</code> 和 <code>for...of</code></h3><h3 id="ES6迭代器-generator"><a href="#ES6迭代器-generator" class="headerlink" title="ES6迭代器 generator"></a>ES6迭代器 <code>generator</code></h3>
+
+<h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><h3 id="ES6遍历器-Iterator-和-for-of"><a href="#ES6遍历器-Iterator-和-for-of" class="headerlink" title="ES6遍历器 Iterator 和 for...of"></a>ES6遍历器 <code>Iterator</code> 和 <code>for...of</code></h3><blockquote>
+<p>ES6中的：Array, Map, Set, String, TypedArray, arguments, NodeList都自带遍历器接口<strong>Iterable定义见上</strong>，但是对象没有，原因见下</p>
+</blockquote>
+<p>一种接口，为各种不同的数据结构提供统一的访问机制。</p>
+<h4 id="3种作用"><a href="#3种作用" class="headerlink" title="3种作用"></a>3种作用</h4><ol>
+<li>为各种不同的数据结构提供统一的访问接口；</li>
+<li>使得数据成员能够按照某种次序排列-<strong>对象的属性没有固定顺序，这就是为什么对象类型没有遍历器接口</strong>，不过可以曲线使用 <code>Object.keys() or Object.values()</code> 来实现遍历。</li>
+<li>Iterator接口主要提供给 <code>for...of</code> 消费</li>
+</ol>
+<figure class="highlight ts"><figcaption><span>模拟 Iterator</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> it = makeIterator([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>])</span><br><span class="line">it.next() <span class="comment">// &#123;value: &#x27;a&#x27;, done: false&#125;</span></span><br><span class="line">it.next() <span class="comment">// &#123;value: &#x27;b&#x27;, done: false&#125;</span></span><br><span class="line">it.next() <span class="comment">// &#123;value: undefined, done: true&#125;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeIterator</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> nextIndex = <span class="number">0</span></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> nextIndex &lt; array.length ?</span><br><span class="line">        <span class="comment">// array[nextIndex]</span></span><br><span class="line">        <span class="comment">// nextIndex++</span></span><br><span class="line">        &#123; value: array[nextIndex++], done: <span class="literal">false</span>&#125;</span><br><span class="line">        :</span><br><span class="line">        &#123; value: <span class="literal">undefined</span>, done: <span class="literal">true</span>&#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="默认调用Iterator接口的场合"><a href="#默认调用Iterator接口的场合" class="headerlink" title="默认调用Iterator接口的场合"></a>默认调用Iterator接口的场合</h4><ol>
+<li>解构赋值</li>
+<li>扩展运算符</li>
+<li><code>yield*</code> 后面根的是一个可遍历的结构，它会在调用该结构的遍历器接口；</li>
+<li>其他场合：使用数组作为参数的场合: <code>for...of, Array.from(), Map(), Set(), WeakMap(), WeakSet(), Promise.all(), Promise.race()</code></li>
+</ol>
+<h3 id="ES6迭代器-generator"><a href="#ES6迭代器-generator" class="headerlink" title="ES6迭代器 generator"></a>ES6迭代器 <code>generator</code></h3><ol>
+<li>使用 <code>generator</code> 生成遍历器对象；</li>
+<li>状态机：保存多个内部状态；</li>
+<li>调用方式和前文的 Iterator 一样，不会立即执行，需要反复调用<code>next，直到遇到 </code>return<code> 或者 下一个</code>yield`；</li>
+<li><code>yield</code> 后面的表达式是惰性的，只有next指针指向该语句时才会求值。</li>
+<li><code>yield*</code> 后可跟 <code>generator</code> - <code>generator</code> 嵌套使用</li>
+<li><code>iter.next()</code> 迭代器实例的**<em>next是同步的**</em></li>
+</ol>
+<h4 id="generator-错误捕获"><a href="#generator-错误捕获" class="headerlink" title="generator 错误捕获"></a><code>generator</code> 错误捕获</h4><p>外部执行函数时使用 <code>try catch</code> 捕获</p>
+<h3 id="generator-的异步应用"><a href="#generator-的异步应用" class="headerlink" title="generator 的异步应用"></a><code>generator</code> 的异步应用</h3><h4 id="协程-generator-函数实现"><a href="#协程-generator-函数实现" class="headerlink" title="协程 generator 函数实现"></a>协程 <code>generator</code> 函数实现</h4><blockquote>
+<p>最大的特点是可以交出函数的执行权；但是流程管道却不方便。</p>
+</blockquote>
+<p><code>iter.next(1)</code>  函数 <code>next</code>可传入参数作为上一步的返回结果，前提是 return 的是 yield</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这种写法可以</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> y = <span class="keyword">yield</span> x + <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> y</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 这种不行</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> x + <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> g = gen(<span class="number">1</span>)</span><br><span class="line">g.next() <span class="comment">// &#123;value: 3, done: false&#125;</span></span><br><span class="line"><span class="comment">// 如果上一步value不为undefined，那么只改变value，done的值由当前调用次数决定</span></span><br><span class="line">g.next(<span class="number">2</span>) <span class="comment">// &#123;value: 2, done: true&#125;</span></span><br><span class="line"><span class="comment">// 已经执行完毕后值不变，就是undefined</span></span><br><span class="line">g.next(<span class="number">3</span>) <span class="comment">// &#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Trunk-函数"><a href="#Trunk-函数" class="headerlink" title="Trunk 函数"></a>Trunk 函数</h4><p>自动执行 Generator 函数的一种方法</p>
+<p>参数的求值策略：</p>
+<ol>
+<li>传值策略 - JS</li>
+<li>传名策略 - 编译器</li>
+</ol>
+<h3 id="async-await"><a href="#async-await" class="headerlink" title="async await"></a>async await</h3><ol>
+<li><p><code>forEach</code>可以传入 <code>async</code> 函数实现并发</p>
+</li>
+<li><p><code>async</code> 函数内使用<code>for</code> 循环、或 <code>reduce()</code>实现继发</p>
+</li>
+<li><p><code>map</code> 内传入异步实现不了并发，只能得到一组异步函数</p>
+ <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> testArr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">testArr.map(<span class="keyword">async</span> (item) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> item</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 等于</span></span><br><span class="line"><span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="number">5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>async</code> 函数可以保留运行堆栈: 而普通函数调用异步函数则没有保留运行堆栈。</p>
+</li>
+</ol>
+<h3 id="异步遍历器"><a href="#异步遍历器" class="headerlink" title="异步遍历器"></a>异步遍历器</h3><figure class="highlight ts"><figcaption><span>异步遍历器接口定义</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> AsyncIterable &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.asyncIterator](): AsyncIterator;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> AsyncIterator &#123;</span><br><span class="line">  next(): <span class="built_in">Promise</span>&lt;IteratorResult&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> IteratorResult &#123;</span><br><span class="line">  value: <span class="built_in">any</span>;</span><br><span class="line">  done: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>next()</code>返回的 <code>value</code>属性是一个 <code>Promise</code> 对象，而<code>done</code>还是同步的，在 调用 <code>then()</code> 或 <code>await</code> 后返回真正的值。</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> asyncIterable = creatAsyncIterable([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>])</span><br><span class="line"><span class="keyword">const</span> asyncIterator = asyncIterable[<span class="built_in">Symbol</span>.asyncIterator]()</span><br><span class="line"><span class="comment">// then</span></span><br><span class="line">asyncIterator.next().then(<span class="function"><span class="params">r1</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(r1) <span class="comment">// &#123;value: &#x27;a&#x27;, done: false&#125;</span></span><br><span class="line">  <span class="keyword">return</span> asyncIterator.next()</span><br><span class="line">&#125;).then(<span class="function"><span class="params">r2</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(r2) <span class="comment">// &#123;value: &#x27;b&#x27;, done: false&#125;</span></span><br><span class="line">  <span class="keyword">return</span> asyncIterator.next()</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">r3</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(r3) <span class="comment">// &#123;value: undefined, done: true&#125;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// await</span></span><br><span class="line"><span class="keyword">async</span> funcction f() &#123;</span><br><span class="line">  <span class="keyword">const</span> asyncIterable = creatAsyncIterable([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>])</span><br><span class="line">  <span class="keyword">const</span> asyncIterator = asyncIterable[<span class="built_in">Symbol</span>.asyncIterator]()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> asyncIterator.next()) <span class="comment">// &#123;value: &#x27;a&#x27;, done: false&#125;</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> asyncIterator.next()) <span class="comment">// &#123;value: &#x27;b&#x27;, done: false&#125;</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> asyncIterator.next()) <span class="comment">// &#123;value: undefined, done: true&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 异步遍历器的 next() 是可以连续调用的</span></span><br><span class="line"><span class="comment">// 1. Promise.all() 将所有的 next 方法放在 Promise.all() 里面</span></span><br><span class="line"><span class="keyword">const</span> [&#123;value: v1&#125;, &#123;value: v2&#125;] = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([asyncIterator.next(), asyncIterator.next()])</span><br><span class="line"><span class="built_in">console</span>.log(v1, v2)</span><br><span class="line"><span class="comment">// 2. 一次性调用所有的 next 方法，然后 await 最后一步操作</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">runner</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> writer = openfile(<span class="string">&#x27;somefile.txt&#x27;</span>)</span><br><span class="line">  writer.next(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">  writer.next(<span class="string">&#x27;world&#x27;</span>)</span><br><span class="line">  <span class="keyword">await</span> writer.return()</span><br><span class="line">&#125;</span><br><span class="line">runner()</span><br></pre></td></tr></table></figure>
+
+<h4 id="for-await-of-遍历异步-Iterator-接口"><a href="#for-await-of-遍历异步-Iterator-接口" class="headerlink" title="for await..of 遍历异步 Iterator 接口"></a><code>for await..of</code> 遍历异步 Iterator 接口</h4><blockquote>
+<p>也可以用于同步遍历器</p>
+</blockquote>
+<p><code>for..of</code> 循环自动调用这个对象的异步遍历器 next，会得到一个 Promise 对象， <code>await</code> 处理这个 Promise 对象的 <code>resolve</code>值，<code>try catch</code>来处理这个 Promise 对象的 <code>reject</code>值</p>
+<h4 id="异步-Generator-函数"><a href="#异步-Generator-函数" class="headerlink" title="异步 Generator 函数"></a>异步 <code>Generator</code> 函数</h4><blockquote>
+<p>返回一个异步遍历器对象 <code>AsyncIterator</code>，跟在 <code>yield</code>命令后面的应该是一个 Promise 对象， 如果不是也会被自动包装成一个Promise 对象</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">&#x27;hello&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> genObj = gen()</span><br><span class="line">genObj.next().then(<span class="function"><span class="params">x</span> =&gt;</span> <span class="built_in">console</span>.log(x))</span><br><span class="line"><span class="comment">// 如果抛错会被Promise.catch捕获</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -1124,7 +1018,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-18 11:12:40" itemprop="dateModified" datetime="2022-01-18T11:12:40+08:00">2022-01-18</time>
+                <time title="修改时间：2022-02-25 16:36:11" itemprop="dateModified" datetime="2022-02-25T16:36:11+08:00">2022-02-25</time>
               </span>
 
           
@@ -1580,10 +1474,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-01-04 10:47:05 / 修改时间：10:47:22" itemprop="dateCreated datePublished" datetime="2022-01-04T10:47:05+08:00">2022-01-04</time>
+              <time title="创建时间：2022-01-04 10:47:05" itemprop="dateCreated datePublished" datetime="2022-01-04T10:47:05+08:00">2022-01-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-14 10:25:37" itemprop="dateModified" datetime="2022-02-14T10:25:37+08:00">2022-02-14</time>
+              </span>
 
           
 
@@ -1597,7 +1497,39 @@
 
       
           <p>人类一败涂地</p>
+<!-- 孔乙己新编 -->
+<!-- 
+> 人间尽是迟到和不存在的正义，我在不间断的愤怒中只剩下了绝望。
 
+## 从语言的异化谈起
+
+去年百度词条终于放出了一个自动触发违禁词 `傻逼`，我以为这是终于开始实事求是了。结果呢，今年反而尽是些「口死比尔」、引进电影诸如搏击俱乐部等结局被篡改的事情。什么问题阻碍了媒体或者社交文体平台上的不雅词汇的异变？又是什么现象导致了某个敏感词回归本义？
+
+### 何时面对分级制度
+### 文娱作品失掉了自信力了吗？去art留教
+
+## 社会广泛的自欺文化
+
+> 不要说话
+
+### 自欺引发的吃人现象
+
+### 面对舆论的应对方式
+
+> 只会捂嘴
+
+### 平台上的主动屏蔽
+
+## 现代社会的封建区域
+
+## 自主异化语言功能应对他者异化
+
+### 习题
+
+#### 词汇替换
+
+```js
+``` -->
       
     </div>
 
@@ -1630,7 +1562,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/01/04/VScode%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">VScode常用快捷键</a>
+            <a href="/2022/01/04/VScode%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">Learn you a Haskell for Great Good!</a>
         </h2>
 
         <div class="post-meta">
@@ -1642,6 +1574,13 @@
 
               <time title="创建时间：2022-01-04 10:27:00" itemprop="dateCreated datePublished" datetime="2022-01-04T10:27:00+08:00">2022-01-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-24 11:24:29" itemprop="dateModified" datetime="2022-02-24T11:24:29+08:00">2022-02-24</time>
+              </span>
 
           
 
@@ -1654,7 +1593,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h2 id="What-is-Haskell"><a href="#What-is-Haskell" class="headerlink" title="What is Haskell?"></a>What is Haskell?</h2><p>When you are starting out in Haskell, you need keep these items in your mind:</p>
+<ol>
+<li>Purely function programming language: <code>f(x) =&gt; g</code>, if it is called twice with the same parameters <strong><em>x</em></strong>, it is guaranteed to return the same result <strong><em>g</em></strong></li>
+<li>Lazy</li>
+<li>Statically Typed: It means <code>type inference</code>, you don’t explicitly state their type.</li>
+</ol>
+<h2 id="Run-ghc’s-interactive-mode-to-Get-a-very-basic-feel-for-Haskell"><a href="#Run-ghc’s-interactive-mode-to-Get-a-very-basic-feel-for-Haskell" class="headerlink" title="Run ghc’s interactive mode to Get a very basic feel for Haskell"></a>Run ghc’s interactive mode to Get a very basic feel for Haskell</h2><h3 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a><code>Operators</code></h3><ol>
+<li><p>simple arithmetic</p>
+<blockquote>
+<p><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>; if we want to have a negative number, it’s always best to surround it with parentheses. like <code>5 * (- 3)</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ ghci</span><br><span class="line">GHCi, version 6.8.2: http://www.haskell.org/ghc/  :? <span class="keyword">for</span> <span class="built_in">help</span>  </span><br><span class="line">Loading package base ... linking ... <span class="keyword">done</span>. </span><br><span class="line">prelude&gt;</span><br><span class="line"><span class="comment"># +-*/</span></span><br><span class="line">$ ghci&gt; 2 + 15</span><br><span class="line">17</span><br><span class="line">$ ghci&gt; 49 * 100</span><br><span class="line">4900</span><br><span class="line">$ ghci&gt; 5 / 2</span><br><span class="line">2.5</span><br><span class="line">$ ghci&gt; 50 * 100 - 4999</span><br><span class="line">1</span><br><span class="line"><span class="comment"># use parentheses to change it</span></span><br><span class="line">$ ghci&gt; 50 * (100 - 4999)</span><br><span class="line">-244950</span><br><span class="line">$ ghci&gt; 5 * - 3 <span class="comment"># ❌</span></span><br><span class="line">$ ghci&gt; 5 * (- 3) <span class="comment"># ✅</span></span><br><span class="line">-15</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Boolean algebra: True, False, <code>&amp;&amp;</code>, <code>||</code>, <code>not</code></p>
+<blockquote>
+<p>equality: <code>==</code>, <code>/=</code>. what about doing <code>5 + &quot;llama&quot;</code> or <code>5 == True</code> ? we will get a big error message! Don’t do that!</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ ghci&gt; True &amp;&amp; False</span><br><span class="line">False</span><br><span class="line">$ ghci&gt; True &amp;&amp; True</span><br><span class="line">True</span><br><span class="line">$ ghci&gt; False || True</span><br><span class="line">True</span><br><span class="line">$ ghci&gt; not False</span><br><span class="line">True</span><br><span class="line">$ ghci&gt; not (True &amp;&amp; True)</span><br><span class="line">False</span><br><span class="line">$ ghci&gt; 5 == 5</span><br><span class="line">True</span><br><span class="line">$ ghci&gt; 1 == 0</span><br><span class="line">False</span><br><span class="line">$ ghci&gt; 5 /= 5</span><br><span class="line">False</span><br><span class="line">$ ghci&gt; 5 /= 4</span><br><span class="line">True</span><br><span class="line"><span class="comment"># but we can do 5 + 4.0</span></span><br><span class="line">$ ghci&gt; 5 + 4.0 <span class="comment"># 5 can act like an integer or a floating-point number. </span></span><br><span class="line">9.0</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="function-prefix-infix"><a href="#function-prefix-infix" class="headerlink" title="function: prefix, infix"></a><code>function: prefix, infix</code></h3><h4 id="prefix-function"><a href="#prefix-function" class="headerlink" title="prefix function"></a><code>prefix function</code></h4><p><code>prefix function</code> like <code>succ function</code> takes anything that has a defined successor and return that successor. it means it can increase the parameter(like numbers).<br>also, The functions <code>min</code> and <code>max</code> take two things that can be put in an order(like numbers).</p>
+<figure class="highlight bash"><figcaption><span>succ, min, max</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ghci&gt; succ 8</span><br><span class="line">9</span><br><span class="line"><span class="comment"># min returns the one that&#x27;s lesser</span></span><br><span class="line">ghci&gt; min 9 10</span><br><span class="line">9</span><br><span class="line">ghci&gt; min 3.4 3.2</span><br><span class="line">3.2</span><br><span class="line"><span class="comment"># max return the one that&#x27;s greater</span></span><br><span class="line">ghci&gt; max 100 101</span><br><span class="line">101</span><br><span class="line"><span class="comment"># Function applications have the highest precedence, as reflected by the fact that when mixed with other operators</span></span><br><span class="line"><span class="comment"># What that means for us is that these two statements are equivalent.</span></span><br><span class="line">ghci&gt; succ 9 + max 5 4 + 1</span><br><span class="line">16</span><br><span class="line">ghci&gt; (succ 9) + (max 5 4) + 1</span><br><span class="line">16</span><br><span class="line"><span class="comment">#  if we wanted to get the successor of the product of numbers 9 and 10, we couldn&#x27;t write succ 9 * 10</span></span><br><span class="line">ghci&gt; succ 9 * 10</span><br><span class="line">100</span><br><span class="line"><span class="comment"># It is equivalent to</span></span><br><span class="line">ghci&gt; (succ 9) * 10</span><br><span class="line">100</span><br><span class="line"><span class="comment"># we have to write this statement to get 91</span></span><br><span class="line">ghci&gt; succ (9 * 10)</span><br><span class="line">91</span><br></pre></td></tr></table></figure>
+
+<h4 id="infix-function"><a href="#infix-function" class="headerlink" title="infix function"></a><code>infix function</code></h4><blockquote>
+<p>backticks: <strong>`</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># division</span></span><br><span class="line"><span class="comment"># there maybe some confusion as to which number is doing the division and which one is being divided.</span></span><br><span class="line">ghci&gt; div 92 10</span><br><span class="line">9</span><br><span class="line"><span class="comment"># we can call it as an infix function by surrounding it with backticks.</span></span><br><span class="line"><span class="comment"># it&#x27;s much clearer</span></span><br><span class="line">ghci&gt; 92 `div` 10</span><br><span class="line">9</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1892,7 +1858,7 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
