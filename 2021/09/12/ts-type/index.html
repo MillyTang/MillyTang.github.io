@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-  
-  <title>TypeScript 类型体操练习 | Comfortably Numb</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"github.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
   <meta name="description" content="挑战类型体操答案合集，一部分是自己做的，一部分是自己抄的  热身运动12345&#x2F;&#x2F; 期望是一个 string 类型 👉 so eazy&#x2F;&#x2F; any -&gt; stringtype HelloWorld &#x3D; string&#x2F;&#x2F; 你需要使得如下这行不会抛出异常type test &#x3D; Expect&lt;Equal&lt;HelloWorld, string&gt;&gt;  部分前置知识: key">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript 类型体操练习">
@@ -15,79 +30,226 @@
 <meta property="og:description" content="挑战类型体操答案合集，一部分是自己做的，一部分是自己抄的  热身运动12345&#x2F;&#x2F; 期望是一个 string 类型 👉 so eazy&#x2F;&#x2F; any -&gt; stringtype HelloWorld &#x3D; string&#x2F;&#x2F; 你需要使得如下这行不会抛出异常type test &#x3D; Expect&lt;Equal&lt;HelloWorld, string&gt;&gt;  部分前置知识: key">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-12T19:00:21.000Z">
-<meta property="article:modified_time" content="2022-03-20T09:49:18.137Z">
+<meta property="article:modified_time" content="2022-03-20T10:03:51.433Z">
 <meta property="article:author" content="主体-客体联合创作">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Comfortably Numb" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.2.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Comfortably Numb</a>
-      </h1>
-      
+<link rel="canonical" href="https://github.com/MillyTang/MillyTang.github.io/2021/09/12/ts-type/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>TypeScript 类型体操练习 | Comfortably Numb</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Comfortably Numb</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">反方向的钟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/MillyTang/MillyTang.github.io"></form>
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%83%AD%E8%BA%AB%E8%BF%90%E5%8A%A8"><span class="nav-number">1.</span> <span class="nav-text">热身运动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86-keyof-typeof-extends-%E7%AD%89%EF%BC%8C%E5%85%B7%E4%BD%93%E8%AF%B7%E7%A7%BB%E6%AD%A5%E5%88%B0%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E6%9F%A5%E9%98%85%E8%AF%A6%E6%83%85"><span class="nav-number">2.</span> <span class="nav-text">部分前置知识: keyof, typeof, extends 等，具体请移步到官方文档查阅详情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-Pick-lt-T-Keys-gt"><span class="nav-number">3.</span> <span class="nav-text">实现 Pick&lt;T, Keys&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Readonly-lt-T-gt"><span class="nav-number">4.</span> <span class="nav-text">Readonly&lt;T&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DeepReadonly-lt-T-gt-%F0%9F%8C%9F"><span class="nav-number">5.</span> <span class="nav-text">DeepReadonly&lt;T&gt; 🌟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReadonlyAndPick-lt-T-Keys-gt-%F0%9F%8C%9F"><span class="nav-number">6.</span> <span class="nav-text">ReadonlyAndPick&lt;T, Keys&gt; 🌟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Omit-lt-T-Keys-gt"><span class="nav-number">7.</span> <span class="nav-text">Omit&lt;T, Keys&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exclude-lt-T-U-gt"><span class="nav-number">8.</span> <span class="nav-text">Exclude&lt;T, U&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReturnType-lt-T-gt-%E6%8F%90%E5%8F%96%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B"><span class="nav-number">9.</span> <span class="nav-text">ReturnType&lt;T&gt; 提取函数的返回类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parameters-lt-T-gt-%E6%8F%90%E5%8F%96%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="nav-number">10.</span> <span class="nav-text">Parameters&lt;T&gt; 提取函数的参数类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-lt-T-gt-of-Array-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B-%E4%BD%BF%E5%BE%97%E5%8F%AF%E4%BB%A5%E8%BF%94%E5%9B%9E%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AC%AC%E4%B8%80%E9%A1%B9"><span class="nav-number">11.</span> <span class="nav-text">First&lt;T&gt; of Array 实现一个泛型类型, 使得可以返回数组类型的第一项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Length-lt-T-gt-of-Tuple"><span class="nav-number">12.</span> <span class="nav-text">Length&lt;T&gt; of Tuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Last-lt-T-gt-of-Array-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B-%E4%BD%BF%E5%BE%97%E5%8F%AF%E4%BB%A5%E8%BF%94%E5%9B%9E%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E9%A1%B9"><span class="nav-number">13.</span> <span class="nav-text">Last&lt;T&gt; of Array 实现一个泛型类型, 使得可以返回数组类型的最后一项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Concat-lt-T-P-gt-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAArray-concat-%E6%96%B9%E6%B3%95%E5%8A%9F%E8%83%BD%E7%9B%B8%E5%90%8C%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">14.</span> <span class="nav-text">Concat&lt;T, P&gt;: 实现一个Array.concat 方法功能相同的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Push-lt-T-P-gt-Array-push-%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="nav-number">15.</span> <span class="nav-text">Push&lt;T, P&gt;: Array.push 类型方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unshift-lt-T-P-gt-Array-unshift-%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="nav-number">16.</span> <span class="nav-text">Unshift&lt;T, P&gt;: Array.unshift 类型方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pop-lt-T-gt-%F0%9F%8C%9F"><span class="nav-number">17.</span> <span class="nav-text">Pop&lt;T&gt; 🌟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shift-lt-T-gt-%F0%9F%8C%9F"><span class="nav-number">18.</span> <span class="nav-text">Shift&lt;T&gt; 🌟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise-all-%F0%9F%8C%9F%F0%9F%8C%9F"><span class="nav-number">19.</span> <span class="nav-text">Promise.all 🌟🌟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#If-lt-truthy-T-F-gt-%F0%9F%8C%9F%F0%9F%8C%9F"><span class="nav-number">20.</span> <span class="nav-text">If&lt;truthy, T, F&gt; 🌟🌟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E6%92%AD%EF%BC%9Aconditional-type-amp-distributive-conditional-types"><span class="nav-number">21.</span> <span class="nav-text">插播：conditional type &amp; distributive conditional types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TupleToUnion-lt-T-gt-%E5%85%83%E7%BB%84%E8%BD%AC%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="nav-number">22.</span> <span class="nav-text">TupleToUnion&lt;T&gt; 元组转联合类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TupleToObject-lt-T-gt-%E5%85%83%E7%BB%84%E8%BD%AC%E5%AF%B9%E8%B1%A1"><span class="nav-number">23.</span> <span class="nav-text">TupleToObject&lt;T&gt; 元组转对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IsNever-lt-T-gt-%F0%9F%8C%9F"><span class="nav-number">24.</span> <span class="nav-text">IsNever&lt;T&gt; 🌟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flatten-lt-T-gt"><span class="nav-number">25.</span> <span class="nav-text">Flatten&lt;T&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TroubleShooting"><span class="nav-number">26.</span> <span class="nav-text">TroubleShooting</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">主体-客体联合创作</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
       </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-ts-type" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/09/12/ts-type/" class="article-date">
-  <time datetime="2021-09-12T19:00:21.000Z" itemprop="datePublished">2021-09-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      TypeScript 类型体操练习
-    </h1>
-  
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
 
-      </header>
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
     
-    <div class="article-entry" itemprop="articleBody">
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
       
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://github.com/MillyTang/MillyTang.github.io/2021/09/12/ts-type/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="主体-客体联合创作">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Comfortably Numb">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TypeScript 类型体操练习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-12 19:00:21" itemprop="dateCreated datePublished" datetime="2021-09-12T19:00:21+00:00">2021-09-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-03-20 10:03:51" itemprop="dateModified" datetime="2022-03-20T10:03:51+00:00">2022-03-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
         <blockquote>
 <p>挑战类型体操答案合集，一部分是自己做的，一部分是自己抄的</p>
 </blockquote>
@@ -159,144 +321,116 @@
 <li>naked type: The type parameter is present without being wrapped in another type, (ie, an array, or a tuple, or a function, or a promise or any other generic type)</li>
 </ol>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/MillyTang/MillyTang.github.io/2021/09/12/ts-type/" data-id="cl0z3kshg000sc1oqcdr01s2b" class="article-share-link">Share</a>
-      
-      
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/12/ts-in-vue3/" rel="prev" title="ts-in-vue3">
+                  <i class="fa fa-chevron-left"></i> ts-in-vue3
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/04/review-sth-about-js/" rel="next" title="复习前端基础知识">
+                  复习前端基础知识 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2021/11/04/review-sth-about-js/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          复习前端基础知识
-        
-      </div>
-    </a>
+  </article>
   
   
-    <a href="/2021/09/12/ts-in-vue3/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ts-in-vue3</div>
-    </a>
   
-</nav>
 
-  
-</article>
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" rel="tag">English practice, Diary, Imitation(Diary of a wimpy kid)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Francais/" rel="tag">Français</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Haskell-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="tag">Haskell, 函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-17-Router-16/" rel="tag">React@17, Router@16</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjs-react-async-generator/" rel="tag">Rxjs, react, async generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/category-theory-for-programmers/" rel="tag">category-theory-for-programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-shell-tools/" rel="tag">docker, shell, tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-ssh/" rel="tag">git,ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-ts-react-vue3/" rel="tag">js, ts, react, vue3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell-bash/" rel="tag">shell,bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeScript-javaScript-%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" rel="tag">typeScript, javaScript, 编程与类型系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" rel="tag">vim, 信号, 终端多路复用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite-vue3-ts/" rel="tag">vite, vue3, ts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite-plugin-vue-cjs-es6/" rel="tag">vite-plugin-vue, cjs, es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%B1%BB%E4%B8%80%E8%B4%A5%E6%B6%82%E5%9C%B0/" rel="tag">人类一败涂地</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">安全, 密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D-%E6%95%85%E4%BA%8B%E6%96%B0%E7%BC%96/" rel="tag">西西弗神话,故事新编</a></li></ul>
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
     </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">主体-客体联合创作</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" style="font-size: 10px;">English practice, Diary, Imitation(Diary of a wimpy kid)</a> <a href="/tags/Francais/" style="font-size: 10px;">Français</a> <a href="/tags/Haskell-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">Haskell, 函数式编程</a> <a href="/tags/React-17-Router-16/" style="font-size: 10px;">React@17, Router@16</a> <a href="/tags/Rxjs-react-async-generator/" style="font-size: 10px;">Rxjs, react, async generator</a> <a href="/tags/category-theory-for-programmers/" style="font-size: 10px;">category-theory-for-programmers</a> <a href="/tags/docker-shell-tools/" style="font-size: 10px;">docker, shell, tools</a> <a href="/tags/git-ssh/" style="font-size: 10px;">git,ssh</a> <a href="/tags/js-ts-react-vue3/" style="font-size: 10px;">js, ts, react, vue3</a> <a href="/tags/shell-bash/" style="font-size: 10px;">shell,bash</a> <a href="/tags/typeScript-javaScript-%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" style="font-size: 20px;">typeScript, javaScript, 编程与类型系统</a> <a href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" style="font-size: 10px;">vim, 信号, 终端多路复用</a> <a href="/tags/vite-vue3-ts/" style="font-size: 10px;">vite, vue3, ts</a> <a href="/tags/vite-plugin-vue-cjs-es6/" style="font-size: 10px;">vite-plugin-vue, cjs, es6</a> <a href="/tags/%E4%BA%BA%E7%B1%BB%E4%B8%80%E8%B4%A5%E6%B6%82%E5%9C%B0/" style="font-size: 10px;">人类一败涂地</a> <a href="/tags/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 10px;">安全, 密码学</a> <a href="/tags/%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D-%E6%95%85%E4%BA%8B%E6%96%B0%E7%BC%96/" style="font-size: 10px;">西西弗神话,故事新编</a>
     </div>
-  </div>
+  </footer>
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li></ul>
-    </div>
-  </div>
-
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/03/20/hello-world/">Hexo &amp; travis bot坑爹的自动部署</a>
-          </li>
-        
-          <li>
-            <a href="/2022/01/25/categorys/">部分范畴论(category-theory-for-programmers) &amp; 高阶类型及其他</a>
-          </li>
-        
-          <li>
-            <a href="/2022/01/11/ilearnFrancais/">Français</a>
-          </li>
-        
-          <li>
-            <a href="/2022/01/11/ilearnAnglais/">编程与类型系统 - 类型部分&amp;补充知识</a>
-          </li>
-        
-          <li>
-            <a href="/2022/01/11/ilearnVue3/">Vue &amp; Mutable</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2022 主体-客体联合创作<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
 
 
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+
+
+
+
 
   
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
+  
 
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
 </body>
 </html>
