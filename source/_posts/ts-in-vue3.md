@@ -213,9 +213,9 @@ const someTypeInSometimes = reactive<typeAfromB>({
 // 字面量类型
 export type typeCfromB = 'GET' | 'POST' | 'DELETE' | 'PUT'
 // 联合类型
-export type typeDfromB = string | number // 实例方法是交集，类型是并集，类型是 string 或者 number, 如果调用实例方法只能取共有方法
+export type typeDfromB = string | number
 // 交叉类型
-export type typeEfromB = string & number // 实例方法是并集，类型是交集，mixins，此处的 typeEfromB 是什么?考虑一种类型既是 `string` 又是`number`的类型 
+export type typeEfromB = string & number // 此处的 typeEfromB 是什么?考虑一种类型既是 `string` 又是`number`的类型 
 export type typeEEfromB = string[] & number // 此处的 typeEfromB 是什么?考虑一种类型既是 `string[]` 又是`number`的类型 
 
 // 组件B.vue: 使用以上定义的类型
@@ -228,7 +228,25 @@ const copyEB = ref<typeEEfromB>()
 const eeb = copyEB?.value.length // 这样能行吗？eeb 的类型是什么，
 ```
 
-### 2. 项目中需要的类型基本上可由：联合类型（|）、交叉类型（&）、 字面量类型、泛型 覆盖，不需要类型体操
+> 把类型当作值的集合，理解 类型中的 union type - 交集 和 intersection type -并集
+
+```ts
+type AA = {aa: 'A'}
+type BB = {bb: 'B'}
+type ABor = AA | BB
+type ABand = AA & BB
+type AAkeys = keyof AA
+type BBkeys = keyof BB
+type ABandKeys = keyof ABand // 'aa' | 'bb'
+type ABorKeys = keyof ABor // never
+
+const aaa: ABand = {
+  aa: 'A',
+  bb: 'B'
+}
+```
+
+### 2. 项目中需要的类型基本上可由：联合类型（|）、交叉类型（&）、 字面量类型、泛型 以及枚举覆盖，不需要类型体操
 
 > 从以上例子中考虑：`联合类型` 和 `交叉类型`的区别? 可以得出交叉类型的应用场景是什么？
 
@@ -322,7 +340,7 @@ const a = ref<Map<tring, string[]>>(new Map())
     }
 
     export interface OrderInfo {
-      channels: 'jd' | 'tmall' | 'pdd' | 'zmazon'
+      channels: 'jd' | 'tmall' | 'pdd' | 'amazon'
       totalAmount: number
       purchasedGoods: GoodsType[]
     }
@@ -359,6 +377,65 @@ const a = ref<Map<tring, string[]>>(new Map())
       console.log(nickName, level, purchasedGoods)
     })
     ```
+
+4. 使用部分联合类型时，考虑用 `Pick` `Omit` 等方法 
+
+```ts
+// 可选
+// Partial<Type>
+interface Todo {
+  title: string
+  dess: string
+  children: string[]
+}
+type PartialTodo = Todo = Partial<Todo>
+// Equal to
+type PartialTodo = {
+  title?: string
+  desc?: string
+  children?: string[]
+}
+// 必选
+// Required<Type>
+type RequiredPartialTodo = Required<PartialTodo>
+// Equal to Todo
+
+// 只读
+// Readonly<Type>
+function Freeze<T>(obj: T): Readonly<T>
+
+// Pick<Type, Keys> 只使用部分属性 - Keys = Type里的字符串或者字符串集合（并集）：'name', 'name' | 'title' | 'desc' 这2种形式
+// Omit<Type, Keys> 忽略部分属性 - Keys = Type里的字符串或者字符串集合（并集）：'name', 'name' | 'title' | 'desc' 与 Pick<Type, Keys> 正好相反
+type partProps = 'title' | 'desc'
+type TodoPreview = Pick<Todo, partProps>
+const todoPreview: TodoPreview = {
+  titel: 'xxx',
+  desc: '555'
+}
+
+// Exclude<Type, ExcludeUnion> 排除联合类型内的某个或者某些类型
+type T0 = Exclude<'a' | 'b' | 'c', 'a'> // type T0 = 'a' | 'b'
+type T1 = Exclude<'a' | 'b' | 'c', 'a' | 'c'> // type T0 = 'b'
+
+// Extract<Type, Union> 提取 Type 和 Union 的交集
+type T2 = Extract<'a' | 'b' | 'c', 'a' | 'f'> // type T2 = 'a'
+
+// 与函数相关的实用方法
+// Parameters<Type> 提取函数参数类型
+// ConstructorParameters<Type> 提取构造函数参数类型：ErrorConstructor, FunctionConstructor, RegExpConstructor 等
+// ReturenType<Type> 提取函数返回类型
+
+
+// 不常用到的实用方法
+// ThisParameterType<Type> 提取`有this`的函数参数类型，或者提不到就是 unknown
+// ThisType<Type> 不返回转换类型，只作为一个上下文相关的 this 类型 的标记，必须`tsconfig.ts`开启 `noImplicitThis`
+
+// 内置字符串操作类型
+// Uppercase<StringType> 全部大写
+// Lowercase<StringType> 全部小写
+// Capitalize<StringType> 首字母大写
+// Uncapitalize<StringType> 非首字母大写
+```
 
 
 ## 部分答案，仅供参考，如有错误，概不负责，请自行甄别

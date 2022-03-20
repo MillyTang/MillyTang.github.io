@@ -1,5 +1,5 @@
 ---
-title: 命令行环境
+title: 命令行环境&常用VScode快捷键
 date: 2021-01-10 15:41:14
 tags: vim, 信号, 终端多路复用
 ---
@@ -142,3 +142,44 @@ tags: vim, 信号, 终端多路复用
 ```
 
 ## 练习-见[missing-semester 文件夹](https://github.com/MillyTang/missing-semester)
+
+## 常用的VScode快捷键
+
+> 基于 macOS，有些是自定义后的快捷键，请 `command + k; command s` 查看自己的键盘快捷方式
+
+- `command + k; command s` 查看键盘快捷方式
+- `command + p` 搜索文件
+- `command + shift + p` 打开命令面板
+- `command + t` 全局搜索文件内容
+- `command + w` 关闭当前文件
+- `command + shift + n` 新建窗口
+- `command + shift + v` 预览 markdown 文件
+- `command + shift + k` 删除光标所在的一行
+- `command + /` 切换单行注释
+- `command + shift + /` 切换块注释
+- `command + j` 切换终端
+- **ctrl + `** 切换终端
+- `command + b` 切换侧边栏
+- `command + ,` 打开设置
+- `command + f2 + fn` 选择当前文件内所有和光标所在位置相同的单词 
+- `command + 1 or 2 or 3` 编辑区分区
+- `command + l` 选择当前行
+- `command + [ or ]` 缩进
+- `command + k; command + o`  全部折叠
+- `command + k; command + l`  切换折叠
+- `command + option + [ or ]` 折叠/展开代码块
+- `command + k; command + [ or ]` 递归折叠/展开代码块
+- `command + shift + l` 先执行一次 选择，再执行此命令可选择到所有相同文本或选项
+- `command + option + shift + 上下或左右箭头` 选择多行代码
+- `option + shift + 拖动光标` 选择多行代码
+- `option + shift + 上下箭头` 向上或向下复制行
+- `option + shift + 左右箭头` 向左或向右选择部分代码
+- `option + 上下箭头` 向上或向下移动行
+- `option + 上下箭头` 向上或向下移动行
+- `f3 + fn` 在结果中导航
+- `command + d` 选择多个结果
+- `command + g` 查找下一个
+- `command + shift + g` 查找上一个
+- `option + enter` 选择所有结果
+- `f8 + fn` 导航到错误或警告处
+

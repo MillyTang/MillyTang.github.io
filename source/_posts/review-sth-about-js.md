@@ -4,38 +4,9 @@ date: 2021-11-04 16:10:13
 tags: js, ts, react, vue3
 ---
 
-## ts
-
-1. `class` & `enum` 横跨 类型空间 & 值空间
-2. 泛型 可以约束 参数和返回值，而泛型可以用 extends 来约束
-3. keyof 在类型空间使用（基本），返回的是集合（并集）
-4. -? 操作符筛出 undefined 
-
-    ```ts
-    interface Shoes {
-      sizes: number[]
-      types: string
-      colors: string[]
-    }
-    type ShoesKey = keyof Shoes
-    ShoesKey = 'sizes' // 👌
-    ShoesKey = 'types' // 👌
-    ShoesKey = 'cost' // 🙅‍♂️
-    // T = sizes | types | cost, 这里泛型T的类型已经被约束了
-    function buyAShoe<T extends ShoesKey>(a: T): T {
-      return a
-    }
-    ```
-5. 函数重载解决以下情况
-
-```ts
-// 多参数函数，函数返回值与单个参数类型相关，参数之间可能有某种关联关系
-function 
-```
-
 ## es6 ~ 10
-## vue3
-## react
+<!-- ## vue3 -->
+<!-- ## react -->
 ## node
 ## 几种通用模式
 1. 单例模式
@@ -59,3 +30,19 @@ function
 }
 // 2. 严格模式下禁止块级函数声明
 ```
+
+## 其他示例代码
+
+1. reTryRequest: 接口轮询，一分钟内轮询直到成功，超时取消
+2. generator or async/await 实现排序动画
+3. vue3 composed 组件示例 + vue3 实现 formWrapper 类型标注
+4. 设计一个 `generator` 状态机，和一个栈保留10个不同时间发出的异步任务，取消栈内除了栈顶的所有异步任务
+
+## debug
+
+
+## 如何上报准确错误信息
+
+### 不同类型的错误捕获
+### 错误上报方式
+### 错误处理
