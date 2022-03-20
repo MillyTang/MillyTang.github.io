@@ -1,23 +1,437 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
+  
+  <title>Comfortably Numb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Comfortably Numb">
+<meta property="og:url" content="https://github.com/MillyTang/MillyTang.github.io/page/3/index.html">
+<meta property="og:site_name" content="Comfortably Numb">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="主体-客体联合创作">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Comfortably Numb" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Comfortably Numb</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/MillyTang/MillyTang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-shell-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/04/shell-notes/" class="article-date">
+  <time datetime="2020-11-04T13:11:30.000Z" itemprop="datePublished">2020-11-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/04/shell-notes/">Shell Notes</a>
+    </h1>
+  
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一章：概览"><a href="#第一章：概览" class="headerlink" title="第一章：概览"></a>第一章：概览</h2><p><code>shell:</code> 计算机提供给用户的一种文字接口，核心功能 - 允许用户执行程序，输入并获取某种半结构化的输出；<br>shell是一个编程环境，所以它具备变量、条件、循环和函数。<br>当你在 shell 中执行命令时，实际上是在执行一段 shell 可以解释执行的简短代码。<br>如果要求 shell 执行某个指令，但是该指令并不是 shell 所了解的编程关键字，那么它会去查询环境变量 $PATH，搜索由<code>:</code>分隔的一系列目录，基于名字搜索该执行程序</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><h4 id="shell的界面（bash-zsh）"><a href="#shell的界面（bash-zsh）" class="headerlink" title="shell的界面（bash@zsh）"></a>shell的界面（bash@zsh）</h4><p><code>#</code> 开头是注释，提示信息，<code>hostname</code>是主机名，<code>~</code>指当前工作目录是<code>home</code>，<code>$</code>表示当前用户不是<code>root</code>用户，<code>Last login...</code>打开一个新的window就会出现该提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Last login: Tue Nov  3 17:59:22 on ttys007</span><br><span class="line"><span class="comment"># hostname @ MacBook-Air in ~ [13:34:52]</span></span><br><span class="line">$</span><br></pre></td></tr></table></figure>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+<h4 id="基础命令-使用-man-command-来了解这些命令的详细信息"><a href="#基础命令-使用-man-command-来了解这些命令的详细信息" class="headerlink" title="基础命令: 使用 man [command]来了解这些命令的详细信息"></a>基础命令: 使用 <code>man [command]</code>来了解这些命令的详细信息</h4><blockquote>
+<p>内置命令&amp;变量: date, echo, which echo, $PATH, ls, cd, pwd, /(root path), ./(current path,relative), ../(parent path, relative), mv(用于重命名或移动文件), mkdir(新建文件夹), cp(复制文件)</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment"># -l  use a long listing format</span></span><br><span class="line">$ ls -l /home</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x   3 user  staff   96 12  9  2016 beginning</span><br><span class="line">  _3_           /|\</span><br><span class="line">   |_____________|</span><br><span class="line"><span class="comment"># d -&gt; directory</span></span><br><span class="line"><span class="comment"># 然后接下来的九个字符，每三个字符构成一组</span></span><br><span class="line"><span class="comment"># rwx -&gt; 指(user)文件所有者的权限</span></span><br><span class="line"><span class="comment"># r-x -&gt; 用户(staff)的权限，`-x`代表staff没有执行文件(x)的权限</span></span><br><span class="line"><span class="comment"># r-x -&gt; 其他客人用户的权限</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Last login: Fri Nov  6 18:13:54 on ttys007</span><br><span class="line"><span class="comment"># username @ MacBook-Air in ~ [13:34:52]</span></span><br><span class="line">$ date</span><br><span class="line">2020年11月 7日 星期六 16时09分15秒 CST</span><br><span class="line">$ <span class="built_in">echo</span> hello DaiYing</span><br><span class="line">hello DaiYing</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/Users/hostname/.yarn/bin:/Users/hostname/.config/yarn/global/node_modules/.bin:/Users/hostname/.avn/bin:/Users/hostname/.nvm/versions/node/v8.9.4/bin:/usr/<span class="built_in">local</span>/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/hostname/.rvm/bin</span><br><span class="line">$ <span class="built_in">which</span> <span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span>: shell built-in <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="在程序间建立连接"><a href="#在程序间建立连接" class="headerlink" title="在程序间建立连接"></a>在程序间建立连接</h4><blockquote>
+<p>输入流，输出流，重定向(重定向方向 &lt;, &gt;重定向方向, &gt;&gt;追加内容方向)<br>| (pipes)管道操作符，连接左边的输入到右边的输出<br>sudo(super user do)根用户</p>
+</blockquote>
+<h4 id="练习题：Mac-OSX系统"><a href="#练习题：Mac-OSX系统" class="headerlink" title="练习题：Mac OSX系统"></a>练习题：Mac OSX系统</h4><ul>
+<li>新建tmp/missing/semester文件，按行向semester输入内容</li>
+<li><a href="https://github.com/MillyTang/missing-semester/blob/main/first.sh">练习</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># username @ MacBook-Air in ~ [16:52:44]</span></span><br><span class="line">$ mkdir tmp</span><br><span class="line">$ <span class="built_in">cd</span> tmp/</span><br><span class="line">$ mkdir missing</span><br><span class="line">$ <span class="built_in">cd</span> missing/</span><br><span class="line">$ touch semester</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;#!/bin/sh&#x27;</span> &gt; semester</span><br><span class="line"><span class="comment"># 追加第二行内容</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&#x27;curl --head --silent https://missing.csail.mit.edu&#x27;</span> &gt;&gt; semester</span><br><span class="line">$ vim semester</span><br><span class="line"><span class="comment"># :q退出</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="第二章：-shell工具和脚本"><a href="#第二章：-shell工具和脚本" class="headerlink" title="第二章： shell工具和脚本"></a>第二章： shell工具和脚本</h2><h3 id="字符串区别"><a href="#字符串区别" class="headerlink" title="字符串区别"></a>字符串区别</h3><ul>
+<li><code>&#39;&#39;</code>单引号可以转义</li>
+<li><code>&quot;&quot;</code>双引号不行</li>
+</ul>
+<blockquote>
+<p>shell访问变量: 前缀$+变量名；如：$foo</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">foo=bar</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$foo</span>&quot;</span></span><br><span class="line">bar</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;$foo&#x27;</span></span><br><span class="line"><span class="variable">$foo</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="shell脚本控制流"><a href="#shell脚本控制流" class="headerlink" title="shell脚本控制流"></a>shell脚本控制流</h3><blockquote>
+<p>Here is an example of a func that creates a dir and  cd into it</p>
+</blockquote>
+<ul>
+<li><code>$0</code>-script command</li>
+<li><code>$1</code>~<code>$9</code>- script command的参数</li>
+<li><code>$@</code> script command的所有参数</li>
+<li><code>$#</code>- script command参数个数</li>
+<li><code>$?</code>-上一个script command</li>
+<li><code>$$</code>-当前scrippt command的PID(Process Identification number)</li>
+<li><code>!!</code>-使用<code>sudo !!</code>执行上一个command(包含所有参数)</li>
+<li><code>$_</code>-上一个命令的最后一个参数</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># testShellFunc.sh</span></span><br><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="function"><span class="title">mcd</span></span>() &#123;</span><br><span class="line">  mkdir -p <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">  <span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># bash执行testShellFunc.sh文件</span></span><br><span class="line"><span class="comment"># source 可执行shell文件</span></span><br><span class="line"><span class="built_in">source</span> testShellFunc.sh</span><br><span class="line"><span class="comment"># cd 是在 mcd()内部，针对的是子shell, 不影响外部，所以不能直接执行 ./testShellFunc.sh</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="短路操作符"><a href="#短路操作符" class="headerlink" title="短路操作符"></a>短路操作符</h3><blockquote>
+<p><code>||, &amp;&amp;, ;</code>, 同一行命令可以用<code>;</code>间隔，<code>true</code>的返回码是<code>0</code>,<code>false</code>的返回码是<code>1</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 和js的短路操作符结果相似，这里唯一特别的是「;」，始终能运行短路后面的语句</span></span><br><span class="line"><span class="literal">true</span> ; <span class="built_in">echo</span> <span class="string">&#x27;I can run!&#x27;</span></span><br><span class="line"><span class="comment"># 输出：I can run!</span></span><br><span class="line"><span class="literal">false</span> ; <span class="built_in">echo</span> <span class="string">&#x27;I can run again!&#x27;</span></span><br><span class="line"><span class="comment"># 输出：I can run again!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>linux中： <code>| and ||, &amp; and &amp;&amp;, &amp;&gt; and &gt;</code> 的区别：<br><code>&amp;</code> 表示任务在后台执行，如要在后台运行<br><code>|</code> 表示管道，上一条命令的输出，作为下一条命令参数(输入)<br><code>&gt;</code>符号是指：将正常信息重定向; <code>&amp;&gt;</code>可以将错误信息或者普通信息都重定向输出</p>
+</blockquote>
+<h3 id="命令替换：以变量的形式获取一个命令的输出"><a href="#命令替换：以变量的形式获取一个命令的输出" class="headerlink" title="命令替换：以变量的形式获取一个命令的输出"></a>命令替换：以变量的形式获取一个命令的输出</h3><blockquote>
+<p>执行<code>$(CMD)</code>,<code>CMD</code>的执行结果会替换<code>$(CMD)</code>的位置；<br>冷门应用-进程替换:<code>&lt;(CMD)</code>, 执行结果将会输出到一个临时文件而不是通过<code>STDIN</code>传递<br>特殊的进程标识符： 0标准输入(stdin),1标准输出(stdout),2标准错误(stderr)</p>
+</blockquote>
+<ul>
+<li><code>2&gt;</code>重定向stderr；引申：<code>&amp;&gt;</code>重定向stderr, <code>&gt;&amp;2</code>，重定向<code>到</code>stderr</li>
+<li><code>-ne</code> means <code>not equal to</code>, 查阅<code>bash 条件表达式</code>或<code>man test</code>(查test手册)</li>
+<li>使用<code>shellcheck</code>工具检查shell script错误</li>
+<li>详见<a target="_blank" rel="noopener" href="http://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html">bash 条件表达式</a></li>
+<li><a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/test.1.html">test手册</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># testfunc.bash, 注意后缀是bash,而不是sh,因为`[[`判断符与sh不兼容</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Starting program at <span class="subst">$(date)</span>&quot;</span> <span class="comment"># date会被替换成日期和时间</span></span><br><span class="line"><span class="comment"># `$$`进程ID，`$#`参数个数，$0当前命令</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Running program <span class="variable">$0</span> with <span class="variable">$#</span> arguments with pid $$&quot;</span></span><br><span class="line"><span class="comment"># `$@`所有参数</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">$@</span>; <span class="keyword">do</span></span><br><span class="line">    grep foobar <span class="variable">$file</span> &gt; /dev/null 2&gt; /dev/null</span><br><span class="line">    <span class="comment"># 如果模式没有找到，则grep退出状态为 1</span></span><br><span class="line">    <span class="comment"># 我们将标准输出流和标准错误流重定向到Null，因为我们并不关心这些信息</span></span><br><span class="line">    <span class="keyword">if</span> [[ $? -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;File <span class="variable">$file</span> does not have any foobar, adding one&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;# foobar&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$file</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="comment"># `source testfunc.bash`</span></span><br><span class="line"><span class="comment"># 输出： </span></span><br><span class="line"><span class="comment"># Starting program at 2020年12月20日 星期日 14时52分03秒 CST</span></span><br><span class="line"><span class="comment"># Running program ./testfunc.bash with 0 arguments with pid 10741</span></span><br><span class="line"><span class="comment"># 加点参数执行 `source testfunc.bash test1 test2`, 同时在同级目录下生成了 test1 &amp; test2文件并向文件中输入了 `# foobar`</span></span><br><span class="line">Starting program at 2020年12月20日 星期日 14时54分51秒 CST</span><br><span class="line">Running program ./testfunc.bash with 2 arguments with pid 10741</span><br><span class="line">File test1 does not have any foobar, adding one</span><br><span class="line">File test2 does not have any foobar, adding one</span><br></pre></td></tr></table></figure>
+
+<h3 id="shell的-通配（-globbing）-正则"><a href="#shell的-通配（-globbing）-正则" class="headerlink" title="shell的 通配（ globbing）: {}, 正则"></a>shell的 通配（ globbing）: {}, 正则</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">convert image.&#123;png,jpg&#125;</span><br><span class="line"><span class="comment"># 展开为: </span></span><br><span class="line">convert image.png image.jpg</span><br><span class="line">cp /path/to/project/&#123;foo,bar&#125;.sh /newpath</span><br><span class="line"><span class="comment"># 展开为: </span></span><br><span class="line">cp /path/to/project/foo.sh /path/to/project/bar.sh /newpath</span><br><span class="line">mv *&#123;.py,.sh&#125; folder</span><br><span class="line"><span class="comment"># 会移动所有 *.py 和 *.sh 文件</span></span><br><span class="line"><span class="comment"># 显示foo和bar文件的不同</span></span><br><span class="line">diff &lt;(ls foo) &lt;(ls bar)</span><br></pre></td></tr></table></figure>
+
+<h3 id="shebang"><a href="#shebang" class="headerlink" title="shebang"></a>shebang</h3><blockquote>
+<p><code>#!</code>语法使用脚本来指示解释器如何在<code>unix/linux</code>下执行<br>例如： <code>#!/bin/bash</code>;<code>#!/usr/bin/perl</code>;<code>#!/usr/bin/python</code>;<code>#!/usr/bin/python3</code>;<code>#!/usr/bin/env bash</code><br>如果不指定解释器，通常会默认为<code>#!/bin/sh</code>,不过官方推荐使用<code>#!/bin/bash</code>,<code>sh和bash</code>在某些语法上有些不兼容，如条件判断<code>[[]]</code></p>
+</blockquote>
+<ul>
+<li>使用<code>env</code>来执行非<code>bash</code>脚本，<code>env</code>会利用<code>PATH</code>变量来定位脚本</li>
+<li><a target="_blank" rel="noopener" href="https://bash.cyberciti.biz/guide/Shebang#:~:text=It%20is%20called%20a%20shebang%20or%20a%20%22bang%22,using%20the%20interpreter%20specified%20on%20a%20first%20line.">参考</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/local/bin/python</span></span><br><span class="line"><span class="comment"># 使用python来解析该脚本</span></span><br><span class="line">import sys</span><br><span class="line"><span class="keyword">for</span> arg <span class="keyword">in</span> reversed(sys.argv[1:]):</span><br><span class="line">    <span class="built_in">print</span>(arg)</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看命令"><a href="#查看命令" class="headerlink" title="查看命令"></a>查看命令</h4><ul>
+<li><code>man -h</code>查看命令如何使用</li>
+<li>使用<code>TLDR</code>，一个很好的替代品，<code>npm install -g tldr</code>全局安装</li>
+</ul>
+<h4 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h4><ul>
+<li><code>find</code>工具</li>
+<li><code>fd</code>更快更友好</li>
+<li><code>locate</code>只能通过文件名来定位，且每天都会更新</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找所有名称为src的 文件夹:d</span></span><br><span class="line">find . -name src -<span class="built_in">type</span> d</span><br><span class="line"><span class="comment"># 查找所有文件夹路径中包含test的python 文件:f</span></span><br><span class="line">find . -path <span class="string">&#x27;**/test/**/*.py&#x27;</span> -<span class="built_in">type</span> f</span><br><span class="line"><span class="comment"># 查找前一天修改的所有文件</span></span><br><span class="line">find . -mtime -1</span><br><span class="line"><span class="comment"># 查找所有大小在500k至10M的tar.gz文件</span></span><br><span class="line">find . -size +500k -size -10M -name <span class="string">&#x27;*.tar.gz&#x27;</span></span><br><span class="line"><span class="comment"># Delete all files with .tmp extension</span></span><br><span class="line">find . -name <span class="string">&#x27;*.tmp&#x27;</span> -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line"><span class="comment"># Find all PNG files and convert them to JPG</span></span><br><span class="line">find . -name <span class="string">&#x27;*.png&#x27;</span> -<span class="built_in">exec</span> convert &#123;&#125; &#123;&#125;.jpg \;</span><br></pre></td></tr></table></figure>
+
+<h4 id="查找代码"><a href="#查找代码" class="headerlink" title="查找代码"></a>查找代码</h4><ul>
+<li><code>grep</code>对输入文本进行匹配的通用工具, <code>ack</code>, <code>ag</code>等</li>
+<li><code>rg</code>，ripgrep速度快，符合直觉</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找所有使用了 requests 库的文件</span></span><br><span class="line">rg -t py <span class="string">&#x27;import requests&#x27;</span></span><br><span class="line"><span class="comment"># 查找所有没有写 shebang 的文件（包含隐藏文件）</span></span><br><span class="line">rg -u --files-without-match <span class="string">&quot;^#!&quot;</span></span><br><span class="line"><span class="comment"># 查找所有的foo字符串，并打印其之后的5行</span></span><br><span class="line">rg foo -A 5</span><br><span class="line"><span class="comment"># 打印匹配的统计信息（匹配的行和文件的数量）</span></span><br><span class="line">rg --stats PATTERN</span><br></pre></td></tr></table></figure>
+
+<h4 id="查找shell命令"><a href="#查找shell命令" class="headerlink" title="查找shell命令"></a>查找shell命令</h4><ul>
+<li><code>history</code>访问shell中输入的历史命令, <code>history | grep find</code> 会打印包含find子串的命令</li>
+<li><code>Ctrl+R</code>命令历史记录进行回溯搜索，可以配合<code>fzf</code>使用，<code>fzf</code> 是一个通用对模糊查找工具</li>
+<li>输入命令时，如果您在命令的开头加上一个空格，它就不会被加进shell记录中</li>
+<li>bash_history或 .zhistory 来手动地从历史记录中移除</li>
+</ul>
+<h4 id="文件内导航"><a href="#文件内导航" class="headerlink" title="文件内导航"></a>文件内导航</h4><ul>
+<li><code>fasd</code>可以查找最常用和/或最近使用的文件和目录。基于 <code>frecency</code> 对文件和文件排序，也就是说它会同时针对频率（frequency ）和时效（ recency）进行排序</li>
+<li>概览目录结构： <code>tree</code>, <code>broot</code></li>
+<li>文件管理器： <code>nnn</code>, <code>ranger</code></li>
+</ul>
+<h4 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h4><ul>
+<li>第一题：<code>ls -AGulht</code></li>
+<li>第二题：<a href="https://github.com/MillyTang/missing-semester/tree/main/second/macro.bash">macro.bash</a>; <a href="https://github.com/MillyTang/missing-semester/tree/main/second/polo.bash">polo.bash</a></li>
+<li>第三题：<a href="https://github.com/MillyTang/missing-semester/tree/main/second/check_run.bash">check_run</a></li>
+<li>第四题：<code>find . -name &#39;*.html&#39; | xargs -0 zip -r output.zip</code> 注意文件名不要相同，否则zip会抛错停止</li>
+<li>第五题： <code>find . ctime 10</code></li>
+</ul>
+<h4 id="其他练习-amp-常用命令"><a href="#其他练习-amp-常用命令" class="headerlink" title="其他练习&amp;常用命令"></a>其他练习&amp;常用命令</h4><p>ssh本地上传包文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 压缩dist文件夹</span></span><br><span class="line">zip -r dist.zip dist</span><br><span class="line">scp dist.zip username@hostname:/path/<span class="keyword">in</span>/dir/</span><br><span class="line">username@hostname<span class="string">&#x27;&quot;s&#x27;</span> password:</span><br><span class="line"><span class="comment"># 登录服务器查看文件是否上传成功</span></span><br><span class="line">ssh username@hostname</span><br><span class="line">username@hostname<span class="string">&#x27;&quot;s&#x27;</span> password:</span><br><span class="line"><span class="built_in">cd</span> /path/<span class="keyword">in</span>/dir/</span><br><span class="line"><span class="comment"># 查看文件详细信息</span></span><br><span class="line">ll</span><br><span class="line"><span class="comment"># 解压上传的dist.zip</span></span><br><span class="line">unzip dist.zip</span><br><span class="line">mv old-dir save-old-dir</span><br><span class="line">mv dist old-dir</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/MillyTang/MillyTang.github.io/2020/11/04/shell-notes/" data-id="cl0z3kshf000qc1oqed5c437l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell-bash/" rel="tag">shell,bash</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-sad-punk" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/03/sad-punk/" class="article-date">
+  <time datetime="2020-11-03T18:38:08.000Z" itemprop="datePublished">2020-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/03/sad-punk/">The Adventure of DaiYing</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>施工🚧中，敬请期待</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/MillyTang/MillyTang.github.io/2020/11/03/sad-punk/" data-id="cl0z3ksha000mc1oq1e7f9aj2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" rel="tag">English practice, Diary, Imitation(Diary of a wimpy kid)</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-new-lemon" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/new-lemon/" class="article-date">
+  <time datetime="2020-10-30T15:18:08.000Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/new-lemon/">git ssh 本机多账号</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="本机如何使用ssh连接多个GitHub账号来生产多倍快乐"><a href="#本机如何使用ssh连接多个GitHub账号来生产多倍快乐" class="headerlink" title="本机如何使用ssh连接多个GitHub账号来生产多倍快乐"></a>本机如何使用ssh连接多个GitHub账号来生产多倍快乐</h1><blockquote>
+<p>github账号对应的邮箱账号个数</p>
+</blockquote>
+<h2 id="生成过程"><a href="#生成过程" class="headerlink" title="生成过程"></a>生成过程</h2><ol>
+<li><p>按照<a target="_blank" rel="noopener" href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh">generating new ssh key and adding it to the ssh-agent</a>指示操作</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开命令行</span></span><br><span class="line"><span class="comment"># 查看现有的ssh keys</span></span><br><span class="line">ls -al ~/.ssh</span><br><span class="line"><span class="comment"># 如果有以下文件中的一个，则代表待会创建的就是第二份的 ssh publick id_rsa</span></span><br><span class="line">id_rsa.pub id_ecdsa.pub id_ed25519.pub</span><br><span class="line"><span class="comment"># Generating a new ssh key by your_email@example.com</span></span><br><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br><span class="line"><span class="comment"># 命令行提示</span></span><br><span class="line">&gt; Generating public/private rsa key pair.</span><br><span class="line"><span class="comment"># 不要直接回车，否则会覆盖已有的，重新键入: 比如文件名这里改成了 id_dubble_rsa，记住这个文件名！</span></span><br><span class="line">&gt; Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa): /Users/you/.ssh/id_dubble_rsa</span><br><span class="line"><span class="comment"># 接下来按照提示键入</span></span><br><span class="line">&gt; Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span><br><span class="line">&gt; Enter same passphrase again: [Type passphrase again]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将新的ssh key添加到 ssh-agent</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(ssh-agent -s)</span>&quot;</span></span><br><span class="line">&gt; Agent pid 59566</span><br><span class="line"><span class="comment"># 如果你是 mac 用户，还需要修改 ~/.ssh/config文件</span></span><br><span class="line">open ~/.ssh/config</span><br><span class="line"><span class="comment"># 如果没有这个config文件，则手动生成一个</span></span><br><span class="line">touch ~/.ssh/config</span><br><span class="line"><span class="comment"># 记事本会打开这个文件</span></span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">AddKeysToAgent yes</span><br><span class="line">UseKeychain yes</span><br><span class="line"># id_dubble_rsa就是刚刚手动键入的文件名</span><br><span class="line">IdentityFile ~/.ssh/id_dubble_rsa</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最后一步添加</span></span><br><span class="line">ssh-add -K ~/.ssh/c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将新的 ssh key 添加到GitHub账号</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 复制对应的.pub文件内容</span></span><br><span class="line">pbcopy &lt; ~/.ssh/id_dubble_rsa.pub</span><br><span class="line"><span class="comment"># 打开 GitHub setting 页面的 ssh配置，将新的 key 复制进去即可</span></span><br><span class="line"><span class="comment"># 查看是否连接正确</span></span><br><span class="line">ssh -vT git@github.com</span><br><span class="line"><span class="comment"># 如果出现以下内容则成功！</span></span><br><span class="line">Hi your-github-name! You<span class="string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="使用之前"><a href="#使用之前" class="headerlink" title="使用之前"></a>使用之前</h2><blockquote>
+<p>操作：1. 本地仓库推到远程；2. 远程仓库克隆下来 之前需要改下 <code>git config</code></p>
+</blockquote>
+<h3 id="由于之前一直是单账号，所以现在要处理一下全局git配置"><a href="#由于之前一直是单账号，所以现在要处理一下全局git配置" class="headerlink" title="由于之前一直是单账号，所以现在要处理一下全局git配置"></a>由于之前一直是单账号，所以现在要处理一下全局git配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看本机全局git配置，注意最后2行</span></span><br><span class="line"><span class="comment"># user.name=&#x27;your-github-name&#x27;</span></span><br><span class="line"><span class="comment"># user.email=&#x27;your-register-email&#x27;</span></span><br><span class="line">git config -l</span><br><span class="line"><span class="comment"># 这2个值是第一个账号的值</span></span><br><span class="line"><span class="comment"># 现在如果进行新的github账号的各种仓库的操作，则需要进入到相关文件夹</span></span><br><span class="line"><span class="comment"># 使用一个空文件夹模拟过程</span></span><br><span class="line">mkdir new-github-repo</span><br><span class="line"><span class="built_in">cd</span> new-github-repo/</span><br><span class="line"><span class="comment"># git 初始化，根据提示操作</span></span><br><span class="line">git init</span><br><span class="line"><span class="comment"># 关键步骤：</span></span><br><span class="line"><span class="comment"># 清除全局配置</span></span><br><span class="line">git config --global <span class="built_in">unset</span> user.name your-old-github-name</span><br><span class="line">git config --global <span class="built_in">unset</span> user.email your-old-register-email-address</span><br><span class="line"><span class="comment"># 局部设置</span></span><br><span class="line">git config --<span class="built_in">local</span> user.name your-new-github-name</span><br><span class="line">git config --global <span class="built_in">unset</span> user.email your-new-register-email-address</span><br><span class="line"><span class="comment"># 最后再检查一下</span></span><br><span class="line">git config -l</span><br><span class="line"><span class="comment"># 如果已经进行了 git commit msg操作，不用慌，还可以修改</span></span><br><span class="line"><span class="comment"># git commit --amend --reset-author</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="本地多个项目有不同的node版本管理"><a href="#本地多个项目有不同的node版本管理" class="headerlink" title="本地多个项目有不同的node版本管理"></a>本地多个项目有不同的node版本管理</h2><ul>
+<li>nvm &amp; avn 联合控制</li>
+<li>项目中增加一个<code>.node-version</code> or <code>.nvmrc</code>文件即可,内容为该项目的node版本数字</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">12</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/MillyTang/MillyTang.github.io/2020/10/30/new-lemon/" data-id="cl0z3ksh9000jc1oqd0jp4ar0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-ssh/" rel="tag">git,ssh</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" rel="tag">English practice, Diary, Imitation(Diary of a wimpy kid)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Francais/" rel="tag">Français</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Haskell-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="tag">Haskell, 函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-17-Router-16/" rel="tag">React@17, Router@16</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjs-react-async-generator/" rel="tag">Rxjs, react, async generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/category-theory-for-programmers/" rel="tag">category-theory-for-programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-shell-tools/" rel="tag">docker, shell, tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-ssh/" rel="tag">git,ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-ts-react-vue3/" rel="tag">js, ts, react, vue3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell-bash/" rel="tag">shell,bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeScript-javaScript-%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" rel="tag">typeScript, javaScript, 编程与类型系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" rel="tag">vim, 信号, 终端多路复用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite-vue3-ts/" rel="tag">vite, vue3, ts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite-plugin-vue-cjs-es6/" rel="tag">vite-plugin-vue, cjs, es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%B1%BB%E4%B8%80%E8%B4%A5%E6%B6%82%E5%9C%B0/" rel="tag">人类一败涂地</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">安全, 密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D-%E6%95%85%E4%BA%8B%E6%96%B0%E7%BC%96/" rel="tag">西西弗神话,故事新编</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" style="font-size: 10px;">English practice, Diary, Imitation(Diary of a wimpy kid)</a> <a href="/tags/Francais/" style="font-size: 10px;">Français</a> <a href="/tags/Haskell-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">Haskell, 函数式编程</a> <a href="/tags/React-17-Router-16/" style="font-size: 10px;">React@17, Router@16</a> <a href="/tags/Rxjs-react-async-generator/" style="font-size: 10px;">Rxjs, react, async generator</a> <a href="/tags/category-theory-for-programmers/" style="font-size: 10px;">category-theory-for-programmers</a> <a href="/tags/docker-shell-tools/" style="font-size: 10px;">docker, shell, tools</a> <a href="/tags/git-ssh/" style="font-size: 10px;">git,ssh</a> <a href="/tags/js-ts-react-vue3/" style="font-size: 10px;">js, ts, react, vue3</a> <a href="/tags/shell-bash/" style="font-size: 10px;">shell,bash</a> <a href="/tags/typeScript-javaScript-%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" style="font-size: 20px;">typeScript, javaScript, 编程与类型系统</a> <a href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" style="font-size: 10px;">vim, 信号, 终端多路复用</a> <a href="/tags/vite-vue3-ts/" style="font-size: 10px;">vite, vue3, ts</a> <a href="/tags/vite-plugin-vue-cjs-es6/" style="font-size: 10px;">vite-plugin-vue, cjs, es6</a> <a href="/tags/%E4%BA%BA%E7%B1%BB%E4%B8%80%E8%B4%A5%E6%B6%82%E5%9C%B0/" style="font-size: 10px;">人类一败涂地</a> <a href="/tags/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 10px;">安全, 密码学</a> <a href="/tags/%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D-%E6%95%85%E4%BA%8B%E6%96%B0%E7%BC%96/" style="font-size: 10px;">西西弗神话,故事新编</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/20/hello-world/">Hexo &amp; travis bot坑爹的自动部署</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/25/categorys/">部分范畴论(category-theory-for-programmers) &amp; 高阶类型及其他</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnFrancais/">Français</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnAnglais/">编程与类型系统 - 类型部分&amp;补充知识</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnVue3/">Vue &amp; Mutable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 主体-客体联合创作<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

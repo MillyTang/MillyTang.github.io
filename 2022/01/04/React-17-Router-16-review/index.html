@@ -1,37 +1,262 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
+  
+  <title>React@17 &amp; Router@16 项目总结 | Comfortably Numb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="重表单功能项目整个项目80%都是填写表单，一开始没防备，生写新建和编辑，痛苦不堪，后来上了 antd 的 Form 表单组件好多了，但是时间紧迫改的又急，业务代码变的很混乱，先记录一下重构思路，声明：代码均已脱敏。 示例组件： 1个parent组件+3个child组件，其中，某个child还嵌套了2层，层级较深1234&#x2F;&#x2F; parent.tsx&#x2F;&#x2F; childA.tsx&#x2F;&#x2F; childB.tsx&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React@17 &amp; Router@16 项目总结">
+<meta property="og:url" content="https://github.com/MillyTang/MillyTang.github.io/2022/01/04/React-17-Router-16-review/index.html">
+<meta property="og:site_name" content="Comfortably Numb">
+<meta property="og:description" content="重表单功能项目整个项目80%都是填写表单，一开始没防备，生写新建和编辑，痛苦不堪，后来上了 antd 的 Form 表单组件好多了，但是时间紧迫改的又急，业务代码变的很混乱，先记录一下重构思路，声明：代码均已脱敏。 示例组件： 1个parent组件+3个child组件，其中，某个child还嵌套了2层，层级较深1234&#x2F;&#x2F; parent.tsx&#x2F;&#x2F; childA.tsx&#x2F;&#x2F; childB.tsx&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-04T10:25:57.000Z">
+<meta property="article:modified_time" content="2022-03-20T09:49:18.137Z">
+<meta property="article:author" content="主体-客体联合创作">
+<meta property="article:tag" content="React@17, Router@16">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Comfortably Numb" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-{% block page_class %}page-post-detail{% endblock %}
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Comfortably Numb</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/MillyTang/MillyTang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-React-17-Router-16-review" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/01/04/React-17-Router-16-review/" class="article-date">
+  <time datetime="2022-01-04T10:25:57.000Z" itemprop="datePublished">2022-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React@17 &amp; Router@16 项目总结
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="重表单功能项目"><a href="#重表单功能项目" class="headerlink" title="重表单功能项目"></a>重表单功能项目</h2><p>整个项目80%都是填写表单，一开始没防备，生写新建和编辑，痛苦不堪，后来上了 antd 的 Form 表单组件好多了，但是时间紧迫改的又急，业务代码变的很混乱，先记录一下重构思路，声明：代码均已脱敏。</p>
+<h3 id="示例组件：-1个parent组件-3个child组件，其中，某个child还嵌套了2层，层级较深"><a href="#示例组件：-1个parent组件-3个child组件，其中，某个child还嵌套了2层，层级较深" class="headerlink" title="示例组件： 1个parent组件+3个child组件，其中，某个child还嵌套了2层，层级较深"></a>示例组件： 1个parent组件+3个child组件，其中，某个child还嵌套了2层，层级较深</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// parent.tsx</span></span><br><span class="line"><span class="comment">// childA.tsx</span></span><br><span class="line"><span class="comment">// childB.tsx</span></span><br><span class="line"><span class="comment">// childC.tsx</span></span><br></pre></td></tr></table></figure>
 
-{% block content %}
+<h4 id="页面卡顿，function-函数组件的UI更新问题"><a href="#页面卡顿，function-函数组件的UI更新问题" class="headerlink" title="页面卡顿，function 函数组件的UI更新问题"></a>页面卡顿，function 函数组件的UI更新问题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; parent.tsx</span><br><span class="line">import React, &#123; useState, useEffect &#125; from &#39;react&#39;</span><br><span class="line">export const Parent &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  const [count, setCount] &#x3D; useState(0)</span><br><span class="line">  return &lt;ChildA count&#x3D;&#123;count&#125; onchange&#x3D;&#123;(c) &#x3D;&gt; setCount(c)&#125; &#x2F;&gt;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; ChildA.tsx</span><br><span class="line">export const ChildA &#x3D; (&#123;count, onChange&#125;: &#123;count: number; onChange: (c: number) &#x3D;&gt; void;&#125;) &#x3D;&gt; &#123;</span><br><span class="line">  useEffect(() &#x3D;&gt; &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;, [count])</span><br><span class="line">  return (</span><br><span class="line">    &lt;div onClick&#x3D;&#123;() &#x3D;&gt; &#125;&gt;You click it &#123;count&#125; times&lt;&#x2F;div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="页面卡顿，children-组件被重复渲染-使用-useMemo-amp-useCallback-amp-useReducer-替换-useState"><a href="#页面卡顿，children-组件被重复渲染-使用-useMemo-amp-useCallback-amp-useReducer-替换-useState" class="headerlink" title="页面卡顿，children 组件被重复渲染: 使用 useMemo &amp; useCallback &amp; useReducer 替换 useState"></a>页面卡顿，children 组件被重复渲染: 使用 useMemo &amp; useCallback &amp; useReducer 替换 useState</h4><h4 id="页面卡顿，child-的-useEffect-狂刷页面，因为有依赖是多层嵌套引用对象类型"><a href="#页面卡顿，child-的-useEffect-狂刷页面，因为有依赖是多层嵌套引用对象类型" class="headerlink" title="页面卡顿，child 的 useEffect 狂刷页面，因为有依赖是多层嵌套引用对象类型"></a>页面卡顿，child 的 useEffect 狂刷页面，因为有依赖是多层嵌套引用对象类型</h4><h4 id="useEffect-内部接口请求的处理-外部请求-出现2个相同定义函数-冗余代码"><a href="#useEffect-内部接口请求的处理-外部请求-出现2个相同定义函数-冗余代码" class="headerlink" title="useEffect 内部接口请求的处理 + 外部请求 = 出现2个相同定义函数 = 冗余代码"></a>useEffect 内部接口请求的处理 + 外部请求 = 出现2个相同定义函数 = 冗余代码</h4><h4 id="组件组织结构优化"><a href="#组件组织结构优化" class="headerlink" title="组件组织结构优化"></a>组件组织结构优化</h4><p>有2层嵌套的map渲染组件，原来的思路是<code>EitherBox</code> 内直接 <code>map =&gt; AndBox</code>，而 <code>AndBox</code> 内也 <code>map =&gt;(&lt;div&gt;xxx&lt;/div&gt;)</code></p>
+<figure class="highlight plain"><figcaption><span>原思路</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">export const EitherBox &#x3D; (&#123;children: any&#125;: props) &#x3D;&gt; &#123;</span><br><span class="line"> const style &#x3D; &#123;</span><br><span class="line">    ors: data.length</span><br><span class="line">  &#125;</span><br><span class="line">  return &lt;div className&#x3D;&#123;style.ors&#125;&gt;&#123;children.length &gt; 1 &amp;&amp; (&lt;div&gt;or&lt;&#x2F;div&gt;)&#125;&#123;children&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&#125;</span><br><span class="line">export const AndBox &#x3D; (&#123;children: any&#125;: props) &#x3D;&gt; &#123;</span><br><span class="line">  return &lt;div&gt;&#123;children.length &gt; 1 &amp;&amp; (&lt;div&gt;and&lt;&#x2F;div&gt;)&#125;&#123;children&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default function pageA () &#x3D;&gt; &#123;</span><br><span class="line">  const data &#x3D; getSomeData&lt;Record&lt;string, Record&lt;string, unknown&gt;[]&gt;[]&gt;() ?? []</span><br><span class="line">  return (</span><br><span class="line">    &lt;EitherBox&gt;</span><br><span class="line">      &#123;data.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; (&lt;div&gt;add&lt;&#x2F;div&gt;)&#125;</span><br><span class="line">      &#123;data.length &gt; 0 &amp;&amp; data?.map(item &#x3D;&gt; (</span><br><span class="line">        &lt;AndBox&gt;</span><br><span class="line">          &#123;item.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp; (&lt;div&gt;none&lt;&#x2F;div&gt;)&#125;</span><br><span class="line">          &#123;item.length &gt; 0 &amp;&amp; item?.map(v &#x3D;&gt; (</span><br><span class="line">            &lt;div onClick&#x3D;&#123;&#125;&gt;&#123;v&#125;&lt;&#x2F;div&gt;</span><br><span class="line">          ))&#125;</span><br><span class="line">        &lt;&#x2F;AndBox&gt;</span><br><span class="line">      ))&#125;</span><br><span class="line">    &lt;&#x2F;EitherBox&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+<figure class="highlight plain"><figcaption><span>优化后</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 改下名称</span><br><span class="line">export const EitherUnit &#x3D; (&#123;data: Record&lt;string, Record&lt;string, unknown&gt;[]&gt;[], children: TSX.element&#125;: props) &#x3D;&gt; &#123;</span><br><span class="line">  const style &#x3D; &#123;</span><br><span class="line">    ors: data.length</span><br><span class="line">  &#125;</span><br><span class="line">  return &lt;div className&#x3D;&#123;style.ors&#125;&gt;&#123;children.length &gt; 1 &amp;&amp; (&lt;div&gt;or&lt;&#x2F;div&gt;)&#125;&#123;children&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&#125;</span><br><span class="line">export const AndUnit &#x3D; (&#123;children: TSX.element&#125;: props) &#x3D;&gt; &#123;</span><br><span class="line">  return &lt;div&gt;&#123;children.length &gt; 1 &amp;&amp; (&lt;div&gt;and&lt;&#x2F;div&gt;)&#125;&#123;children&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&#125;</span><br><span class="line">export const EitherMap &#x3D; (&#123;data: Record&lt;string, Record&lt;string, unknown&gt;[]&gt;[], children: TSX.element&#125;: props) &#x3D;&gt; &#123;</span><br><span class="line">  if (!Array.isArray(data)) &#123;</span><br><span class="line">    return &lt;div&gt;暂无&lt;&#x2F;div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.length &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">    return &lt;div&gt;add&lt;&#x2F;div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">  return &lt;EitherUnit data&#x3D;&#123;data&#125;&gt;&#123;children&#125;&lt;&#x2F;EitherUnit&gt;</span><br><span class="line">&#125;</span><br><span class="line">export const AndMap &#x3D; (&#123;data, children, ...rest&#125;: props) &#x3D;&gt; &#123;</span><br><span class="line">  if (!Array.isArray(data)) &#123;</span><br><span class="line">    return &lt;div&gt;input Error&lt;&#x2F;div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">  if (data.length &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">    return &lt;div&gt;none&lt;&#x2F;div&gt;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;AndUnit&gt;</span><br><span class="line">    &#123;data.map(v &#x3D;&gt; (</span><br><span class="line">      &lt;div&gt;&#123;v&#125;&lt;&#x2F;div&gt;</span><br><span class="line">    ))&#125;</span><br><span class="line">    &lt;&#x2F;AndUnit&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line">export default function pageA () &#x3D;&gt; &#123;</span><br><span class="line">  const data &#x3D; getSomeData&lt;Record&lt;string, Record&lt;string, unknown&gt;[]&gt;[]&gt;() ?? []</span><br><span class="line">  return (</span><br><span class="line">    &lt;EitherMap data&#x3D;&#123;data&#125;&gt;</span><br><span class="line">      &#123;data?.map(item &#x3D;&gt; (</span><br><span class="line">        &lt;AndBox data&#x3D;&#123;item&#125; &#x2F;&gt;</span><br><span class="line">      ))&#125;</span><br><span class="line">    &lt;&#x2F;EitherMap&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<h4 id="使用-immer-immutable"><a href="#使用-immer-immutable" class="headerlink" title="使用 immer / immutable"></a>使用 immer / immutable</h4><h2 id="类型复用逻辑"><a href="#类型复用逻辑" class="headerlink" title="类型复用逻辑"></a>类型复用逻辑</h2><blockquote>
+<p>type &amp;&amp; interface 的使用，考虑项目中类型，简短的可做基础类型的优先考虑 type， 浏览器请求接口的参数和返回值的类型使用 interface，函数&amp;其他变量，集合类型 优先使用 type</p>
+</blockquote>
+<blockquote>
+<p>type和interface 区别在于：inteface无法应用于union type | intersection type | conditional type | tuple，但是可以 augumented 而type不行</p>
+</blockquote>
+<blockquote>
+<p>把类型当作值的集合，理解 类型中的 union type - 交集 和 intersection type -并集</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type</span></span><br><span class="line"><span class="keyword">type</span> AB = <span class="string">&#x27;A&#x27;</span> | <span class="string">&#x27;B&#x27;</span> <span class="comment">// union type 并集</span></span><br><span class="line"><span class="keyword">type</span> NamedVariable = &#123;age: <span class="built_in">number</span>&#125; &amp; &#123; name: <span class="built_in">string</span>&#125; <span class="comment">// intersection type 交集</span></span><br><span class="line"><span class="keyword">type</span> mytuple = [<span class="built_in">number</span>, <span class="built_in">string</span>] <span class="comment">// tuple元组</span></span><br><span class="line"><span class="comment">// inteface</span></span><br><span class="line"><span class="comment">// a.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> BaseInfo &#123;</span><br><span class="line">  name :<span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// b.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; BaseInfo &#125; <span class="keyword">from</span> <span class="string">&#x27;path/to/a.ts&#x27;</span></span><br><span class="line"><span class="keyword">interface</span> BaseInfo &#123;</span><br><span class="line">  phoneNum: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> base: BaseInfo = &#123;</span><br><span class="line">  name: <span class="string">&#x27;xx&#x27;</span>,</span><br><span class="line">  age: <span class="number">21</span>,</span><br><span class="line">  phoneNum: <span class="string">&#x27;19xxxxxxxxx&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 把类型当作值的集合</span></span><br><span class="line"><span class="keyword">type</span> AA = &#123;aa: <span class="string">&#x27;A&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">type</span> BB = &#123;bb: <span class="string">&#x27;B&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">type</span> ABor = AA | BB</span><br><span class="line"><span class="keyword">type</span> ABand = AA &amp; BB</span><br><span class="line"><span class="keyword">type</span> AAkeys = keyof AA <span class="comment">// &#x27;aa&#x27;</span></span><br><span class="line"><span class="keyword">type</span> BBkeys = keyof BB <span class="comment">// &#x27;bb&#x27;</span></span><br><span class="line"><span class="keyword">type</span> ABandKeys = keyof ABand <span class="comment">// &#x27;aa&#x27; | &#x27;bb&#x27;, keyof ABand === (keyof AAkeys) | (keyof BBkeys)</span></span><br><span class="line"><span class="keyword">type</span> ABorKeys = keyof ABor <span class="comment">// never, keyof ABor === (keyof AAkeys) &amp; (keyof BBkeys)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> aaa: ABand = &#123;</span><br><span class="line">  aa: <span class="string">&#x27;A&#x27;</span>,</span><br><span class="line">  bb: <span class="string">&#x27;B&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="useEffect-基于-useMemo-amp-useCallback-导致的更新问题"><a href="#useEffect-基于-useMemo-amp-useCallback-导致的更新问题" class="headerlink" title="useEffect: 基于 useMemo &amp; useCallback 导致的更新问题"></a>useEffect: 基于 useMemo &amp; useCallback 导致的更新问题</h2><p>写Vue3写多了，初次写React项目很不适应，首先面临的一个大问题就是 useEffect 更新 child 组件，数次进入无限循环，把浏览器搞崩了。由于我本人首次写 React 上了强 debuff, 导致首次写的 react 项目业务代码一坨屎，本人痛定思痛，决定对业务代码脱敏后重构一次，以彰显写更棒的代码的决心</p>
+<h2 id="改进：-考虑使用-immer-js"><a href="#改进：-考虑使用-immer-js" class="headerlink" title="改进： 考虑使用 immer.js"></a>改进： 考虑使用 immer.js</h2><h2 id="改进后：-思考-Class-组件-🆚-函数组件-的便利性"><a href="#改进后：-思考-Class-组件-🆚-函数组件-的便利性" class="headerlink" title="改进后： 思考 Class 组件 🆚 函数组件 的便利性"></a>改进后： 思考 Class 组件 🆚 函数组件 的便利性</h2><blockquote>
+<p>Class &amp; enum 横跨值&amp;类型</p>
+</blockquote>
+<h2 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h2><ol>
+<li>使用 Vue3 实现相似功能</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/MillyTang/MillyTang.github.io/2022/01/04/React-17-Router-16-review/" data-id="cl0z3ksgy0003c1oqfb7e4g9d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-17-Router-16/" rel="tag">React@17, Router@16</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/01/04/VScode%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Learn you a Haskell for Great Good!
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/12/05/fast-to-know-new-project/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">精卫填海-新编</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" rel="tag">English practice, Diary, Imitation(Diary of a wimpy kid)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Francais/" rel="tag">Français</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Haskell-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="tag">Haskell, 函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-17-Router-16/" rel="tag">React@17, Router@16</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjs-react-async-generator/" rel="tag">Rxjs, react, async generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/category-theory-for-programmers/" rel="tag">category-theory-for-programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-shell-tools/" rel="tag">docker, shell, tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-ssh/" rel="tag">git,ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-ts-react-vue3/" rel="tag">js, ts, react, vue3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell-bash/" rel="tag">shell,bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeScript-javaScript-%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" rel="tag">typeScript, javaScript, 编程与类型系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" rel="tag">vim, 信号, 终端多路复用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite-vue3-ts/" rel="tag">vite, vue3, ts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite-plugin-vue-cjs-es6/" rel="tag">vite-plugin-vue, cjs, es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%B1%BB%E4%B8%80%E8%B4%A5%E6%B6%82%E5%9C%B0/" rel="tag">人类一败涂地</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">安全, 密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D-%E6%95%85%E4%BA%8B%E6%96%B0%E7%BC%96/" rel="tag">西西弗神话,故事新编</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" style="font-size: 10px;">English practice, Diary, Imitation(Diary of a wimpy kid)</a> <a href="/tags/Francais/" style="font-size: 10px;">Français</a> <a href="/tags/Haskell-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">Haskell, 函数式编程</a> <a href="/tags/React-17-Router-16/" style="font-size: 10px;">React@17, Router@16</a> <a href="/tags/Rxjs-react-async-generator/" style="font-size: 10px;">Rxjs, react, async generator</a> <a href="/tags/category-theory-for-programmers/" style="font-size: 10px;">category-theory-for-programmers</a> <a href="/tags/docker-shell-tools/" style="font-size: 10px;">docker, shell, tools</a> <a href="/tags/git-ssh/" style="font-size: 10px;">git,ssh</a> <a href="/tags/js-ts-react-vue3/" style="font-size: 10px;">js, ts, react, vue3</a> <a href="/tags/shell-bash/" style="font-size: 10px;">shell,bash</a> <a href="/tags/typeScript-javaScript-%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" style="font-size: 20px;">typeScript, javaScript, 编程与类型系统</a> <a href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" style="font-size: 10px;">vim, 信号, 终端多路复用</a> <a href="/tags/vite-vue3-ts/" style="font-size: 10px;">vite, vue3, ts</a> <a href="/tags/vite-plugin-vue-cjs-es6/" style="font-size: 10px;">vite-plugin-vue, cjs, es6</a> <a href="/tags/%E4%BA%BA%E7%B1%BB%E4%B8%80%E8%B4%A5%E6%B6%82%E5%9C%B0/" style="font-size: 10px;">人类一败涂地</a> <a href="/tags/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 10px;">安全, 密码学</a> <a href="/tags/%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D-%E6%95%85%E4%BA%8B%E6%96%B0%E7%BC%96/" style="font-size: 10px;">西西弗神话,故事新编</a>
+    </div>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/20/hello-world/">Hexo &amp; travis bot坑爹的自动部署</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/25/categorys/">部分范畴论(category-theory-for-programmers) &amp; 高阶类型及其他</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnFrancais/">Français</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnAnglais/">编程与类型系统 - 类型部分&amp;补充知识</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnVue3/">Vue &amp; Mutable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 主体-客体联合创作<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

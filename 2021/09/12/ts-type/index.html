@@ -1,37 +1,302 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>TypeScript 类型体操练习 | Comfortably Numb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="挑战类型体操答案合集，一部分是自己做的，一部分是自己抄的  热身运动12345&#x2F;&#x2F; 期望是一个 string 类型 👉 so eazy&#x2F;&#x2F; any -&gt; stringtype HelloWorld &#x3D; string&#x2F;&#x2F; 你需要使得如下这行不会抛出异常type test &#x3D; Expect&lt;Equal&lt;HelloWorld, string&gt;&gt;  部分前置知识: key">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript 类型体操练习">
+<meta property="og:url" content="https://github.com/MillyTang/MillyTang.github.io/2021/09/12/ts-type/index.html">
+<meta property="og:site_name" content="Comfortably Numb">
+<meta property="og:description" content="挑战类型体操答案合集，一部分是自己做的，一部分是自己抄的  热身运动12345&#x2F;&#x2F; 期望是一个 string 类型 👉 so eazy&#x2F;&#x2F; any -&gt; stringtype HelloWorld &#x3D; string&#x2F;&#x2F; 你需要使得如下这行不会抛出异常type test &#x3D; Expect&lt;Equal&lt;HelloWorld, string&gt;&gt;  部分前置知识: key">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-12T19:00:21.000Z">
+<meta property="article:modified_time" content="2022-03-20T09:49:18.137Z">
+<meta property="article:author" content="主体-客体联合创作">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Comfortably Numb" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Comfortably Numb</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/MillyTang/MillyTang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ts-type" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/09/12/ts-type/" class="article-date">
+  <time datetime="2021-09-12T19:00:21.000Z" itemprop="datePublished">2021-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      TypeScript 类型体操练习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>挑战类型体操答案合集，一部分是自己做的，一部分是自己抄的</p>
+</blockquote>
+<h2 id="热身运动"><a href="#热身运动" class="headerlink" title="热身运动"></a>热身运动</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 期望是一个 string 类型 👉 so eazy</span></span><br><span class="line"><span class="comment">// any -&gt; string</span></span><br><span class="line"><span class="keyword">type</span> HelloWorld = <span class="built_in">string</span></span><br><span class="line"><span class="comment">// 你需要使得如下这行不会抛出异常</span></span><br><span class="line"><span class="keyword">type</span> test = Expect&lt;Equal&lt;HelloWorld, <span class="built_in">string</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="部分前置知识-keyof-typeof-extends-等，具体请移步到官方文档查阅详情"><a href="#部分前置知识-keyof-typeof-extends-等，具体请移步到官方文档查阅详情" class="headerlink" title="部分前置知识: keyof, typeof, extends 等，具体请移步到官方文档查阅详情"></a>部分前置知识: keyof, typeof, extends 等，具体请移步到官方文档查阅详情</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// typeof Type Operator</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">&#x27;hello&#x27;</span> <span class="comment">// string</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a?: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;x: <span class="number">10</span>, y: <span class="number">1</span>, ...a&#125; <span class="comment">// 返回具体值，而不是类型</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> F0 = ReturnType&lt;f&gt; <span class="comment">// ❌ &#x27;f&#x27; refers to a value, but is being used as a type here, you should use &#x27;typeof f&#x27;</span></span><br><span class="line"><span class="keyword">type</span> F1 = ReturnType&lt;<span class="keyword">typeof</span> f&gt; <span class="comment">// &#123;x: number; y:number; a?: string&#125;</span></span><br><span class="line"><span class="comment">// typeof 后面不能跟执行函数</span></span><br><span class="line"><span class="comment">// meant to use = ReturnType&lt;typeof f&gt;</span></span><br><span class="line"><span class="keyword">let</span> shouldcontinue: <span class="keyword">typeof</span> f(<span class="string">&#x27;aaaa&#x27;</span>) <span class="comment">// ❌</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// keyof Type Operator</span></span><br><span class="line"><span class="keyword">type</span> Point = &#123;a: <span class="built_in">string</span>, b: <span class="built_in">string</span>&#125;</span><br><span class="line"><span class="keyword">type</span> P0 = keyof Point <span class="comment">// type P0 = &#x27;a&#x27; | &#x27;b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// as 类型断言：key Remapping via as</span></span><br><span class="line"><span class="keyword">type</span> NewKeyType&lt;P&gt; = Capitalize&lt;<span class="built_in">string</span> &amp; P&gt;</span><br><span class="line"><span class="keyword">type</span> MappedTypeWithNewProperties&lt;T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> keyof T <span class="keyword">as</span> NewKeyType&lt;P&gt;]: T[P]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 条件类型通过never来过滤key</span></span><br><span class="line"><span class="keyword">type</span> RemoveKindField&lt;T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> keyof T <span class="keyword">as</span> Exclude&lt;P, <span class="string">&#x27;kind&#x27;</span>&gt;]: T[P]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Circle &#123;</span><br><span class="line">  kind: <span class="string">&#x27;circle&#x27;</span>;</span><br><span class="line">  radius: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> kindlessCircle = RemoveKindField&lt;T&gt; <span class="comment">// type kindlessCircle = &#123;radius: number&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// extends 继承，扩展，衍生，Class继承，非实例，继承单个Class，衍生多个interface，类型约束 K extends keyof T，K 是 T的子类型（类似于Class A extends Class B, A 是 B的子类一个意思）</span></span><br><span class="line"><span class="comment">// 类继承👉协变&amp;逆变</span></span><br><span class="line"><span class="comment">// infer 待推断的类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// InstanceType&lt;Type&gt; 提取构造函数的实例函数类型：Class</span></span><br><span class="line"><span class="keyword">class</span> C &#123;</span><br><span class="line">  x = <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 类 &amp; 枚举 横跨 类型空间 &amp; 值空间，所以 C 也算一种类型，但是 `typeof C !== C`, 因为 `typeof C` 并非 `C` 的类型，而`InstanceType&lt;typeof C&gt;`才是, 而 `C` 是 构造函数 `constructor`</span></span><br><span class="line"><span class="keyword">type</span> C0 = InstanceType&lt;<span class="keyword">typeof</span> C&gt; <span class="comment">// type C0 = C</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="实现-Pick-lt-T-Keys-gt"><a href="#实现-Pick-lt-T-Keys-gt" class="headerlink" title="实现 Pick&lt;T, Keys&gt;"></a>实现 <code>Pick&lt;T, Keys&gt;</code></h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Todo &#123;</span><br><span class="line">  title: <span class="built_in">string</span></span><br><span class="line">  description: <span class="built_in">string</span></span><br><span class="line">  completed: <span class="built_in">boolean</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pick&lt;Type, Keys&gt; 👉 MyPick&lt;Type, Keys&gt; 使用方法一致</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyPick&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> K]: T[P] <span class="comment">// P in K, K = &#x27;title&#x27; | &#x27;description&#x27; | &#x27;completed&#x27;, `in` means for P in K</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> TodoPreview = MyPick&lt;Todo, <span class="string">&#x27;title&#x27;</span> | <span class="string">&#x27;completed&#x27;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todo: TodoPreview = &#123;</span><br><span class="line">    title: <span class="string">&#x27;Clean room&#x27;</span>,</span><br><span class="line">    completed: <span class="literal">false</span>,</span><br><span class="line">    description: <span class="string">&#x27;xxxx&#x27;</span> <span class="comment">// ❌，description 多余属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Readonly-lt-T-gt"><a href="#Readonly-lt-T-gt" class="headerlink" title="Readonly&lt;T&gt;"></a><code>Readonly&lt;T&gt;</code></h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Todo &#123;</span><br><span class="line">  title: <span class="built_in">string</span></span><br><span class="line">  description: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ReadOnly&lt;Type&gt; 👉 MyReadOnly&lt;Type&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyReadOnly&lt;T&gt; = &#123;</span><br><span class="line">  <span class="keyword">readonly</span> [P <span class="keyword">in</span> keyof T]: T[P]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todo: MyReadonly&lt;Todo&gt; = &#123;</span><br><span class="line">  title: <span class="string">&quot;Hey&quot;</span>,</span><br><span class="line">  description: <span class="string">&quot;foobar&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">todo.title = <span class="string">&quot;Hello&quot;</span> <span class="comment">// Error: cannot reassign a readonly property</span></span><br><span class="line">todo.description = <span class="string">&quot;barFoo&quot;</span> <span class="comment">// Error: cannot reassign a readonly property</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="DeepReadonly-lt-T-gt-🌟"><a href="#DeepReadonly-lt-T-gt-🌟" class="headerlink" title="DeepReadonly&lt;T&gt; 🌟"></a><code>DeepReadonly&lt;T&gt;</code> 🌟</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> DeepReadonly&lt;T&gt; = &#123;</span><br><span class="line">  <span class="keyword">readonly</span> [P <span class="keyword">in</span> keyof T]: T[P] <span class="keyword">extends</span> &#123;&#125; ? DeepReadonly&lt;T[P]&gt; : T[P]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ReadonlyAndPick-lt-T-Keys-gt-🌟"><a href="#ReadonlyAndPick-lt-T-Keys-gt-🌟" class="headerlink" title="ReadonlyAndPick&lt;T, Keys&gt; 🌟"></a><code>ReadonlyAndPick&lt;T, Keys&gt;</code> 🌟</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> ReadonlyAndPick&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;<span class="keyword">readonly</span> [P <span class="keyword">in</span> keyof T <span class="keyword">as</span> P <span class="keyword">extends</span> K ? P : <span class="built_in">never</span>]: T[P]&#125; &amp; &#123;[P <span class="keyword">in</span> keyof T <span class="keyword">as</span> P <span class="keyword">extends</span> K ? <span class="built_in">never</span> : P]:[P]&#125;</span><br><span class="line"><span class="comment">// 使用 Exclude 替代 P extends K ? never : P &amp;&amp; 使用 Pick 替代  P extends K ? P : never</span></span><br><span class="line"><span class="keyword">type</span> ReadonlyAndPick&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;<span class="keyword">readonly</span> [P <span class="keyword">in</span> keyof Pick&lt;T, K&gt;]: T[P]&#125; &amp; &#123;[P <span class="keyword">in</span> keyof T <span class="keyword">as</span> Exclude&lt;P, K&gt;]: T[P]&#125;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">type</span> ReadonlyAndPick&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;<span class="keyword">readonly</span> [P <span class="keyword">in</span> keyof Pick&lt;T, K&gt;]: T[P]&#125; &amp; &#123;[P <span class="keyword">in</span> Exclude&lt;keyof T, K&gt;]: T[P]&#125;</span><br><span class="line"><span class="comment">// 进一步 替换 readonly</span></span><br><span class="line"><span class="keyword">type</span> ReadonlyAndPick&lt;T, K <span class="keyword">extends</span> keyof T&gt; = Readonly&lt;Pick&lt;T, K&gt;&gt; &amp; &#123;[P <span class="keyword">in</span> Exclude&lt;keyof T, K&gt;]: T[P]&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Omit-lt-T-Keys-gt"><a href="#Omit-lt-T-Keys-gt" class="headerlink" title="Omit&lt;T, Keys&gt;"></a><code>Omit&lt;T, Keys&gt;</code></h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Todo &#123;</span><br><span class="line">  title: <span class="built_in">string</span></span><br><span class="line">  description: <span class="built_in">string</span></span><br><span class="line">  completed: <span class="built_in">boolean</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Omit&lt;Type, Keys&gt; 👉 MyOmit&lt;Type, Keys&gt;</span></span><br><span class="line"><span class="keyword">type</span> MyOmit&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> keyof T <span class="keyword">as</span> P <span class="keyword">extends</span> K ? <span class="built_in">never</span>: P]: T[P]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 跟上面用 never 过滤属性的方式一致，所以还可以这么写</span></span><br><span class="line"><span class="keyword">type</span> MyOmit1&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> keyof T <span class="keyword">as</span> Exclude&lt;P, K&gt;]: T[P];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> TodoPreview = MyOmit&lt;Todo, <span class="string">&#x27;description&#x27;</span> | <span class="string">&#x27;title&#x27;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todo: TodoPreview = &#123;</span><br><span class="line">  completed: <span class="literal">false</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Exclude-lt-T-U-gt"><a href="#Exclude-lt-T-U-gt" class="headerlink" title="Exclude&lt;T, U&gt;"></a><code>Exclude&lt;T, U&gt;</code></h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从T中排除可分配给U的类型</span></span><br><span class="line"><span class="comment">// T, U 都是字符串类型</span></span><br><span class="line"><span class="comment">// MyExclude&lt;&#x27;a&#x27; | &#x27;b&#x27; | &#x27;c&#x27;, &#x27;a&#x27;&gt; // 输出 &#x27;b&#x27; | &#x27;c&#x27;</span></span><br><span class="line"><span class="keyword">type</span> MyExclude&lt;T, U&gt; = T <span class="keyword">extends</span> U ? <span class="built_in">never</span> : T</span><br></pre></td></tr></table></figure>
+
+<h2 id="ReturnType-lt-T-gt-提取函数的返回类型"><a href="#ReturnType-lt-T-gt-提取函数的返回类型" class="headerlink" title="ReturnType&lt;T&gt; 提取函数的返回类型"></a><code>ReturnType&lt;T&gt;</code> 提取函数的返回类型</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> ReturnType&lt;T&gt; = T <span class="keyword">extends</span> (...args: <span class="built_in">any</span>[]) =&gt; infer R ? R : <span class="built_in">any</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Parameters-lt-T-gt-提取函数的参数类型"><a href="#Parameters-lt-T-gt-提取函数的参数类型" class="headerlink" title="Parameters&lt;T&gt; 提取函数的参数类型"></a><code>Parameters&lt;T&gt;</code> 提取函数的参数类型</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Parameters&lt;T&gt; = T <span class="keyword">extends</span> (...args: infer P) =&gt; <span class="built_in">any</span> ? P : T</span><br></pre></td></tr></table></figure>
+<h2 id="First-lt-T-gt-of-Array-实现一个泛型类型-使得可以返回数组类型的第一项"><a href="#First-lt-T-gt-of-Array-实现一个泛型类型-使得可以返回数组类型的第一项" class="headerlink" title="First&lt;T&gt; of Array 实现一个泛型类型, 使得可以返回数组类型的第一项"></a><code>First&lt;T&gt;</code> of Array 实现一个泛型类型, 使得可以返回数组类型的第一项</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> arr1 = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"><span class="keyword">type</span> arr2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">type</span> head1 = First&lt;arr1&gt; <span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"><span class="keyword">type</span> head2 = First&lt;arr2&gt; <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> First&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">any</span>[] ? <span class="built_in">never</span> : T[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="Length-lt-T-gt-of-Tuple"><a href="#Length-lt-T-gt-of-Tuple" class="headerlink" title="Length&lt;T&gt; of Tuple"></a><code>Length&lt;T&gt;</code> of Tuple</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> tesla = [<span class="string">&#x27;tesla&#x27;</span>, <span class="string">&#x27;model3&#x27;</span>, <span class="string">&#x27;model X&#x27;</span>, <span class="string">&#x27;model Y&#x27;</span>]</span><br><span class="line"><span class="keyword">type</span> Length&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">any</span>[] ? T[<span class="string">&#x27;length&#x27;</span>] : <span class="built_in">never</span></span><br><span class="line"><span class="keyword">type</span> teslaLength = Length&lt;tesla&gt; <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<h2 id="Last-lt-T-gt-of-Array-实现一个泛型类型-使得可以返回数组类型的最后一项"><a href="#Last-lt-T-gt-of-Array-实现一个泛型类型-使得可以返回数组类型的最后一项" class="headerlink" title="Last&lt;T&gt; of Array 实现一个泛型类型, 使得可以返回数组类型的最后一项"></a><code>Last&lt;T&gt;</code> of Array 实现一个泛型类型, 使得可以返回数组类型的最后一项</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> arr1 = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"><span class="keyword">type</span> arr2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">type</span> tail1 = Last&lt;arr1&gt; <span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"><span class="keyword">type</span> tail2 = Last&lt;arr2&gt; <span class="comment">// 1</span></span><br><span class="line"><span class="comment">// F 只是一个变量，代表最后一项之前的所有项</span></span><br><span class="line"><span class="keyword">type</span> Last&lt;T <span class="keyword">extends</span> <span class="built_in">any</span>[]&gt; = T <span class="keyword">extends</span> [...infer F, infer E]? E: <span class="built_in">never</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Concat-lt-T-P-gt-实现一个Array-concat-方法功能相同的类型"><a href="#Concat-lt-T-P-gt-实现一个Array-concat-方法功能相同的类型" class="headerlink" title="Concat&lt;T, P&gt;: 实现一个Array.concat 方法功能相同的类型"></a><code>Concat&lt;T, P&gt;</code>: 实现一个Array.concat 方法功能相同的类型</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Concat&lt;T, P&gt; =T <span class="keyword">extends</span> <span class="built_in">any</span>[] ? P <span class="keyword">extends</span> <span class="built_in">any</span>[] ? [...T, ...P] : <span class="built_in">never</span> : <span class="built_in">never</span>;</span><br><span class="line"><span class="comment">// or type Concat&lt;T extends any[], P extends any[]&gt; = [...T, ...P]</span></span><br><span class="line"><span class="keyword">type</span> Result = Concat&lt;[<span class="number">1</span>], [<span class="number">2</span>]&gt; <span class="comment">// [1, 2]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Push-lt-T-P-gt-Array-push-类型方法"><a href="#Push-lt-T-P-gt-Array-push-类型方法" class="headerlink" title="Push&lt;T, P&gt;: Array.push 类型方法"></a><code>Push&lt;T, P&gt;</code>: Array.push 类型方法</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Push&lt;T <span class="keyword">extends</span> <span class="built_in">any</span>[], P <span class="keyword">extends</span> <span class="built_in">any</span>&gt; = [...T, P]</span><br><span class="line"><span class="keyword">type</span> Result = Push&lt;[<span class="number">1</span>, <span class="number">2</span>], <span class="string">&#x27;3&#x27;</span>&gt; <span class="comment">// [1, 2, &#x27;3&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Unshift-lt-T-P-gt-Array-unshift-类型方法"><a href="#Unshift-lt-T-P-gt-Array-unshift-类型方法" class="headerlink" title="Unshift&lt;T, P&gt;: Array.unshift 类型方法"></a><code>Unshift&lt;T, P&gt;</code>: Array.unshift 类型方法</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Unshift&lt;T <span class="keyword">extends</span> <span class="built_in">any</span>[], P <span class="keyword">extends</span> <span class="built_in">any</span>&gt; = [P, ...T]</span><br><span class="line"><span class="keyword">type</span> Result = Unshift&lt;[<span class="number">1</span>, <span class="number">2</span>], <span class="string">&#x27;3&#x27;</span>&gt; <span class="comment">// [&#x27;3&#x27;, 1, 2]</span></span><br></pre></td></tr></table></figure>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<h2 id="Pop-lt-T-gt-🌟"><a href="#Pop-lt-T-gt-🌟" class="headerlink" title="Pop&lt;T&gt; 🌟"></a><code>Pop&lt;T&gt;</code> 🌟</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Pop&lt;T&gt; = T <span class="keyword">extends</span> [...infer P, infer E] ? P : <span class="built_in">never</span>;  </span><br></pre></td></tr></table></figure>
 
-{% block page_class %}page-post-detail{% endblock %}
+<h2 id="Shift-lt-T-gt-🌟"><a href="#Shift-lt-T-gt-🌟" class="headerlink" title="Shift&lt;T&gt; 🌟"></a><code>Shift&lt;T&gt;</code> 🌟</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Shift&lt;T&gt; = T <span class="keyword">extends</span> [infer E, ...infer P] ? P : <span class="built_in">never</span>;  </span><br></pre></td></tr></table></figure>
+
+<h2 id="Promise-all-🌟🌟"><a href="#Promise-all-🌟🌟" class="headerlink" title="Promise.all 🌟🌟"></a><code>Promise.all</code> 🌟🌟</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> inferTupleT&lt;T <span class="keyword">extends</span> <span class="built_in">any</span>[]&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> keyof T]: T[P] <span class="keyword">extends</span> <span class="built_in">Promise</span>&lt;infer S&gt; ? S : T[P]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">declare</span> <span class="function"><span class="keyword">function</span> <span class="title">PromiseAll</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">any</span>[]&gt;(<span class="params">values: <span class="keyword">readonly</span> [...T]</span>): <span class="title">Promise</span>&lt;<span class="title">inferTupleT</span>&lt;<span class="title">T</span>&gt;&gt;</span></span><br><span class="line"><span class="function"><span class="title">const</span> <span class="title">promise1</span> = <span class="title">Promise</span>.<span class="title">resolve</span>(<span class="params">3</span>)</span>;</span><br><span class="line"><span class="keyword">const</span> promise2 = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">const</span> promise3 = <span class="keyword">new</span> <span class="built_in">Promise</span>&lt;<span class="built_in">string</span>&gt;(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(resolve, <span class="number">100</span>, <span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> p = PromiseAll([promise1, promise2, promise3] <span class="keyword">as</span> <span class="keyword">const</span>) <span class="comment">// Promise&lt;[number, 42, string]&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="If-lt-truthy-T-F-gt-🌟🌟"><a href="#If-lt-truthy-T-F-gt-🌟🌟" class="headerlink" title="If&lt;truthy, T, F&gt; 🌟🌟"></a><code>If&lt;truthy, T, F&gt;</code> 🌟🌟</h2><blockquote>
+<p><code>If&lt;true, T, F&gt; =&gt; T, If&lt;false, T, F&gt; =&gt; F</code></p>
+</blockquote>
+<blockquote>
+<p>这里还需要考虑 <code>any</code>, <code>never</code>, <code>boolean </code>被视为 <code>union type</code>, 同时 never是union运算的幺元【可在 category-theory-for-programmers 这本书上找到相关解释】, 但是 <code>unknown</code> 却没有</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> If&lt;C, T, F&gt; = C <span class="keyword">extends</span> <span class="literal">true</span> ? T : C <span class="keyword">extends</span> <span class="literal">false</span> ? F : <span class="built_in">never</span>; </span><br><span class="line"><span class="keyword">type</span> A = If&lt;<span class="literal">true</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"><span class="keyword">type</span> B = If&lt;<span class="literal">false</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;b&#x27;</span></span><br><span class="line"><span class="keyword">type</span> C = If&lt;<span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br><span class="line"><span class="comment">// 考虑输入  `any` &amp;&amp; `boolean`</span></span><br><span class="line"><span class="keyword">type</span> D = If&lt;<span class="built_in">boolean</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27; | &#x27;b&#x27;, boolean 是 union type =&gt; distributive conditional types</span></span><br><span class="line"><span class="keyword">type</span> E = If&lt;<span class="built_in">any</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27; | &#x27;b&#x27;, any 是 union type =&gt; distributive conditional types</span></span><br><span class="line"><span class="comment">// 第一步去除 T 的 naked type 特点，怎么办呢？和下面 IsNever 处理一致, 加入 array, record, function 结构</span></span><br><span class="line"><span class="keyword">type</span> If&lt;C, T, F&gt; = [C] <span class="keyword">extends</span> [<span class="literal">true</span>] ? T : [C] <span class="keyword">extends</span> [<span class="literal">false</span>] ? F : <span class="built_in">never</span>; </span><br><span class="line"><span class="comment">// 此时 boolean 可以了，但是 any 还不行</span></span><br><span class="line"><span class="keyword">type</span> D = If&lt;<span class="built_in">boolean</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br><span class="line"><span class="keyword">type</span> E = If&lt;<span class="built_in">any</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"><span class="comment">// any 还是不对，还需要破坏类型检查，处理方式就是加入 加入破坏条件: 破坏 T 作为 checked type 的条件 即可</span></span><br><span class="line"><span class="comment">// any extends C ? never : T</span></span><br><span class="line"><span class="keyword">type</span> If&lt;C, T, F&gt; = [C] <span class="keyword">extends</span> [<span class="literal">true</span>] ? (<span class="built_in">any</span> <span class="keyword">extends</span> C ? <span class="built_in">never</span> : T) : [C] <span class="keyword">extends</span> [<span class="literal">false</span>] ? (<span class="built_in">any</span> <span class="keyword">extends</span> C ? <span class="built_in">never</span> : F) : <span class="built_in">never</span>;</span><br><span class="line"><span class="comment">// 此时</span></span><br><span class="line"><span class="keyword">type</span> D = If&lt;<span class="built_in">boolean</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br><span class="line"><span class="keyword">type</span> E = If&lt;<span class="built_in">any</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&gt; <span class="comment">// never</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="插播：conditional-type-amp-distributive-conditional-types"><a href="#插播：conditional-type-amp-distributive-conditional-types" class="headerlink" title="插播：conditional type &amp; distributive conditional types"></a>插播：conditional type &amp; distributive conditional types</h2><blockquote>
+<p>distributive conditional types 的3个前提条件：1. T = naked type; 2. T = checked type; 3. T 实例化为 union type;</p>
+</blockquote>
+<figure class="highlight ts"><figcaption><span>conditional type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// T: checkedType 被检查的类型</span></span><br><span class="line"><span class="comment">// U: extendsType 判断条件</span></span><br><span class="line"><span class="comment">// 下面这个表达式的意思是：如果T能够assignable（这里不是subtype的意思）给U那么结果为X，否则结果为Y</span></span><br><span class="line"><span class="comment">// 根据官方文档的 assignable 图：</span></span><br><span class="line"><span class="keyword">type</span> checkTtype = T <span class="keyword">extends</span> U ? X : Y</span><br><span class="line"><span class="comment">// 如果 T 是 naked type: 详见本文末尾解释</span></span><br><span class="line"><span class="comment">// 则表达式就是 distributive conditional types</span></span><br><span class="line"><span class="comment">// T = A | B | C // A,B,C是naked type</span></span><br><span class="line"><span class="keyword">type</span> unionTypes = <span class="built_in">string</span> | <span class="built_in">number</span></span><br><span class="line"><span class="keyword">type</span> checkTtypeUnion&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">any</span> ? T[] : T</span><br><span class="line"><span class="keyword">type</span> checkTtypeUnionI1 = checkTtypeUnion&lt;unionTypes&gt; <span class="comment">//  string[] | number[]</span></span><br><span class="line"><span class="comment">// 如何消除 distributive conditional types</span></span><br><span class="line"><span class="comment">// 破坏上述3个条件即可，然后用 never 过滤掉该分支</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="TupleToUnion-lt-T-gt-元组转联合类型"><a href="#TupleToUnion-lt-T-gt-元组转联合类型" class="headerlink" title="TupleToUnion&lt;T&gt; 元组转联合类型"></a><code>TupleToUnion&lt;T&gt;</code> 元组转联合类型</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> TupleToUnion&lt;T <span class="keyword">extends</span> <span class="built_in">any</span>[]&gt; = T[<span class="built_in">number</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="TupleToObject-lt-T-gt-元组转对象"><a href="#TupleToObject-lt-T-gt-元组转对象" class="headerlink" title="TupleToObject&lt;T&gt; 元组转对象"></a><code>TupleToObject&lt;T&gt;</code> 元组转对象</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> tuple = [<span class="string">&#x27;tesla&#x27;</span>, <span class="string">&#x27;model 3&#x27;</span>, <span class="string">&#x27;model X&#x27;</span>, <span class="string">&#x27;model Y&#x27;</span>]</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="comment">// const tuple = [&#x27;tesla&#x27;, &#x27;model 3&#x27;, &#x27;model X&#x27;, &#x27;model Y&#x27;] as const</span></span><br><span class="line"><span class="keyword">type</span> TupleToObject&lt;T <span class="keyword">extends</span> <span class="keyword">readonly</span> <span class="built_in">any</span>[]&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> T[<span class="built_in">number</span>]]: P</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> result = TupleToObject&lt;tuple&gt; <span class="comment">// &#123;tesla: &#x27;tesla&#x27;, ...&#125;</span></span><br><span class="line"><span class="comment">// when tuple is const</span></span><br><span class="line"><span class="comment">// type result = TupleToObject&lt;typeof tuple&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="IsNever-lt-T-gt-🌟"><a href="#IsNever-lt-T-gt-🌟" class="headerlink" title="IsNever&lt;T&gt; 🌟"></a><code>IsNever&lt;T&gt;</code> 🌟</h2><blockquote>
+<p>conditional type 判断 IsNever 在某种情况下有问题：如果这么写 <code>type IsNever&lt;T&gt; = T extends never ? true : false</code> , 当 <code>type A = IsNever&lt;never&gt;</code> 时 <code>type A = never</code> 而不是 true or false, 查阅<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47590228">怎么理解 conditional type 中的联合类型与 never</a></p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IsNever</span></span><br><span class="line"><span class="keyword">type</span> IsNever&lt;T&gt; = [T] <span class="keyword">extends</span> [<span class="built_in">never</span>] ? <span class="literal">true</span> : <span class="literal">false</span></span><br><span class="line"><span class="comment">// 将输入变成 不可能是空列表的状态即可，[T] 🉑️， &#123;a: T&#125; 也 🉑️</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Flatten-lt-T-gt"><a href="#Flatten-lt-T-gt" class="headerlink" title="Flatten&lt;T&gt;"></a><code>Flatten&lt;T&gt;</code></h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Flatten&lt;T&gt; = T <span class="keyword">extends</span> <span class="built_in">Array</span>&lt;infer I&gt; ? I : T;</span><br></pre></td></tr></table></figure>
 
 
-{% block content %}
+<blockquote>
+<p><a href="https://github.com/type-challenges/type-challenges/">类型体操链接</a></p>
+</blockquote>
+<h2 id="TroubleShooting"><a href="#TroubleShooting" class="headerlink" title="TroubleShooting"></a>TroubleShooting</h2><ol>
+<li>naked type: The type parameter is present without being wrapped in another type, (ie, an array, or a tuple, or a function, or a promise or any other generic type)</li>
+</ol>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/MillyTang/MillyTang.github.io/2021/09/12/ts-type/" data-id="cl0z3kshg000sc1oqcdr01s2b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/11/04/review-sth-about-js/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          复习前端基础知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/09/12/ts-in-vue3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ts-in-vue3</div>
+    </a>
+  
+</nav>
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" rel="tag">English practice, Diary, Imitation(Diary of a wimpy kid)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Francais/" rel="tag">Français</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Haskell-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="tag">Haskell, 函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-17-Router-16/" rel="tag">React@17, Router@16</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjs-react-async-generator/" rel="tag">Rxjs, react, async generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/category-theory-for-programmers/" rel="tag">category-theory-for-programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-shell-tools/" rel="tag">docker, shell, tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-ssh/" rel="tag">git,ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-ts-react-vue3/" rel="tag">js, ts, react, vue3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell-bash/" rel="tag">shell,bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeScript-javaScript-%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" rel="tag">typeScript, javaScript, 编程与类型系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" rel="tag">vim, 信号, 终端多路复用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite-vue3-ts/" rel="tag">vite, vue3, ts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite-plugin-vue-cjs-es6/" rel="tag">vite-plugin-vue, cjs, es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%B1%BB%E4%B8%80%E8%B4%A5%E6%B6%82%E5%9C%B0/" rel="tag">人类一败涂地</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">安全, 密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D-%E6%95%85%E4%BA%8B%E6%96%B0%E7%BC%96/" rel="tag">西西弗神话,故事新编</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" style="font-size: 10px;">English practice, Diary, Imitation(Diary of a wimpy kid)</a> <a href="/tags/Francais/" style="font-size: 10px;">Français</a> <a href="/tags/Haskell-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">Haskell, 函数式编程</a> <a href="/tags/React-17-Router-16/" style="font-size: 10px;">React@17, Router@16</a> <a href="/tags/Rxjs-react-async-generator/" style="font-size: 10px;">Rxjs, react, async generator</a> <a href="/tags/category-theory-for-programmers/" style="font-size: 10px;">category-theory-for-programmers</a> <a href="/tags/docker-shell-tools/" style="font-size: 10px;">docker, shell, tools</a> <a href="/tags/git-ssh/" style="font-size: 10px;">git,ssh</a> <a href="/tags/js-ts-react-vue3/" style="font-size: 10px;">js, ts, react, vue3</a> <a href="/tags/shell-bash/" style="font-size: 10px;">shell,bash</a> <a href="/tags/typeScript-javaScript-%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" style="font-size: 20px;">typeScript, javaScript, 编程与类型系统</a> <a href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" style="font-size: 10px;">vim, 信号, 终端多路复用</a> <a href="/tags/vite-vue3-ts/" style="font-size: 10px;">vite, vue3, ts</a> <a href="/tags/vite-plugin-vue-cjs-es6/" style="font-size: 10px;">vite-plugin-vue, cjs, es6</a> <a href="/tags/%E4%BA%BA%E7%B1%BB%E4%B8%80%E8%B4%A5%E6%B6%82%E5%9C%B0/" style="font-size: 10px;">人类一败涂地</a> <a href="/tags/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 10px;">安全, 密码学</a> <a href="/tags/%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D-%E6%95%85%E4%BA%8B%E6%96%B0%E7%BC%96/" style="font-size: 10px;">西西弗神话,故事新编</a>
+    </div>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/20/hello-world/">Hexo &amp; travis bot坑爹的自动部署</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/25/categorys/">部分范畴论(category-theory-for-programmers) &amp; 高阶类型及其他</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnFrancais/">Français</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnAnglais/">编程与类型系统 - 类型部分&amp;补充知识</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnVue3/">Vue &amp; Mutable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 主体-客体联合创作<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

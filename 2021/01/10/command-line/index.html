@@ -1,37 +1,372 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
+  
+  <title>命令行环境&amp;常用VScode快捷键 | Comfortably Numb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Vim「作为编辑器的使用功能」编辑模式 正常：移动光标修改  插入文本： 键入 i 进入插入模式  替换文本：键入 R 进入替换模式  可视化： 选中文本块，键入 v 进入可视化一般模式，V 进入可视化行模式，Ctrl+v 可视化块模式  执行命令：键入 : 进入命令模式：  :q 退出关闭窗口 :w 保存（写） :wq 保存并退出 :e &amp;#123;file-name&amp;#125; 打开要编辑的文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="命令行环境&amp;常用VScode快捷键">
+<meta property="og:url" content="https://github.com/MillyTang/MillyTang.github.io/2021/01/10/command-line/index.html">
+<meta property="og:site_name" content="Comfortably Numb">
+<meta property="og:description" content="Vim「作为编辑器的使用功能」编辑模式 正常：移动光标修改  插入文本： 键入 i 进入插入模式  替换文本：键入 R 进入替换模式  可视化： 选中文本块，键入 v 进入可视化一般模式，V 进入可视化行模式，Ctrl+v 可视化块模式  执行命令：键入 : 进入命令模式：  :q 退出关闭窗口 :w 保存（写） :wq 保存并退出 :e &amp;#123;file-name&amp;#125; 打开要编辑的文">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-10T15:41:14.000Z">
+<meta property="article:modified_time" content="2022-03-20T09:49:18.137Z">
+<meta property="article:author" content="主体-客体联合创作">
+<meta property="article:tag" content="vim, 信号, 终端多路复用">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Comfortably Numb" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-{% block page_class %}page-post-detail{% endblock %}
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Comfortably Numb</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/MillyTang/MillyTang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-command-line" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/10/command-line/" class="article-date">
+  <time datetime="2021-01-10T15:41:14.000Z" itemprop="datePublished">2021-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      命令行环境&amp;常用VScode快捷键
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Vim「作为编辑器的使用功能」"><a href="#Vim「作为编辑器的使用功能」" class="headerlink" title="Vim「作为编辑器的使用功能」"></a>Vim「作为编辑器的使用功能」</h2><h3 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h3><ol>
+<li><p>正常：移动光标修改</p>
+</li>
+<li><p>插入文本： 键入 <strong><em>i</em></strong> 进入插入模式</p>
+</li>
+<li><p>替换文本：键入 <strong><em>R</em></strong> 进入替换模式</p>
+</li>
+<li><p>可视化： 选中文本块，键入 <strong><em>v</em></strong> 进入可视化一般模式，<strong><em>V</em></strong> 进入可视化行模式，<strong><em>Ctrl+v</em></strong> 可视化块模式</p>
+</li>
+<li><p>执行命令：键入 <strong><em>:</em></strong> 进入命令模式：</p>
+<ul>
+<li><code>:q</code> 退出关闭窗口</li>
+<li><code>:w</code> 保存（写）</li>
+<li><code>:wq</code> 保存并退出</li>
+<li><code>:e &#123;file-name&#125;</code> 打开要编辑的文件</li>
+<li><code>:ls</code> 显示打开的缓存</li>
+<li><code>:help &#123;标题&#125;</code> 打开帮助文档：<ul>
+<li><code>:help :w</code> 打开<code>:w</code>命令的帮助文档</li>
+<li><code>:help w</code> 打开<code>w</code>移动的帮助文档</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>键入 <code>ESC</code> 切换为正常模式</p>
+</blockquote>
+<h2 id="vim「作为编程语言」"><a href="#vim「作为编程语言」" class="headerlink" title="vim「作为编程语言」"></a>vim「作为编程语言」</h2><h3 id="移动-在缓存中导航"><a href="#移动-在缓存中导航" class="headerlink" title="移动-在缓存中导航"></a>移动-在缓存中导航</h3><ol>
+<li>基本移动：<code>hjkl(左下右上-逆时针)</code></li>
+<li>词：<code>w</code>-下一个词，<code>b</code>-词初，<code>e</code>-词尾</li>
+<li>行：<code>0</code>行初，<code>^</code>-第一个非空格字符，<code>$</code>行尾</li>
+<li>屏幕：<code>H</code>-屏幕首行，<code>M</code>-屏幕中间，<code>L</code>-屏幕底部</li>
+<li>翻页：<code>Ctrl+u</code>上翻，<code>Ctrl+d</code>下翻</li>
+<li>文件： <code>gg</code>-文件头，<code>G</code>文件尾部</li>
+<li>杂项：<code>:&#123;line number&#125;&lt;CR&gt;</code> or <code>&#123;line number&#125;G</code></li>
+<li>查找：<code>f&#123;character&#125;, t&#123;character&#125;, F&#123;character&#125;, T&#123;character&#125;</code>, (f/F = find, t/T = to, 小写是 forward, 大写是 backward)<ul>
+<li>find/to forward/backward {character} on the current line</li>
+<li><code>,</code> or <code>;</code>用于导航匹配</li>
+</ul>
+</li>
+<li>搜索：<code>/&#123;regex&#125;</code>向后搜索，<code>n</code> or <code>N</code>用于导航匹配</li>
+</ol>
+<h3 id="编辑-动词"><a href="#编辑-动词" class="headerlink" title="编辑-动词"></a>编辑-动词</h3><ul>
+<li><code>i</code> - insert mode</li>
+<li><code>o</code>/<code>O</code> insert line below / above 向下、上插入行</li>
+<li><code>d&#123;motion&#125;</code>删除{移动命令}，<code>dw</code>删除词,<code>d$</code>删除到行尾,<code>d0</code>-删除到行头</li>
+<li><code>c&#123;motion&#125;</code>改变{移动命令}，<code>cw</code>改变词，<code>d&#123;motion&#125;</code>再<code>i</code></li>
+<li><code>x</code>删除字符，等同于<code>dl</code></li>
+<li><code>s</code>替换字符，等同于<code>xi</code></li>
+<li>可视化模式 + 操作<ul>
+<li>选中文字，<code>d</code>删除或者<code>c</code>改变</li>
+</ul>
+</li>
+<li><code>u</code>撤销，<code>&lt;C-r&gt;</code>重做</li>
+<li><code>y</code> to copy / “yank” (some other commands like d also copy)</li>
+<li><code>p</code> 粘贴</li>
+<li><code>~</code> 改变字符大小写</li>
+</ul>
+<h3 id="计数"><a href="#计数" class="headerlink" title="计数"></a>计数</h3><blockquote>
+<p><code>3w</code>向前移动 3 个词，<code>5j</code>向下移动 5 行，<code>7dw</code>删除 7 个词</p>
+</blockquote>
+<h3 id="修饰语：用修饰语改变语义"><a href="#修饰语：用修饰语改变语义" class="headerlink" title="修饰语：用修饰语改变语义"></a>修饰语：用修饰语改变语义</h3><blockquote>
+<p><code>i</code>, <code>a</code>表示在内部，在周围</p>
+</blockquote>
+<ul>
+<li><code>ci(</code>改变当前括号内容</li>
+<li><code>ci[</code>改变当前方括号内容</li>
+<li><code>da&#39;</code>删除一个单引号字符串，包括周围的单引号</li>
+</ul>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><blockquote>
+<p>宏(macro)：批处理，命令集合</p>
+</blockquote>
+<ol>
+<li><p>搜索&amp;替换：<code>:s</code>替换</p>
+</li>
+<li><p>多窗口：<code>:sp</code> or <code>:vsp</code>分割窗口，同一个缓存可以在多个窗口显示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下载的 vimrc 文件为例</span></span><br><span class="line">vim vimrc</span><br><span class="line">:sp</span><br><span class="line"><span class="comment"># 此时会有2个窗口查看或编辑vimrc文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>宏：<code>q&#123;character&#125;</code>开始在寄存器<code>&#123;character&#125;</code>中录制宏，<code>q</code>停止录制，<code>@</code>重放宏</p>
+</li>
+<li><p>执行宏 <code>&#123;次数&#125;@&#123;字符&#125;</code>，执行宏<code>&#123;次数&#125;</code>次</p>
+</li>
+<li><p>宏递归：</p>
+<ol>
+<li><code>q&#123;character&#125;q</code>清除宏</li>
+<li>录制该宏，用@{character}来递归调用该宏</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自动加末尾行注释宏**@t**</span></span><br><span class="line">touch new-practice-vimrc</span><br><span class="line">vim new-practice-vimrc</span><br><span class="line"><span class="comment"># 录制宏t</span></span><br><span class="line">qt</span><br><span class="line"><span class="comment"># i进入编辑模式,编辑器底部显示： --INSERT --Recording @t</span></span><br><span class="line">i</span><br><span class="line"><span class="comment"># 输入通用行尾注释</span></span><br><span class="line"><span class="comment"># esc退出到编辑模式,底部显示 --Recording @t</span></span><br><span class="line"><span class="comment"># q停止宏录制</span></span><br><span class="line">q</span><br><span class="line"><span class="comment"># :wq!保存退出编辑模式，结束</span></span><br></pre></td></tr></table></figure>
 
-{% block content %}
+</li>
+</ol>
+<h2 id="vscode-配置-vim-插件"><a href="#vscode-配置-vim-插件" class="headerlink" title="vscode 配置 vim 插件"></a>vscode 配置 vim 插件</h2><ul>
+<li>下载插件 Vim</li>
+<li>配置 setting.json</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;vim.easymotion&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.suround&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.incsearch&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.useSystemClipboard&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.useCtrlKeys&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.hlsearch&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;vim.insertModeKeyBindings&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;before&quot;</span>: [<span class="string">&quot;j&quot;</span>, <span class="string">&quot;j&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;after&quot;</span>: [<span class="string">&quot;&lt;Esc&gt;&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;vim.normalModeKeyBindingsNonRecursive&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;before&quot;</span>: [<span class="string">&quot;&lt;leader&gt;&quot;</span>, <span class="string">&quot;d&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;after&quot;</span>: [<span class="string">&quot;d&quot;</span>, <span class="string">&quot;d&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;before&quot;</span>: [<span class="string">&quot;&lt;C-n&gt;&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;commands&quot;</span>: [<span class="string">&quot;:nohl&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;vim.leader&quot;</span>: <span class="string">&quot;&lt;space&gt;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;vim.handleKeys&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;&lt;C-a&gt;&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;&lt;C-f&gt;&quot;</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+<h2 id="练习-见missing-semester-文件夹"><a href="#练习-见missing-semester-文件夹" class="headerlink" title="练习-见missing-semester 文件夹"></a>练习-见<a href="https://github.com/MillyTang/missing-semester">missing-semester 文件夹</a></h2><h2 id="常用的VScode快捷键"><a href="#常用的VScode快捷键" class="headerlink" title="常用的VScode快捷键"></a>常用的VScode快捷键</h2><blockquote>
+<p>基于 macOS，有些是自定义后的快捷键，请 <code>command + k; command s</code> 查看自己的键盘快捷方式</p>
+</blockquote>
+<ul>
+<li><code>command + k; command s</code> 查看键盘快捷方式</li>
+<li><code>command + p</code> 搜索文件</li>
+<li><code>command + shift + p</code> 打开命令面板</li>
+<li><code>command + t</code> 全局搜索文件内容</li>
+<li><code>command + w</code> 关闭当前文件</li>
+<li><code>command + shift + n</code> 新建窗口</li>
+<li><code>command + shift + v</code> 预览 markdown 文件</li>
+<li><code>command + shift + k</code> 删除光标所在的一行</li>
+<li><code>command + /</code> 切换单行注释</li>
+<li><code>command + shift + /</code> 切换块注释</li>
+<li><code>command + j</code> 切换终端</li>
+<li><strong>ctrl + `</strong> 切换终端</li>
+<li><code>command + b</code> 切换侧边栏</li>
+<li><code>command + ,</code> 打开设置</li>
+<li><code>command + f2 + fn</code> 选择当前文件内所有和光标所在位置相同的单词 </li>
+<li><code>command + 1 or 2 or 3</code> 编辑区分区</li>
+<li><code>command + l</code> 选择当前行</li>
+<li><code>command + [ or ]</code> 缩进</li>
+<li><code>command + k; command + o</code>  全部折叠</li>
+<li><code>command + k; command + l</code>  切换折叠</li>
+<li><code>command + option + [ or ]</code> 折叠/展开代码块</li>
+<li><code>command + k; command + [ or ]</code> 递归折叠/展开代码块</li>
+<li><code>command + shift + l</code> 先执行一次 选择，再执行此命令可选择到所有相同文本或选项</li>
+<li><code>command + option + shift + 上下或左右箭头</code> 选择多行代码</li>
+<li><code>option + shift + 拖动光标</code> 选择多行代码</li>
+<li><code>option + shift + 上下箭头</code> 向上或向下复制行</li>
+<li><code>option + shift + 左右箭头</code> 向左或向右选择部分代码</li>
+<li><code>option + 上下箭头</code> 向上或向下移动行</li>
+<li><code>option + 上下箭头</code> 向上或向下移动行</li>
+<li><code>f3 + fn</code> 在结果中导航</li>
+<li><code>command + d</code> 选择多个结果</li>
+<li><code>command + g</code> 查找下一个</li>
+<li><code>command + shift + g</code> 查找上一个</li>
+<li><code>option + enter</code> 选择所有结果</li>
+<li><code>f8 + fn</code> 导航到错误或警告处</li>
+</ul>
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/MillyTang/MillyTang.github.io/2021/01/10/command-line/" data-id="cl0z3ksh10008c1oqcwsmav6d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" rel="tag">vim, 信号, 终端多路复用</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/18/security-cryptography/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Security &amp; Cryptography
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/07/three-easy-pieces/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">three-easy-pieces</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" rel="tag">English practice, Diary, Imitation(Diary of a wimpy kid)</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Francais/" rel="tag">Français</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Haskell-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="tag">Haskell, 函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-17-Router-16/" rel="tag">React@17, Router@16</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rxjs-react-async-generator/" rel="tag">Rxjs, react, async generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/category-theory-for-programmers/" rel="tag">category-theory-for-programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-shell-tools/" rel="tag">docker, shell, tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-ssh/" rel="tag">git,ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js-ts-react-vue3/" rel="tag">js, ts, react, vue3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell-bash/" rel="tag">shell,bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typeScript-javaScript-%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" rel="tag">typeScript, javaScript, 编程与类型系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" rel="tag">vim, 信号, 终端多路复用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite-vue3-ts/" rel="tag">vite, vue3, ts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite-plugin-vue-cjs-es6/" rel="tag">vite-plugin-vue, cjs, es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E7%B1%BB%E4%B8%80%E8%B4%A5%E6%B6%82%E5%9C%B0/" rel="tag">人类一败涂地</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">安全, 密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D-%E6%95%85%E4%BA%8B%E6%96%B0%E7%BC%96/" rel="tag">西西弗神话,故事新编</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/English-practice-Diary-Imitation-Diary-of-a-wimpy-kid/" style="font-size: 10px;">English practice, Diary, Imitation(Diary of a wimpy kid)</a> <a href="/tags/Francais/" style="font-size: 10px;">Français</a> <a href="/tags/Haskell-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">Haskell, 函数式编程</a> <a href="/tags/React-17-Router-16/" style="font-size: 10px;">React@17, Router@16</a> <a href="/tags/Rxjs-react-async-generator/" style="font-size: 10px;">Rxjs, react, async generator</a> <a href="/tags/category-theory-for-programmers/" style="font-size: 10px;">category-theory-for-programmers</a> <a href="/tags/docker-shell-tools/" style="font-size: 10px;">docker, shell, tools</a> <a href="/tags/git-ssh/" style="font-size: 10px;">git,ssh</a> <a href="/tags/js-ts-react-vue3/" style="font-size: 10px;">js, ts, react, vue3</a> <a href="/tags/shell-bash/" style="font-size: 10px;">shell,bash</a> <a href="/tags/typeScript-javaScript-%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" style="font-size: 20px;">typeScript, javaScript, 编程与类型系统</a> <a href="/tags/vim-%E4%BF%A1%E5%8F%B7-%E7%BB%88%E7%AB%AF%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" style="font-size: 10px;">vim, 信号, 终端多路复用</a> <a href="/tags/vite-vue3-ts/" style="font-size: 10px;">vite, vue3, ts</a> <a href="/tags/vite-plugin-vue-cjs-es6/" style="font-size: 10px;">vite-plugin-vue, cjs, es6</a> <a href="/tags/%E4%BA%BA%E7%B1%BB%E4%B8%80%E8%B4%A5%E6%B6%82%E5%9C%B0/" style="font-size: 10px;">人类一败涂地</a> <a href="/tags/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 10px;">安全, 密码学</a> <a href="/tags/%E8%A5%BF%E8%A5%BF%E5%BC%97%E7%A5%9E%E8%AF%9D-%E6%95%85%E4%BA%8B%E6%96%B0%E7%BC%96/" style="font-size: 10px;">西西弗神话,故事新编</a>
+    </div>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/20/hello-world/">Hexo &amp; travis bot坑爹的自动部署</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/25/categorys/">部分范畴论(category-theory-for-programmers) &amp; 高阶类型及其他</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnFrancais/">Français</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnAnglais/">编程与类型系统 - 类型部分&amp;补充知识</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/11/ilearnVue3/">Vue &amp; Mutable</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 主体-客体联合创作<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
