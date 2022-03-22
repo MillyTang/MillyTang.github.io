@@ -34,9 +34,55 @@ tags: js, ts, react, vue3
 ## 其他示例代码
 
 1. reTryRequest: 接口轮询，一分钟内轮询直到成功，超时取消
+
+```ts
+const queryRequest = (data) => {
+  return new Promise((resolve, reject) => {
+    const res = data.map(v => v+'111')
+    reject(res)
+  })
+}
+const retry = (query, timeout = 30000, times = 5) => {
+  // 使用闭包保存 timer
+  let timer = null
+  return (data) => {
+    return new Promise((resolve, reject) => {
+      timer = setTimeout(() => {
+        query(data).then(res => {
+          clearTimeout(timer)
+          resolve(res)
+        }).catch(err => {
+          clearTimeout(timer)
+          reject(err)
+        })
+      }, timeout)
+    })
+  }
+}
+const longRequestRetry = async (data, timeout = 30000, times = 5) => {
+  try {
+    const res = await retry(queryRequest, timeout = 30000, times)(data)
+    console.log('res', res)
+  } catch(err) {
+    if (times > 0) {
+      console.log('times', times)
+      longRequestRetry(data, timeout, times - 1)
+    }
+  }
+}
+// 使用
+const request = (data) => {
+  queryRequest(data).then(res => {
+
+  }).catch(err => {
+    longRequestRetry(data)
+  })
+}
+```
+
 2. generator or async/await 实现排序动画
-3. vue3 composed 组件示例 + vue3 实现 formWrapper 类型标注
-4. 设计一个 `generator` 状态机，和一个栈保留10个不同时间发出的异步任务，取消栈内除了栈顶的所有异步任务
+<!-- 3. vue3 composed 组件示例 + vue3 实现 formWrapper 类型标注 -->
+3. 设计一个 `generator` 状态机，和一个栈保留10个不同时间发出的异步任务，取消栈内除了栈顶的所有异步任务
 
 ## debug
 

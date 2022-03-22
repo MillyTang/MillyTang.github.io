@@ -1,5 +1,6 @@
 ---
 title: Hexo & travis bot坑爹的自动部署
+date: 2021-10-01
 ---
 
 ## 没有修改主题前的自动部署流程十分顺滑
@@ -35,3 +36,9 @@ $ npx hexo clean && npx hexo deploy
 # 如果碰到 Authentication failed for 'https://github.com/xxx/xxx.github.io/'，那就是travis上配置的$ $GH_TOKEN与.config.yml中的不一致
 # 这两个问题都没碰到，基本成功
 ```
+
+### TroubleShooting
+
+1. 将主题换回默认主题，部署成功，说明问题出在 `Next` 主题包上
+2. 在 `.travis.yml` 文件内 `install` 下增加一条安装主题的命令 `git clone --branch v8.0.0 https://github.com/next-theme/hexo-theme-next themes/next` 即可
+3. 重新在`main`分支上推一下代码即可安装成功
